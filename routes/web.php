@@ -31,16 +31,26 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     Route::get('/create/post', 'PostPagesController@createPost')->name('admin.create_post');
     Route::post('/add/post', 'PostPagesController@addPost')->name('admin.add_post');
     Route::get('/populate/category', 'PostPagesController@populateCatgory')->name('admin.populate_category');
+    //Add Youtube Video
+    Route::get('/create/video', 'PostPagesController@createVideo')->name('admin.create_video');
+    Route::post('/add/video', 'PostPagesController@addVideo')->name('admin.add_video');
+    
     //List Posts
     Route::get('/list/eng/post', 'PostPagesController@listPost')->name('admin.eng_list_post');
+    Route::get('/list/eng/video', 'PostPagesController@listVideo')->name('admin.eng_video_list');
     Route::get('/list/ass/post', 'PostPagesController@assListPost')->name('admin.ass_list_post');
+    Route::get('/list/ass/video', 'PostPagesController@assListVideo')->name('admin.ass_video_list');
+
     Route::get('/ajax/get/eng/post/','PostPagesController@ajaxGetPostList')->name('admin.ajax.get_eng_post_list');
+    Route::get('/ajax/get/eng/video/','PostPagesController@ajaxGetVideoList')->name('admin.ajax.get_eng_video_list');
     Route::get('/ajax/get/ass/post/','PostPagesController@ajaxGetAssPostList')->name('admin.ajax.get_ass_post_list');
+    Route::get('/ajax/get/ass/video/','PostPagesController@ajaxGetAssVideoList')->name('admin.ajax.get_ass_video_list');
 
     Route::get('/ajax/get/popular/post/','PostPagesController@ajaxGetPopularPostList')->name('admin.ajax.get_eng_popular_post_list');
 
     Route::get('/get/post/{id}','PostPagesController@GetPostSinglePost')->name('admin.post_view');
     Route::get('/status/post/{id}/{status}','PostPagesController@statusPost')->name('admin.post_status');
+    Route::get('/status/video/{id}/{status}','PostPagesController@statusVideo')->name('admin.video_status');
     Route::get('/edit/post/{id}','PostPagesController@editPost')->name('admin.post_edit');
     Route::post('/update/post','PostPagesController@updatePost')->name('admin.update_post');
     Route::get('/ajax/get/slider/post/','PostPagesController@ajaxGetPostSliderList')->name('admin.ajax.get_slider_post_list');

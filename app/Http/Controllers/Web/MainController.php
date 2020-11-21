@@ -173,12 +173,19 @@ class MainController extends Controller
             ->where('posts.post_type', 1)
             ->orderBy('posts.id','asc')
             ->take(5)
+            ->get();  
+
+        $youtube_post = DB::table('video')
+            ->where('type', 1)
+            ->where('status', 1)
+            ->orderBy('id','desc')
+            ->take(4)
             ->get();   
         $breaking_news = Post::orderBy('created_at', 'DESC')->whereStatus(1)->whereBreaking(1)->get();
         return view('web.index', compact('slider_post', 'fourth_post', 'assam_post','assam_cat_name',
         'guwahati_post', 'guwahati_cat_name', 'technology_post', 'technology_cat_name', 'business_posts_1', 
         'business_posts_2', 'health', 'health_cat_name', 'gadget', 'gadget_cat_name', 'travel', 'travel_cat_name', 
-        'lifestyle_1', 'lifestyle_2', 'lifestyle_cat_name', 'popular_post', 'breaking_news'));
+        'lifestyle_1', 'lifestyle_2', 'lifestyle_cat_name', 'popular_post', 'breaking_news', 'youtube_post'));
     }
 
     public function showPost($slug, $id){
@@ -209,7 +216,6 @@ class MainController extends Controller
 
     //Header Navigation
     public function headerNav($id, $slug){
-        // dd(1);
         $news = DB::table('posts')->where('cat_id', $id)->where('post_type', 1)->get();
         $cat_name = DB::table('category')->where('id',$id)->first();
         $cat_name = $cat_name->category_name;

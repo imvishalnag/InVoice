@@ -115,6 +115,11 @@
 											<a href="<?php echo e(route('web.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->en_slug])); ?>"><?php echo e($header_data['northeast']->category_name); ?></a>
 										</li>
 									<?php endif; ?>
+									<?php if(isset($header_data['national']->category_name) && !empty($header_data['national']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->en_slug])); ?>"><?php echo e($header_data['national']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
 									<?php if(isset($header_data['international']->category_name) && !empty($header_data['international']->category_name)): ?>
 										<li>
 											<a href="<?php echo e(route('web.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->en_slug])); ?>"><?php echo e($header_data['international']->category_name); ?></a>

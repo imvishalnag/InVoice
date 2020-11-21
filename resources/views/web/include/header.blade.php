@@ -114,6 +114,11 @@
 											<a href="{{route('web.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->en_slug])}}">{{ $header_data['northeast']->category_name}}</a>
 										</li>
 									@endif
+									@if(isset($header_data['national']->category_name) && !empty($header_data['national']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->en_slug])}}">{{ $header_data['national']->category_name}}</a>
+										</li>
+									@endif
 									@if(isset($header_data['international']->category_name) && !empty($header_data['international']->category_name))
 										<li>
 											<a href="{{route('web.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->en_slug])}}">{{ $header_data['international']->category_name}}</a>

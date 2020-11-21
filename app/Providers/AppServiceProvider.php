@@ -35,9 +35,11 @@ class AppServiceProvider extends ServiceProvider
             $economy = Category::whereStatus(1)->whereCategoryName('Economy')->first();
             $crime = Category::whereStatus(1)->whereCategoryName('Crime')->first();
             $category = Category::whereStatus(1)->whereNotIn('id', [1,2,9,11,13,14])->limit(12)->get();
+            $national = Category::whereStatus(1)->whereCategoryName('National')->first();
             $data = [
                 'assam' => $assam,
                 'northeast' => $northeast,
+                'national' => $national,
                 'international' => $international,
                 'politics' => $politics,
                 'economy' => $economy,
@@ -54,9 +56,11 @@ class AppServiceProvider extends ServiceProvider
             $politics = Category::whereStatus(1)->whereCategoryName('Politics')->first();
             $economy = Category::whereStatus(1)->whereCategoryName('Economy')->first();
             $crime = Category::whereStatus(1)->whereCategoryName('Crime')->first();
+            $national = Category::whereStatus(1)->whereCategoryName('National')->first();
             $data = [
                 'assam' => $assam,
                 'northeast' => $northeast,
+                'national' => $national,
                 'international' => $international,
                 'politics' => $politics,
                 'economy' => $economy,
