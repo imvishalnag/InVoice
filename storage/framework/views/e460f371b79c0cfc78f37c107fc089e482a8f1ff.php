@@ -19,7 +19,7 @@
                     <div class="single-post">
                         
                         <div class="post-title-area">
-                            <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> encrypt($single_post->cat_id)])); ?>"><?php echo e($single_post->category_name); ?></a>
+                            <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> $single_post->cat_id, 'slug' =>urlencode($single_post->slug)])); ?>"><?php echo e($single_post->category_name); ?></a>
                             <h2 class="post-title">
                                 <?php echo e($single_post->title); ?>
 

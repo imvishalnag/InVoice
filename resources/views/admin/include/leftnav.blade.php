@@ -31,8 +31,11 @@
             <li><a><i class="fa fa-edit"></i> News Post <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{route('admin.create_post')}}">Add Post</a></li>
+                <li><a href="{{route('admin.create_video')}}">Add Youtube video</a></li>
                 <li><a href="{{route('admin.eng_list_post')}}">English List Posts</a></li>
+                <li><a href="{{route('admin.eng_video_list')}}">English Video List</a></li>
                 <li><a href="{{route('admin.ass_list_post')}}">Assamese List Posts</a></li>
+                <li><a href="{{route('admin.ass_video_list')}}">Assamese Video List</a></li>
               </ul>
             </li>
             <li><a><i class="fa fa-list-alt"></i> Manage Category <span class="fa fa-chevron-down"></span></a>

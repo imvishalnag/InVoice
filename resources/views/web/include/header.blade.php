@@ -104,29 +104,52 @@
 
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
-
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">Assam</a>
-									</li>
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">North East</a>
-									</li>
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">International</a>
-									</li>
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">Politics</a>
-									</li>
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">Economy</a>
-									</li>
-									<li>
-										<a href="{{route('web.news', ['id'=> encrypt(1)])}}">Crime</a>
-									</li>
+									@if(isset($header_data['assam']->category_name) && !empty($header_data['assam']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['assam']->id, 'slug' => $header_data['assam']->en_slug])}}">{{ $header_data['assam']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['northeast']->category_name) && !empty($header_data['northeast']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->en_slug])}}">{{ $header_data['northeast']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['national']->category_name) && !empty($header_data['national']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->en_slug])}}">{{ $header_data['national']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['international']->category_name) && !empty($header_data['international']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->en_slug])}}">{{ $header_data['international']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['politics']->category_name) && !empty($header_data['politics']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['politics']->id, 'slug' => $header_data['politics']->en_slug])}}">{{ $header_data['politics']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['economy']->category_name) && !empty($header_data['economy']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['economy']->id, 'slug' => $header_data['economy']->en_slug])}}">{{ $header_data['economy']->category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['crime']->category_name) && !empty($header_data['crime']->category_name))
+										<li>
+											<a href="{{route('web.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])}}">{{ $header_data['crime']->category_name}}</a>
+										</li>
+									@endif
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
-											<li>
+											@if(isset($header_data['category']) && !empty($header_data['category']))
+												@foreach ($header_data['category'] as $category)
+													<li>
+														<a href="{{route('web.news', ['id'=> $category->id, 'slug' => $category->en_slug])}}">{{ $category->category_name}}</a>
+													</li>
+												@endforeach
+											@endif
+											{{-- <li>
 												<a href="{{route('web.news', ['id'=> encrypt(12)])}}">Science & Technology</a>
 											</li>
 											<li>
@@ -152,14 +175,14 @@
 											<li>
 												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Tourism</a>
 											</li>
-		
+		 --}}
 											<li>
 												<a target="_blank" href="https://www.youtube.com/">Video</a>
 											</li>
 		
-											<li>
+											{{-- <li>
 												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Education</a>
-											</li>
+											</li> --}}
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
 

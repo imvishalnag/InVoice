@@ -10,7 +10,7 @@
                 <div class="x_panel">
 
                     <div class="x_title">
-                        <h2>Popular List Post</h2>
+                        <h2>Youtube Video List (English)</h2>
                         <div class="clearfix"></div>
                     </div>
                     <?php if(Session::has('message')): ?>
@@ -28,9 +28,8 @@
                                   <tr>
                                     <th>Sl. No</th>
                                     <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Type</th>
                                     <th>Author</th>
+                                    <th>Thumbnail</th>
                                     <th>Date</th>
                                     <th>Action</th>
                                   </tr>
@@ -53,13 +52,12 @@
             var table = $('#post_list').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "<?php echo e(route('admin.ajax.get_eng_popular_post_list')); ?>",
+                ajax: "<?php echo e(route('admin.ajax.get_eng_video_list')); ?>",
                 columns: [
                     {data: 'id', name: 'id',searchable: true},
                     {data: 'title', name: 'title',searchable: true},      
-                    {data: 'category', name: 'category',searchable: true},      
-                    {data: 'type', name: 'type',searchable: true},      
                     {data: 'author', name: 'author',searchable: true},      
+                    {data: 'thumbnail', name: 'thumbnail',searchable: true},      
                     {data: 'created_at', name: 'created_at',searchable: true},      
                     {data: 'action', name: 'action',searchable: true},      
                 ]
@@ -70,4 +68,4 @@
 
 
 
-<?php echo $__env->make('admin.template.admin_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\InVoice\resources\views/admin/popular_list_post.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.template.admin_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\invoice\resources\views/admin/list_video.blade.php ENDPATH**/ ?>

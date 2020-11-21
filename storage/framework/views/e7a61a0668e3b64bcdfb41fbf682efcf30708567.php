@@ -105,62 +105,57 @@
 
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
-
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">Assam</a>
-									</li>
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">North East</a>
-									</li>
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">International</a>
-									</li>
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">Politics</a>
-									</li>
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">Economy</a>
-									</li>
-									<li>
-										<a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>">Crime</a>
-									</li>
+									<?php if(isset($header_data['assam']->category_name) && !empty($header_data['assam']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['assam']->id, 'slug' => $header_data['assam']->en_slug])); ?>"><?php echo e($header_data['assam']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['northeast']->category_name) && !empty($header_data['northeast']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->en_slug])); ?>"><?php echo e($header_data['northeast']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['national']->category_name) && !empty($header_data['national']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->en_slug])); ?>"><?php echo e($header_data['national']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['international']->category_name) && !empty($header_data['international']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->en_slug])); ?>"><?php echo e($header_data['international']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['politics']->category_name) && !empty($header_data['politics']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['politics']->id, 'slug' => $header_data['politics']->en_slug])); ?>"><?php echo e($header_data['politics']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['economy']->category_name) && !empty($header_data['economy']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['economy']->id, 'slug' => $header_data['economy']->en_slug])); ?>"><?php echo e($header_data['economy']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['crime']->category_name) && !empty($header_data['crime']->category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('web.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])); ?>"><?php echo e($header_data['crime']->category_name); ?></a>
+										</li>
+									<?php endif; ?>
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(12)])); ?>">Science & Technology</a>
-											</li>
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(13)])); ?>">Art/Culture</a>
-											</li>
-
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(15)])); ?>">Editor's Desk</a>
-											</li>
-		
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>">Public Opinion</a>
-											</li>
-		
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>">Sports</a>
-											</li>
-		
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>">Enviroment/Nature</a>
-											</li>
-		
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>">Tourism</a>
-											</li>
-		
+											<?php if(isset($header_data['category']) && !empty($header_data['category'])): ?>
+												<?php $__currentLoopData = $header_data['category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+													<li>
+														<a href="<?php echo e(route('web.news', ['id'=> $category->id, 'slug' => $category->en_slug])); ?>"><?php echo e($category->category_name); ?></a>
+													</li>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+											<?php endif; ?>
+											
 											<li>
 												<a target="_blank" href="https://www.youtube.com/">Video</a>
 											</li>
 		
-											<li>
-												<a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>">Education</a>
-											</li>
+											
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
 
