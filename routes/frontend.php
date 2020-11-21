@@ -6,6 +6,8 @@
 
 //========= News =========//
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/news', function () {
     return view('web.news.news-list');
 })->name('web.news.news-list');

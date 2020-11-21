@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 require_once  __DIR__."/frontend.php";
 
-
-
-Route::get('/admin/login', 'Admin\AdminLoginController@showAdminLoginForm')->name('admin.login');
-Route::post('/admin/login', 'Admin\AdminLoginController@adminLogin');
-Route::post('/admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('login', 'AdminLoginController@showAdminLoginForm')->name('admin.login');
+    Route::post('login', 'AdminLoginController@adminLogin');
+    Route::post('logout', 'AdminLoginController@logout')->name('admin.logout');
+});
 
 Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('/dashboard', 'AdminDashboardController@index')->name('admin.dashboard');
@@ -49,10 +49,13 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     Route::get('/slide/post/{id}/{slide}','PostPagesController@updateSlide')->name('admin.post_slide');
     Route::get('/four/post/{id}/{four}','PostPagesController@updateFour')->name('admin.post_four');
     Route::get('/popular/post/{id}/{popular}','PostPagesController@updatePopular')->name('admin.popular_post');
+    // Breaking News
+    Route::get('/breaking/post/{id}/{status}', 'PostPagesController@breakingNews')->name('admin.breaking_news');
 
     Route::get('/slide/post/list','PostPagesController@listSlidePage')->name('admin.slider_list');
     Route::get('/four/post/list','PostPagesController@listFourPage')->name('admin.four_list');
     Route::get('/popular/post/list','PostPagesController@listPopular')->name('admin.popular_list');
+
 
     /** Category CK Editor Image Upload **/
     Route::post('ck-editor-image-upload','PostPagesController@ckEditorImageUpload')->name('admin.ck_editor_image_upload');

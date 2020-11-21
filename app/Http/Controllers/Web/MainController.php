@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
 use App\Category;
 use App\Post;
 use App\Http\Resources\Category as CategoryResource;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class MainController extends Controller
 {
@@ -173,11 +174,11 @@ class MainController extends Controller
             ->orderBy('posts.id','asc')
             ->take(5)
             ->get();   
-
+        $breaking_news = Post::orderBy('created_at', 'DESC')->whereStatus(1)->whereBreaking(1)->get();
         return view('web.index', compact('slider_post', 'fourth_post', 'assam_post','assam_cat_name',
         'guwahati_post', 'guwahati_cat_name', 'technology_post', 'technology_cat_name', 'business_posts_1', 
         'business_posts_2', 'health', 'health_cat_name', 'gadget', 'gadget_cat_name', 'travel', 'travel_cat_name', 
-        'lifestyle_1', 'lifestyle_2', 'lifestyle_cat_name', 'popular_post'));
+        'lifestyle_1', 'lifestyle_2', 'lifestyle_cat_name', 'popular_post', 'breaking_news'));
     }
 
     public function showPost($slug, $id){
@@ -215,7 +216,6 @@ class MainController extends Controller
         }
 
         $news = DB::table('posts')->where('cat_id', $id)->where('post_type', 1)->get();
-
         $cat_name = DB::table('category')->where('id',$id)->first();
         $cat_name = $cat_name->category_name;
         return view('web.news.news-list', compact('news', 'cat_name'));
