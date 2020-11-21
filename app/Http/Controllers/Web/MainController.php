@@ -187,9 +187,9 @@ class MainController extends Controller
         ->join('category','posts.cat_id','=','category.id')
         ->where('posts.id', $id)
         ->first();
-
+        
         //Related Post
-        $posts = DB::table('posts')->where('id',$id)->first();
+        $posts = DB::table('posts')->where('id', $id)->first();
         $related_post = DB::table('posts')->where('cat_id', $posts->cat_id)->where('post_type', 1)
         ->get();
 
@@ -208,13 +208,8 @@ class MainController extends Controller
     }
 
     //Header Navigation
-    public function headerNav($id){
-        try {
-            $id = decrypt($id);
-        }catch(DecryptException $e) {
-            return redirect()->back();
-        }
-
+    public function headerNav($id, $slug){
+        // dd(1);
         $news = DB::table('posts')->where('cat_id', $id)->where('post_type', 1)->get();
         $cat_name = DB::table('category')->where('id',$id)->first();
         $cat_name = $cat_name->category_name;

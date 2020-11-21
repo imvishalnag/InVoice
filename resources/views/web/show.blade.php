@@ -1,4 +1,3 @@
-
 @extends('web.template.web_master')
 
 @section('meta')
@@ -19,7 +18,7 @@
                     <div class="single-post">
                         
                         <div class="post-title-area">
-                            <a class="post-cat" href="{{route('web.news', ['id'=> encrypt($single_post->cat_id)])}}">{{$single_post->category_name}}</a>
+                            <a class="post-cat" href="{{route('web.news', ['id'=> $single_post->cat_id, 'slug' =>urlencode($single_post->slug)])}}">{{$single_post->category_name}}</a>
                             <h2 class="post-title">
                                 {{$single_post->title}}
                             </h2>

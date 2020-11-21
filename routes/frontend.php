@@ -46,7 +46,7 @@ Route::group(['namespace' => 'Web'], function(){
 
 	Route::group(['prefix' => 'english'], function(){
 		Route::get('/posts/{slug}/{id}', 'MainController@showPost')->name('web.viewPost');
-		Route::get('/posts/{id}', 'MainController@headerNav')->name('web.news');
+		Route::get('/posts/category/{id}/{slug}', 'MainController@headerNav')->name('web.news');
 		Route::post('/search', 'MainController@search')->name('web.search');
 	});
 });
@@ -57,7 +57,7 @@ Route::group(['namespace' => 'Assamese'], function(){
 	
 	Route::group(['prefix' => 'assamese'], function(){
 		Route::get('/posts/{slug}/{id}', 'MainController@showPost')->name('assamese.viewPost');
-		Route::get('/posts/{id}', 'MainController@headerNav')->name('ass.news');
+		// Route::get('/posts/{id}', 'MainController@headerNav')->name('ass.news');
 		Route::post('/search', 'MainController@search')->name('ass.search');
 	});
 });

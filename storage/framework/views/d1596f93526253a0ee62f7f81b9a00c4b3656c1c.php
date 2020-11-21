@@ -12,7 +12,7 @@
                             <div class="item" style="background-image:url(<?php echo e(asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
                                 <div class="featured-post">
                                     <div class="post-content">
-                                    <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> encrypt($post->cat_id)])); ?>"><?php echo e($post->category_name); ?></a>
+                                    <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])); ?>"><?php echo e($post->category_name); ?></a>
                                         <h2 class="post-title title-extra-large">
                                             <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
