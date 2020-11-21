@@ -119,7 +119,7 @@ jQuery(function($) {
 
 		$(".latest-news-slide").owlCarousel({
 
-			loop:false,
+			loop:true,
 			animateIn: 'fadeInLeft',
 			autoplay:true,
 			autoplayHoverPause:true,

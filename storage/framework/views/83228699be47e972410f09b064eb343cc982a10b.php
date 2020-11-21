@@ -15,7 +15,7 @@
                     <div class="col-lg-4 col-sm-12 footer-info text-center">
                         <div class="footer-info-content">
                             <div class="footer-logo">
-                                <img class="img-fluid" src="{{asset('web/images/logos/logo.jpg')}}" alt="" />
+                                <img class="img-fluid" src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt="" />
                             </div>
                             <p class="footer-info-phone"><i class="fa fa-phone"></i> +(785) 238-4131</p>
                             <p class="footer-info-email"><i class="fa fa-envelope-o"></i> editor@news247.com</p>
@@ -45,34 +45,34 @@
                                 <a href="#"><span class="catTitle">ABOUT</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(12)])}}"><span class="catTitle">NATIONAL</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(12)])); ?>"><span class="catTitle">NATIONAL</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(13)])}}"><span class="catTitle">INTERNATIONAL</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(13)])); ?>"><span class="catTitle">INTERNATIONAL</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(2)])}}"><span class="catTitle">NORTHEAST</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(2)])); ?>"><span class="catTitle">NORTHEAST</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(1)])}}"><span class="catTitle">ASSAM</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>"><span class="catTitle">ASSAM</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(14)])}}"><span class="catTitle">POLITICS</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(14)])); ?>"><span class="catTitle">POLITICS</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(16)])}}"><span class="catTitle">ECONOMY</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>"><span class="catTitle">ECONOMY</span></a>
                             </li>
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(15)])}}"><span class="catTitle">CRIME</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(15)])); ?>"><span class="catTitle">CRIME</span></a>
                             </li>
                             <li>
                                 <a href="#"><span class="catTitle">ABOUT</span></a>
                             </li>
                             <li>
-                                <a target="_blank" href="{{route('web.livetv.livetv')}}"><span class="catTitle">Sports</span></a>
+                                <a target="_blank" href="<?php echo e(route('web.livetv.livetv')); ?>"><span class="catTitle">Sports</span></a>
                             </li>
                             <li>
-                                <a target="_blank" href="{{route('web.livetv.livetv')}}"><span class="catTitle">Editor's Desk</span></a>
+                                <a target="_blank" href="<?php echo e(route('web.livetv.livetv')); ?>"><span class="catTitle">Editor's Desk</span></a>
                             </li>
                         </ul>   
                     </div><!-- Col end -->
@@ -127,18 +127,17 @@
     ================================================== -->
 
     <!-- initialize jQuery Library -->
-    <script type="text/javascript" src="{{asset('web/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('web/js/jquery.js')); ?>"></script>
     <!-- Popper js -->
-    <script type="text/javascript" src="{{asset('web/js/popper.min.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('web/js/popper.min.js')); ?>"></script>
     <!-- Bootstrap jQuery -->
-    <script type="text/javascript" src="{{asset('web/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('web/js/bootstrap.min.js')); ?>"></script>
     <!-- Owl Carousel -->
-    <script type="text/javascript" src="{{asset('web/js/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('web/js/owl.carousel.min.js')); ?>"></script>
     <!-- Color box -->
-    <script type="text/javascript" src="{{asset('web/js/jquery.colorbox.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('web/js/jquery.colorbox.js')); ?>"></script>
     <!-- Template custom -->
-    <script type="text/javascript" src="{{asset('web/js/custom.js')}}"></script>
-    
+    <script type="text/javascript" src="<?php echo e(asset('web/js/custom.js')); ?>"></script>
     <script>
         var slideIndex = 0;
             showSlides();
@@ -163,4 +162,5 @@
 </div><!-- Body inner end -->
 </body> 
 
-</html>
+
+</html><?php /**PATH E:\xampp\htdocs\invoice\resources\views/web/include/footer.blade.php ENDPATH**/ ?>

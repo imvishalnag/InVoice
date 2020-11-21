@@ -6,32 +6,32 @@
 	<!-- Basic Page Needs
 	================================================== -->
 	<meta charset="utf-8">
-	<title>{{__('Invoice')}}</title>
+	<title><?php echo e(__('NEWS TIME NORTHEAST')); ?></title>
 	<!-- Mobile Specific Metas ================================================== -->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	@yield('meta')
+	<?php echo $__env->yieldContent('meta'); ?>
 	<!--Favicon-->
-	<link rel="shortcut icon" href="{{asset('web/images/favicon.ico')}}" type="image/x-icon">
-	<link rel="icon" href="{{asset('web/images/favicon.ico')}}" type="image/x-icon">
+	<link rel="shortcut icon" href="<?php echo e(asset('web/images/favicon.ico')); ?>" type="image/x-icon">
+	<link rel="icon" href="<?php echo e(asset('web/images/favicon.ico')); ?>" type="image/x-icon">
 	
 	<!-- CSS ================================================== -->	
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{asset('web/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/bootstrap.min.css')); ?>">
 	<!-- Template styles-->
-	<link rel="stylesheet" href="{{asset('web/css/style.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/style.css')); ?>">
 	<!-- Responsive styles-->
-	<link rel="stylesheet" href="{{asset('web/css/responsive.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/responsive.css')); ?>">
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="{{asset('web/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/font-awesome.min.css')); ?>">
 	<!-- Animation -->
-	<link rel="stylesheet" href="{{asset('web/css/animate.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/animate.css')); ?>">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{asset('web/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('web/css/owl.theme.default.min.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/owl.carousel.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/owl.theme.default.min.css')); ?>">
 	<!-- Colorbox -->
-	<link rel="stylesheet" href="{{asset('web/css/colorbox.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('web/css/colorbox.css')); ?>">
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -50,12 +50,13 @@
 		        <div class="row">
 		            <div class="col-md-8">
 		               	<div class="ts-date">
-		                  	<i class="fa fa-calendar-check-o"></i>{{ date('M d, Y', strtotime(Carbon\Carbon::today()))}}
+		                  	<i class="fa fa-calendar-check-o"></i><?php echo e(date('M d, Y', strtotime(Carbon\Carbon::today()))); ?>
+
 		               	</div>
 		               <ul class="unstyled top-nav">
 		                  	<li><b>Showing in :</b></li>
-		                  	<li><a href="{{route('web.index')}}">English</a></li>
-		                  	<li><a href="{{route('assamese.index')}}" class="showing">অসমীয়া</a></li>
+		                  	<li><a href="<?php echo e(route('web.index')); ?>">English</a></li>
+		                  	<li><a href="<?php echo e(route('assamese.index')); ?>" class="showing">অসমীয়া</a></li>
 		               </ul>
 		            </div><!--/ Top bar left end -->
 
@@ -73,19 +74,19 @@
 
 		<!-- Header start -->
 		<header id="header" class="header">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 col-sm-2 col-xs-2">
+					<div class="col-lg-1 col-sm-2 col-xs-2">
 						<div class="logo">
-							<a href="{{route('assamese.index')}}">
-								<img src="{{asset('web/images/logos/logo.jpg')}}" alt="">
+							<a href="<?php echo e(route('assamese.index')); ?>">
+								<img src="<?php echo e(asset('web/images/logos/logo.png')); ?>" alt="">
 							 </a>
 						</div>
 					</div><!-- logo col end -->
 
-					<div class="col-lg-9 col-sm-10 col-xs-10 header-right">
+					<div class="col-lg-11 col-sm-10 col-xs-10 header-right">
 						<div class="ad-banner float-right">
-							<a href="#"><img src="{{asset('web/images/banner-ads/ad-top-header.png')}}" class="img-fluid" alt=""></a>
+							<a href="#"><img src="<?php echo e(asset('web/images/banner-ads/ad-top-header.png')); ?>" class="img-fluid" alt=""></a>
 						</div>
 					</div><!-- header right end -->
 				</div><!-- Row end -->
@@ -105,43 +106,43 @@
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
 									<li>
-										<a href="{{route('assamese.index')}}">হোম </a>
+										<a href="<?php echo e(route('assamese.index')); ?>">হোম </a>
 									</li>
 
 									<li>
-										<a href="{{route('web.about.about')}}">বিষয়ে</a>
+										<a href="<?php echo e(route('web.about.about')); ?>">বিষয়ে</a>
 									</li>
 
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown">খবৰ <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
 											<li>
-												<a href="{{route('ass.news', ['id'=> encrypt(12)])}}">ভাৰতবৰ্ষ</a>
+												<a href="<?php echo e(route('ass.news', ['id'=> encrypt(12)])); ?>">ভাৰতবৰ্ষ</a>
 											</li>
 											<li>
-												<a href="{{route('ass.news', ['id'=> encrypt(13)])}}">বিশ্ব</a>
+												<a href="<?php echo e(route('ass.news', ['id'=> encrypt(13)])); ?>">বিশ্ব</a>
 											</li>
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
 
 									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(2)])}}">গুৱাহাটী</a>
+										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(2)])); ?>">গুৱাহাটী</a>
 									</li>
 
 									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(1)])}}">অসম</a>
+										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(1)])); ?>">অসম</a>
 									</li>
 
 									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(14)])}}">উত্তৰপূব</a>
+										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(14)])); ?>">উত্তৰপূব</a>
 									</li>
 
 									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(15)])}}">মনোৰঞ্জণ</a>
+										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(15)])); ?>">মনোৰঞ্জণ</a>
 									</li>
 
 									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(16)])}}">ক্ৰীড়া</a>
+										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(16)])); ?>">ক্ৰীড়া</a>
 									</li>
 
 									<li>
@@ -149,7 +150,7 @@
 									</li><!-- Video menu end -->
 
 									<li>
-										<a href="{{route('web.livetv.livetv')}}">Live Tv</a>
+										<a href="<?php echo e(route('web.livetv.livetv')); ?>">Live Tv</a>
 									</li><!-- Video menu end -->
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->
@@ -157,7 +158,8 @@
 						</div><!-- Site Navbar inner end -->
 					</nav><!--/ Navigation end -->
 					
-					{{ Form::open(['method' => 'post','route'=>'ass.search']) }}
+					<?php echo e(Form::open(['method' => 'post','route'=>'ass.search'])); ?>
+
 					<div class="nav-search">
 						<span id="search"><i class="fa fa-search"></i></span>
 					</div><!-- Search end -->
@@ -165,7 +167,8 @@
 						<input type="text" class="form-control" name="query" placeholder="Type what you want and enter">
 						<span class="search-close">&times;</span>
 					</div>
-					{{ Form::close() }}
+					<?php echo e(Form::close()); ?>
+
 				</div><!--/ Row end -->
 			</div><!--/ Container end -->
-		</div><!-- Menu wrapper end -->
+		</div><!-- Menu wrapper end --><?php /**PATH E:\xampp\htdocs\newstimenortheast\resources\views/as/include/header.blade.php ENDPATH**/ ?>

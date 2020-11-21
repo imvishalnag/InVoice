@@ -1,128 +1,60 @@
 
-@extends('as.template.web_master')
 
-@section('content')
-    <section class="featured-post-area no-padding" style="padding-top: 13px">
-        <div class="container-fluid">
+
+<?php $__env->startSection('content'); ?>
+    <section class="featured-post-area no-padding" style="padding-top: 20px">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-12 pad-r">
+                <div class="col-lg-6 col-md-12 pad-r">
                     <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
-                        @if(isset($slider_post) && !empty($slider_post))
-                            @foreach($slider_post as $post)
-                            <div class="item" style="background-image:url({{asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')}})">
+                        <?php if(isset($slider_post) && !empty($slider_post)): ?>
+                            <?php $__currentLoopData = $slider_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="item" style="background-image:url(<?php echo e(asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
                                 <div class="featured-post">
                                     <div class="post-content">
-                                    <a class="post-cat" href="{{route('web.news', ['id'=> encrypt($post->cat_id)])}}">{{$post->category_name}}</a>
+                                    <a class="post-cat" href="<?php echo e(route('ass.news', ['id'=> encrypt($post->cat_id)])); ?>"><?php echo e($post->category_name); ?></a>
                                         <h2 class="post-title title-extra-large">
-                                            <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 6, ' ...') !!}</a>
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
-                                        <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                        <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                     </div>
                                 </div><!--/ Featured post end -->
                                 
                             </div><!-- Item 1 end -->
-                            @endforeach
-                        @endif
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div><!-- Featured owl carousel end-->
                 </div><!-- Col 6 end -->
 
-                <div class="col-lg-4 col-md-12">
-                    <div class="featured-tab">
-                        <h3 class="block-title"><span>Breaking<span></span></span></h3>
-                        <div class="slideshow-container">
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/a87d6a4d09c2a045b283c5b0cb4182c2.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/vitae-ad-autem-odio/7">Vitae ad autem odio.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/88e323d08906fbd1c2548bd13fb0427b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/dolores-quae-officia-eius-vero-rerum-est-et/10">Dolores quae officia eius vero rerum est et.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/6a6f3190a894b450a92b96658d5aeb10.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolores-ut-vel-eos-culpa-ut/3">Eaque dolores ut vel eos culpa ut.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/4e58e696de64882b70eb6fc6564b106c.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolorem-doloremque-quae-incidunt-eligendi/4">Eaque dolorem doloremque quae incidunt eligendi.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/748279d8c4a9e32b2b1b7c0da39ba03b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/assumenda-necessitatibus-animi-rerum-molestiae/1">Assumenda necessitatibus animi rerum molestiae.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                            
-                        </div>
-                    </div>
-                    
+                <div class="col-lg-6 col-md-12 pad-l">
+                    <div class="row">
+                        <?php if(count($fourth_post) && !empty($fourth_post)): ?>
+                            <?php $__currentLoopData = $fourth_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="col-md-6 pad-r-small">
+                                    <div class="post-overaly-style contentTop fourNewsboxTop clearfix">
+                                        <div class="post-thumb">
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt=""/></a>
+                                        </div>
+                                        <div class="post-content">
+                                            <a class="post-cat" href="<?php echo e(route('ass.news', ['id'=> encrypt($post->cat_id)])); ?>"><?php echo e($post->category_name); ?></a>
+                                            <h2 class="post-title title-medium">
+                                                <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
+                                            </h2>
+                                        </div><!-- Post content end -->
+                                    </div><!-- Post Overaly end -->
+                                </div><!-- Col end -->
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                    </div><!-- Row end -->
                 </div><!-- Col 6 end -->
 
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Trending post end -->
 
-    <div style="padding-bottom: 0;padding-top: 30px;">
-        <a class="weatherwidget-io" href="https://forecast7.com/en/26d1491d74/guwahati/" data-label_1="GUWAHATI" data-label_2="WEATHER" data-theme="original" data-basecolor="#090d3d" >GUWAHATI WEATHER</a>
-    </div>
 
     <section class="latest-news block mega-menu-content-inner">
-        <div class="container-fluid">
+        <div class="container">
             <h3 class="block-title"><span>Latest Videos</span></h3>
             <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
                 <div class="item">
@@ -130,7 +62,7 @@
                         <li class="clearfix">
                               <div class="post-block-style clearfix">
                                 <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video4.jpg')}}" alt="">
+                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video4.jpg')); ?>" alt="">
                                     <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
                                   <div class="video-icon">
                                       <i class="fa fa-play"></i>
@@ -158,7 +90,7 @@
                         <li class="clearfix">
                               <div class="post-block-style clearfix">
                                 <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video3.jpg')}}" alt="">
+                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video3.jpg')); ?>" alt="">
                                     <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
                                   <div class="video-icon">
                                       <i class="fa fa-play"></i>
@@ -186,7 +118,7 @@
                         <li class="clearfix">
                               <div class="post-block-style clearfix">
                                 <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video2.jpg')}}" alt="">
+                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video2.jpg')); ?>" alt="">
                                     <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
                                   <div class="video-icon">
                                       <i class="fa fa-play"></i>
@@ -213,7 +145,7 @@
                         <li class="clearfix">
                             <div class="post-block-style clearfix">
                                 <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video1.jpg')}}" alt="">
+                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video1.jpg')); ?>" alt="">
                                     <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
                                   <div class="video-icon">
                                       <i class="fa fa-play"></i>
@@ -239,81 +171,81 @@
     </section><!--- Latest Video end -->
 
     <section class="block-wrapper">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <!--- Featured Tab startet -->
-                    @if(isset($assam_post) && !empty($assam_post))
+                    <?php if(isset($assam_post) && !empty($assam_post)): ?>
                     
                     <div class="featured-tab">
-                        <h3 class="block-title"><span>{{$assam_cat_name}}<span></h3>
+                        <h3 class="block-title"><span><?php echo e($assam_cat_name); ?><span></h3>
                         <div class="tab-content">
                             <div class="tab-pane active animated fadeInRight" id="tab_a">
                                   <div class="row">
-                                      @php
+                                      <?php
                                           $count_as = 1;
                                           $total_ass = count($assam_post);
-                                      @endphp
-                                      @foreach ($assam_post as $post)
-                                        @if ($count_as == 1)
+                                      ?>
+                                      <?php $__currentLoopData = $assam_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($count_as == 1): ?>
                                             <div class="col-md-6">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                            <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                         </a>
                                                     </div>
                                                     <div class="post-content">
                                                         <h2 class="post-title">
-                                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                         </h2>
                                                         <div class="post-meta">
-                                                            <span class="post-author"><a href="#">{{$post->author}}</a></span>
-                                                            <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                            <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                                            <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                         </div>
                                                         <p></p>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
                                             </div>
-                                        @else
-                                        @if ($count_as == 2)
+                                        <?php else: ?>
+                                        <?php if($count_as == 2): ?>
                                             <div class="col-md-6">
                                                 <div class="list-post-block">
                                                     <ul class="list-post">
-                                        @endif
+                                        <?php endif; ?>
                                         
                                         <li class="clearfix">
                                             <div class="post-block-style post-float clearfix">
                                                 <div class="post-thumb">
-                                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                     </a>
                                                 </div><!-- Post thumb end -->
 
                                                 <div class="post-content">
                                                      <h2 class="post-title title-small">
-                                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                      </h2>
                                                      <div class="post-meta">
-                                                         <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                         <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                      </div>
                                                  </div><!-- Post content end -->
                                             </div><!-- Post block style end -->
                                         </li><!-- Li 1 end -->
 
 
-                                        @if ($count_as == $total_ass)
+                                        <?php if($count_as == $total_ass): ?>
                                                         </ul><!-- List post end -->
                                                     </div><!-- List post block end -->
                                             </div><!-- List post Col end -->
-                                        @endif
-                                        @endif
+                                        <?php endif; ?>
+                                        <?php endif; ?>
 
-                                          @php
+                                          <?php
                                               $count_as++;
-                                          @endphp
+                                          ?>
                                       <div class="gap-40"></div>
-                                      @endforeach
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                       <!-- Col end -->
                                   </div><!-- Tab pane Row 1 end -->
                             </div><!-- Tab pane 1 end -->
@@ -322,79 +254,79 @@
                     </div><!-- Technology Tab end -->
 
 
-                    @endif
+                    <?php endif; ?>
 
                     <!--- Featured Tab startet -->
-                    @if(isset($guwahati_post) && !empty($guwahati_post))
+                    <?php if(isset($guwahati_post) && !empty($guwahati_post)): ?>
 
                     <div class="featured-tab">
-                        <h3 class="block-title"><span>{{$guwahati_cat_name}}<span></h3>
+                        <h3 class="block-title"><span><?php echo e($guwahati_cat_name); ?><span></h3>
                         <div class="tab-content">
                             <div class="tab-pane active animated fadeInRight" id="tab_a">
                                     <div class="row">
-                                        @php
+                                        <?php
                                             $count_as = 1;
                                             $total_ass = count($guwahati_post);
-                                        @endphp
-                                        @foreach ($guwahati_post as $post)
-                                        @if ($count_as == 1)
+                                        ?>
+                                        <?php $__currentLoopData = $guwahati_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($count_as == 1): ?>
                                             <div class="col-md-6">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                            <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                         </a>
                                                     </div>
                                                     <div class="post-content">
                                                         <h2 class="post-title">
-                                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                         </h2>
                                                         <div class="post-meta">
-                                                            <span class="post-author"><a href="#">{{$post->author}}</a></span>
-                                                            <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                            <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                                            <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                         </div>
                                                         <p></p>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
                                             </div>
-                                        @else
-                                        @if ($count_as == 2)
+                                        <?php else: ?>
+                                        <?php if($count_as == 2): ?>
                                             <div class="col-md-6">
                                                 <div class="list-post-block">
                                                     <ul class="list-post">
-                                        @endif
+                                        <?php endif; ?>
                                         
                                         <li class="clearfix">
                                             <div class="post-block-style post-float clearfix">
                                                 <div class="post-thumb">
-                                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                     </a>
                                                 </div><!-- Post thumb end -->
 
                                                 <div class="post-content">
                                                         <h2 class="post-title title-small">
-                                                            <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                         </h2>
                                                         <div class="post-meta">
-                                                            <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                            <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                         </div>
                                                     </div><!-- Post content end -->
                                             </div><!-- Post block style end -->
                                         </li><!-- Li 1 end -->
 
 
-                                        @if ($count_as == $total_ass)
+                                        <?php if($count_as == $total_ass): ?>
                                                         </ul><!-- List post end -->
                                                     </div><!-- List post block end -->
                                             </div><!-- List post Col end -->
-                                        @endif
-                                        @endif
+                                        <?php endif; ?>
+                                        <?php endif; ?>
 
-                                            @php
+                                            <?php
                                                 $count_as++;
-                                            @endphp
-                                        @endforeach
+                                            ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <!-- Col end -->
                                     </div><!-- Tab pane Row 1 end -->
                             </div><!-- Tab pane 1 end -->
@@ -404,79 +336,79 @@
 
                     <div class="gap-40"></div>
 
-                    @endif
+                    <?php endif; ?>
 
                      <!--- Featured Tab startet -->
-                     @if(isset($technology_post) && !empty($technology_post))
+                     <?php if(isset($technology_post) && !empty($technology_post)): ?>
 
                      <div class="featured-tab">
-                         <h3 class="block-title"><span>{{$technology_cat_name}}<span></h3>
+                         <h3 class="block-title"><span><?php echo e($technology_cat_name); ?><span></h3>
                          <div class="tab-content">
                              <div class="tab-pane active animated fadeInRight" id="tab_a">
                                      <div class="row">
-                                         @php
+                                         <?php
                                              $count_as = 1;
                                              $total_ass = count($technology_post);
-                                         @endphp
-                                         @foreach ($technology_post as $post)
-                                         @if ($count_as == 1)
+                                         ?>
+                                         <?php $__currentLoopData = $technology_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                         <?php if($count_as == 1): ?>
                                              <div class="col-md-6">
                                                  <div class="post-block-style clearfix">
                                                      <div class="post-thumb">
-                                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                             <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                             <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                          </a>
                                                      </div>
                                                      <div class="post-content">
                                                          <h2 class="post-title">
-                                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                          </h2>
                                                          <div class="post-meta">
-                                                             <span class="post-author"><a href="#">{{$post->author}}</a></span>
-                                                             <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                                             <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                          </div>
                                                          <p></p>
                                                      </div><!-- Post content end -->
                                                  </div><!-- Post Block style end -->
                                              </div>
-                                         @else
-                                         @if ($count_as == 2)
+                                         <?php else: ?>
+                                         <?php if($count_as == 2): ?>
                                              <div class="col-md-6">
                                                  <div class="list-post-block">
                                                      <ul class="list-post">
-                                         @endif
+                                         <?php endif; ?>
                                          
                                          <li class="clearfix">
                                              <div class="post-block-style post-float clearfix">
                                                  <div class="post-thumb">
-                                                     <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                         <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                     <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                         <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                      </a>
                                                  </div><!-- Post thumb end -->
  
                                                  <div class="post-content">
                                                          <h2 class="post-title title-small">
-                                                             <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                             <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                          </h2>
                                                          <div class="post-meta">
-                                                             <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                                             <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                                          </div>
                                                      </div><!-- Post content end -->
                                              </div><!-- Post block style end -->
                                          </li><!-- Li 1 end -->
  
  
-                                         @if ($count_as == $total_ass)
+                                         <?php if($count_as == $total_ass): ?>
                                                          </ul><!-- List post end -->
                                                      </div><!-- List post block end -->
                                              </div><!-- List post Col end -->
-                                         @endif
-                                         @endif
+                                         <?php endif; ?>
+                                         <?php endif; ?>
  
-                                             @php
+                                             <?php
                                                  $count_as++;
-                                             @endphp
-                                         @endforeach
+                                             ?>
+                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                          <!-- Col end -->
                                      </div><!-- Tab pane Row 1 end -->
                              </div><!-- Tab pane 1 end -->
@@ -486,108 +418,108 @@
  
                      <div class="gap-40"></div>
  
-                     @endif
+                     <?php endif; ?>
 
                      <div class="gap-40"></div>
                      <div class="block">
                          <div class="row">
                              <div class="col-md-6 homecol2">
-                                 <h3 class="block-title"><span>{{$lifestyle_cat_name}}</span></h3>
-                                 @if(isset($lifestyle_1) && !empty($lifestyle_1))
-                                 @foreach($lifestyle_1 as $key => $post)
-                                 @if ($key == 0)
+                                 <h3 class="block-title"><span><?php echo e($lifestyle_cat_name); ?></span></h3>
+                                 <?php if(isset($lifestyle_1) && !empty($lifestyle_1)): ?>
+                                 <?php $__currentLoopData = $lifestyle_1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                 <?php if($key == 0): ?>
                                  <div class="post-overaly-style last clearfix">
                                      <div class="post-thumb">
-                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                             <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                             <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                          </a>
                                      </div>
                                      
                                      <div class="post-content">
                                           <h2 class="post-title">
-                                              <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 20, ' ...') !!}</a>
+                                              <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 20, ' ...'); ?></a>
                                           </h2>
                                           <div class="post-meta">
-                                              <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                              <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                           </div>
                                       </div><!-- Post content end -->
                                  </div><!-- Post Overaly Article end -->
-                                 @else
+                                 <?php else: ?>
                                  <div class="list-post-block">
                                      <ul class="list-post">
                                          <li class="clearfix">
                                              <div class="post-block-style post-float clearfix">
                                                  <div class="post-thumb">
-                                                     <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                         <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                     <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                         <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                      </a>
                                                  </div><!-- Post thumb end -->
  
                                                  <div class="post-content">
                                                       <h2 class="post-title title-small">
-                                                          <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 20, ' ...') !!}</a>
+                                                          <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 20, ' ...'); ?></a>
                                                       </h2>
                                                       <div class="post-meta">
-                                                          <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                          <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                                       </div>
                                                   </div><!-- Post content end -->
                                              </div><!-- Post block style end -->
                                          </li><!-- Li 1 end --> 
                                      </ul><!-- List post end -->
                                  </div><!-- List post block end -->
-                                 @endif
+                                 <?php endif; ?>
                                  <div class="gap-40"></div>
-                                 @endforeach
-                                 @endif
+                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                 <?php endif; ?>
                              </div><!-- Col 2 end -->
                              <div class="col-md-6">
-                                 <h3 class="block-title"><span>{{$lifestyle_cat_name}}</span></h3>
-                                 @if(isset($lifestyle_2) && !empty($lifestyle_2))
-                                 @foreach($lifestyle_2 as $key => $post)
-                                 @if ($key == 0)
+                                 <h3 class="block-title"><span><?php echo e($lifestyle_cat_name); ?></span></h3>
+                                 <?php if(isset($lifestyle_2) && !empty($lifestyle_2)): ?>
+                                 <?php $__currentLoopData = $lifestyle_2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                 <?php if($key == 0): ?>
                                  <div class="post-overaly-style last clearfix">
                                      <div class="post-thumb">
-                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                             <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                             <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                          </a>
                                      </div>
                                      
                                      <div class="post-content">
                                           <h2 class="post-title">
-                                              <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 20, ' ...') !!}</a>
+                                              <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 20, ' ...'); ?></a>
                                           </h2>
                                           <div class="post-meta">
-                                              <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                              <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                           </div>
                                       </div><!-- Post content end -->
                                  </div><!-- Post Overaly Article end -->
-                                 @else
+                                 <?php else: ?>
                                  <div class="list-post-block">
                                      <ul class="list-post">
                                          <li class="clearfix">
                                              <div class="post-block-style post-float clearfix">
                                                  <div class="post-thumb">
-                                                     <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                         <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                     <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                         <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                      </a>
                                                  </div><!-- Post thumb end -->
  
                                                  <div class="post-content">
                                                       <h2 class="post-title title-small">
-                                                          <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 20, ' ...') !!}</a>
+                                                          <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 20, ' ...'); ?></a>
                                                       </h2>
                                                       <div class="post-meta">
-                                                          <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                          <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                                       </div>
                                                   </div><!-- Post content end -->
                                              </div><!-- Post block style end -->
                                          </li><!-- Li 1 end --> 
                                      </ul><!-- List post end -->
                                  </div><!-- List post block end -->
-                                 @endif
+                                 <?php endif; ?>
                                  <div class="gap-40"></div>
-                                 @endforeach
-                                 @endif
+                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                 <?php endif; ?>
                              </div><!-- Col 2 end -->
                          </div><!-- Row end -->
                      </div><!-- Block Lifestyle end -->
@@ -605,71 +537,65 @@
                                 <li><a href="#" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             </ul>
-                        </div><!-- Widget Social end -->	
-                        <div>
-                            <div class="widget" style="font-size: 17px;;width: 70%;line-height: 24px;border: 1px solid #2D6AB4;background-color: #FFFFFF;">
-                                <div style="background-color: #090d3d;font-weight:bold;text-align:left;padding: 10px 0;width:100%;">
-                                    <span style="background-image:url(https://www.fxexchangerate.com/static/flag.webp); background-position: 0 -2064px;float:left; margin:4px 0 0 20px; width:20px;height:15px; background-repeat:no-repeat;"></span>
-                                    <a rel="nofollow" style="color:#FFFFFF;padding-left:5px;text-decoration:none;" href="https://usd.fxexchangerate.com">Dollar To INR</a></div><script type="text/javascript" src="https://w.fxexchangerate.com/converter.php?fm=USD&ft=INR,&lg=en&am=1&ty=2"></script></div><!--  End of Currency Converter Script -  FxExchangeRate.com -->
-                        </div>									
+                        </div><!-- Widget Social end -->							
 
                         <div class="widget text-center">
-                            <img class="banner img-fluid" src="{{asset('web/images/banner-ads/ad-sidebar.png')}}" alt="" />
+                            <img class="banner img-fluid" src="<?php echo e(asset('web/images/banner-ads/ad-sidebar.png')); ?>" alt="" />
                         </div><!-- Sidebar Ad end -->
 
                         <div class="widget color-default">
                             <h3 class="block-title"><span>জনপ্ৰিয় খবৰসমূহ</span></h3>
-                            @if(isset($popular_post) && !empty($popular_post))
-                            @foreach($popular_post as $key => $post)
-                            @if($key == 0)
+                            <?php if(isset($popular_post) && !empty($popular_post)): ?>
+                            <?php $__currentLoopData = $popular_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($key == 0): ?>
                                 <div class="post-overaly-style clearfix">
                                     <div class="post-thumb">
                                         <a href="#">
-                                            <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                         </a>
                                     </div>
                                     
                                     <div class="post-content">
                                          <h2 class="post-title">
-                                             <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                             <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                          </h2>
                                          <div class="post-meta">
-                                             <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                             <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                          </div>
                                      </div><!-- Post content end -->
                                 </div><!-- Post Overaly Article end -->
-                            @else
+                            <?php else: ?>
                                 <div class="list-post-block">
                                     <ul class="list-post">
                                         <li class="clearfix">
                                             <div class="post-block-style post-float clearfix">
                                                 <div class="post-thumb">
-                                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                     </a>
                                                 </div><!-- Post thumb end -->
 
                                                 <div class="post-content">
                                                      <h2 class="post-title title-small">
-                                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                      </h2>
                                                      <div class="post-meta">
-                                                         <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                         <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                                      </div>
                                                  </div><!-- Post content end -->
                                             </div><!-- Post block style end -->
                                         </li><!-- Li 1 end -->
                                     </ul><!-- List post end -->
                                 </div><!-- List post block end -->
-                            @endif
+                            <?php endif; ?>
                             <div class="gap-40"></div>
-                            @endforeach
-                            @endif
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
 
                         </div><!-- Popular news widget end -->						
 
                         <div class="widget text-center">
-                            <img class="banner img-fluid" src="{{asset('web/images/banner-ads/ad-sidebar2.png')}}" alt="" />
+                            <img class="banner img-fluid" src="<?php echo e(asset('web/images/banner-ads/ad-sidebar2.png')); ?>" alt="" />
                         </div><!-- Sidebar Ad end -->
 
                     </div><!-- Sidebar right end -->
@@ -680,168 +606,168 @@
     </section><!-- First block end -->
 
     <section class="ad-content-area text-center no-padding">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <img class="img-fluid" src="{{asset('web/images/banner-ads/ad-top-header.png')}}" alt="" />
+                    <img class="img-fluid" src="<?php echo e(asset('web/images/banner-ads/ad-top-header.png')); ?>" alt="" />
                 </div><!-- Col end -->
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Ad content top end -->
 
     <section class="block-wrapper homecol3">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12">
                     <div class="block">
-                        <h3 class="block-title"><span>{{$health_cat_name}}</span></h3>
-                        @if(isset($health) && !empty($health))
-                        @foreach($health as $key => $post)
-                        @if ($key == 0)
+                        <h3 class="block-title"><span><?php echo e($health_cat_name); ?></span></h3>
+                        <?php if(isset($health) && !empty($health)): ?>
+                        <?php $__currentLoopData = $health; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($key == 0): ?>
                             <div class="post-overaly-style clearfix">
                                 <div class="post-thumb">
-                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                     </a>
                                 </div>
                                 <div class="post-content">
                                     <h2 class="post-title">
-                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                     </h2>
                                     <div class="post-meta">
-                                        <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                        <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                     </div>
                                 </div><!-- Post content end -->
                             </div><!-- Post Overaly Article end -->
-                        @else
+                        <?php else: ?>
                         <div class="list-post-block">
                             <ul class="list-post">
                                 <li class="clearfix">
                                     <div class="post-block-style post-float clearfix">
                                         <div class="post-thumb">
-                                            <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                             </a>
                                         </div><!-- Post thumb end -->
 
                                         <div class="post-content">
                                              <h2 class="post-title title-small">
-                                                 <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                 <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                              </h2>
                                              <div class="post-meta">
-                                                 <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                 <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                              </div>
                                          </div><!-- Post content end -->
                                     </div><!-- Post block style end -->
                                 </li><!-- Li 1 end -->
                             </ul><!-- List post end -->
                         </div><!-- List post block end -->
-                        @endif
+                        <?php endif; ?>
                         <div class="gap-40"></div>
-                        @endforeach
-                        @endif
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div><!-- Block end -->
                 </div><!-- Travel Col end -->
                 <div class="col-lg-4 col-md-12">
                     <div class="block">
-                        <h3 class="block-title"><span>{{$gadget_cat_name}}</span></h3>
-                        @if(isset($gadget) && !empty($gadget))
-                        @foreach($gadget as $key => $post)
-                        @if ($key == 0)
+                        <h3 class="block-title"><span><?php echo e($gadget_cat_name); ?></span></h3>
+                        <?php if(isset($gadget) && !empty($gadget)): ?>
+                        <?php $__currentLoopData = $gadget; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($key == 0): ?>
                             <div class="post-overaly-style clearfix">
                                 <div class="post-thumb">
-                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                     </a>
                                 </div>
                                 
                                 <div class="post-content">
                                     <h2 class="post-title">
-                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                     </h2>
                                     <div class="post-meta">
-                                        <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                        <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                     </div>
                                 </div><!-- Post content end -->
                             </div><!-- Post Overaly Article end -->
-                        @else
+                        <?php else: ?>
                         <div class="list-post-block">
                             <ul class="list-post">
                                 <li class="clearfix">
                                     <div class="post-block-style post-float clearfix">
                                         <div class="post-thumb">
-                                            <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                             </a>
                                         </div><!-- Post thumb end -->
 
                                         <div class="post-content">
                                              <h2 class="post-title title-small">
-                                                 <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                 <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                              </h2>
                                              <div class="post-meta">
-                                                 <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                 <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                              </div>
                                          </div><!-- Post content end -->
                                     </div><!-- Post block style end -->
                                 </li><!-- Li 1 end -->
                             </ul><!-- List post end -->
                         </div><!-- List post block end -->
-                        @endif
+                        <?php endif; ?>
                         <div class="gap-40"></div>
-                        @endforeach
-                        @endif
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div><!-- Block end -->
                 </div><!-- Travel Col end -->
                 <div class="col-lg-4 col-md-12">
                     <div class="block">
-                        <h3 class="block-title"><span>{{$travel_cat_name}}</span></h3>
-                        @if(isset($travel) && !empty($travel))
-                        @foreach($travel as $key => $post)
-                        @if ($key == 0)
+                        <h3 class="block-title"><span><?php echo e($travel_cat_name); ?></span></h3>
+                        <?php if(isset($travel) && !empty($travel)): ?>
+                        <?php $__currentLoopData = $travel; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($key == 0): ?>
                             <div class="post-overaly-style clearfix">
                                 <div class="post-thumb">
-                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                        <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                     </a>
                                 </div>
                                 
                                 <div class="post-content">
                                     <h2 class="post-title">
-                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{{$post->title}}</a>
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo e($post->title); ?></a>
                                     </h2>
                                     <div class="post-meta">
-                                        <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                        <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                     </div>
                                 </div><!-- Post content end -->
                             </div><!-- Post Overaly Article end -->
-                        @else
+                        <?php else: ?>
                         <div class="list-post-block">
                             <ul class="list-post">
                                 <li class="clearfix">
                                     <div class="post-block-style post-float clearfix">
                                         <div class="post-thumb">
-                                            <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                                <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                             </a>
                                         </div><!-- Post thumb end -->
 
                                         <div class="post-content">
                                              <h2 class="post-title title-small">
-                                                 <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                 <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                              </h2>
                                              <div class="post-meta">
-                                                 <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                                 <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                              </div>
                                          </div><!-- Post content end -->
                                     </div><!-- Post block style end -->
                                 </li><!-- Li 1 end -->
                             </ul><!-- List post end -->
                         </div><!-- List post block end -->
-                        @endif
+                        <?php endif; ?>
                         <div class="gap-40"></div>
-                        @endforeach
-                        @endif
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div><!-- Block end -->
                 </div><!-- Travel Col end -->
 
@@ -850,60 +776,60 @@
     </section><!-- 2nd block end -->
 
     <section class="block-wrapper p-bottom-0">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <div class="more-news block">
                         <h3 class="block-title"><span>ব্যৱসায়</span></h3>
                         <div id="more-news-slide" class="owl-carousel owl-theme more-news-slide">
                             <div class="item">
-                                @if(isset($business_posts_1) && !empty($business_posts_1))
-                                @foreach($business_posts_1 as $post)
+                                <?php if(isset($business_posts_1) && !empty($business_posts_1)): ?>
+                                <?php $__currentLoopData = $business_posts_1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="post-block-style post-float-half clearfix">
                                     <div class="post-thumb">
-                                        <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
-                                            <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="post-content">
                                          <h2 class="post-title">
-                                             <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{{$post->title}}</a>
+                                             <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo e($post->title); ?></a>
                                          </h2>
                                          <div class="post-meta">
-                                             <span class="post-author"><a href="#">{{$post->author}}</a></span>
-                                             <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                             <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                          </div>
-                                         <p>{!! Str::words($post->body, 20, ' ...') !!}</p>
+                                         <p><?php echo Str::words($post->body, 20, ' ...'); ?></p>
                                      </div><!-- Post content end -->
                                 </div><!-- Post Block style 1 end -->
 
                                 <div class="gap-30"></div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div><!-- Item 1 end -->
                             <div class="item">
-                                @if(isset($business_posts_2) && !empty($business_posts_2))
-                                @foreach($business_posts_2 as $post)
+                                <?php if(isset($business_posts_2) && !empty($business_posts_2)): ?>
+                                <?php $__currentLoopData = $business_posts_2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="post-block-style post-float-half clearfix">
                                     <div class="post-thumb">
                                         <a href="#">
-                                            <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
+                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="post-content">
                                          <h2 class="post-title">
-                                             <a href="#">{{$post->title}}</a>
+                                             <a href="#"><?php echo e($post->title); ?></a>
                                          </h2>
                                          <div class="post-meta">
-                                             <span class="post-author"><a href="#">{{$post->author}}</a></span>
-                                             <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
+                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                             <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
                                          </div>
-                                         <p>{!! Str::words($post->body, 20, ' ...') !!}</p>
+                                         <p><?php echo Str::words($post->body, 20, ' ...'); ?></p>
                                      </div><!-- Post content end -->
                                 </div><!-- Post Block style 5 end -->
                                 <div class="gap-30"></div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div><!-- Item 2 end -->
                         </div><!-- More news carousel end -->
                     </div><!--More news block end -->
@@ -926,9 +852,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <img class="img-fluid" src="{{asset('web/images/banner-ads/ad-top-header.png')}}" alt="" />
+                    <img class="img-fluid" src="<?php echo e(asset('web/images/banner-ads/ad-top-header.png')); ?>" alt="" />
                 </div><!-- Col end -->
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Ad content two end -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('as.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\newstimenortheast\resources\views/as/index.blade.php ENDPATH**/ ?>
