@@ -18,3 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['namespace' => 'Api'], function () {
+    Route::get('category/list', 'PostController@categoryList');
+    Route::get('post/{type}/{category}/{page}', 'PostController@postListWithCategory');
+    Route::get('post/details/{id}', 'PostController@postList');
+    Route::get('video/list/{type}', 'PostController@videoList');
+});
+
