@@ -15,11 +15,9 @@ class PostController extends Controller
     public function homePage($type){
         $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
         $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
-        $video = Video::orderBy('created_at', 'DESC')->select('id', 'title', 'author', 'v_id', 'thumbnail')->whereType($type)->whereStatus(1)->limit(8)->get();
         $data = [
             'slider' => $slider,
-            'breaking' => $breaking,
-            'video' => $video
+            'breaking' => $breaking
         ];
         $response = [
             'status' => true,
@@ -79,13 +77,19 @@ class PostController extends Controller
         return response()->json($response, 200);
     }
 
-    public function videoList($type)
+    public function videoList($type, $page)
     {
-        $video = DB::table('video')->where('type', $type)->orderBy('id', 'desc')->limit(10)->get();
+        $video = DB::table('video')->where('type', $type)->orderBy('id', 'desc');
+        $total_rows = $video->count();
+        $total_page = ceil($total_rows / 10);
+        $limit = ($page * 10) - 10;
+        $video = $video->skip($limit)->take(10)->get();
 
         $response = [
             'status' => true,
             'message' => 'Video Details',
+            'total_page' => $total_page,
+            'current_page' => $page,
             'data' => $video,
         ];
         return response()->json($response, 200);
