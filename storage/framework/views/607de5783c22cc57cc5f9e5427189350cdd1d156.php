@@ -1,6 +1,5 @@
 
 
-
 <?php $__env->startSection('content'); ?>
     <section class="featured-post-area no-padding" style="padding-top: 13px">
         <div class="container-fluid">
@@ -12,7 +11,7 @@
                             <div class="item" style="background-image:url(<?php echo e(asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
                                 <div class="featured-post">
                                     <div class="post-content">
-                                    <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> encrypt($post->cat_id)])); ?>"><?php echo e($post->category_name); ?></a>
+                                    <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])); ?>"><?php echo e($post->category_name); ?></a>
                                         <h2 class="post-title title-extra-large">
                                             <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
@@ -71,115 +70,35 @@
         <div class="container-fluid">
             <h3 class="block-title"><span>Latest Videos</span></h3>
             <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video4.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 1 end -->
-
-                </div><!-- Item 1 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video3.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 2 end -->
-                    
-                </div><!-- Item 2 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video2.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 3 end -->
-                    
-                </div><!-- Item 3 end -->
-
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                            <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video1.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div>
-                        </li><!-- Li end -->
-                    </ul><!-- List post 4 end -->
-                    
-                </div><!-- Item 4 end -->
+                <?php if(isset($youtube_post) && !empty($youtube_post)): ?>
+                    <?php $__currentLoopData = $youtube_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="item">
+                        <ul class="list-post">
+                            <li class="clearfix">
+                                <div class="post-block-style clearfix">
+                                    <div class="post-thumb">
+                                        <img class="img-fluid" src="<?php echo e(asset('youtube/thumb/'.$post->thumbnail)); ?>" alt="">
+                                        <a class="popup cboxElement" href="https://www.youtube.com/embed/<?php echo e($post->v_id); ?>?autoplay=1&amp;loop=1">
+                                        <div class="video-icon">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                    </a>
+                                </div><!-- Post thumb end -->
+                                    <div class="post-content">
+                                        <h2 class="post-title title-small">
+                                            <a href="#"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
+                                        </h2>
+                                        <div class="post-meta">
+                                            <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                            <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
+                                        </div>
+                                    </div><!-- Post content end -->
+                                </div><!-- Post Block style end -->
+                            </li><!-- Li end -->
+                        </ul><!-- List post 1 end -->
+                    </div><!-- Item 1 end -->
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>             
             </div><!-- Latest News owl carousel end-->
         </div>
     </section><!--- Latest Video end -->
