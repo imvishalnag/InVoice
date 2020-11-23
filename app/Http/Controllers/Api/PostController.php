@@ -13,9 +13,9 @@ use Validator;
 class PostController extends Controller
 {
     public function homePage($type){
-        $slider = Post::orderBy('created_at', 'DESC')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
-        $breaking = Post::orderBy('created_at', 'DESC')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
-        $video = Video::orderBy('created_at', 'DESC')->whereType($type)->whereStatus(1)->limit(8)->get();
+        $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
+        $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
+        $video = Video::orderBy('created_at', 'DESC')->select('id', 'title', 'author', 'v_id', 'thumbnail')->whereType($type)->whereStatus(1)->limit(8)->get();
         $data = [
             'slider' => $slider,
             'breaking' => $breaking,
