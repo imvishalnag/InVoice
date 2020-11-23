@@ -13,8 +13,8 @@ use Validator;
 class PostController extends Controller
 {
     public function homePage($type){
-        $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
-        $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
+        $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
+        $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
         $data = [
             'slider' => $slider,
             'breaking' => $breaking
@@ -79,7 +79,7 @@ class PostController extends Controller
 
     public function videoList($type, $page)
     {
-        $video = DB::table('video')->where('type', $type)->orderBy('id', 'desc');
+        $video = DB::table('video')->where('type', $type)->select('id', 'title', 'author', 'v_id', 'thumbnail', 'created_at')->orderBy('id', 'desc');
         $total_rows = $video->count();
         $total_page = ceil($total_rows / 10);
         $limit = ($page * 10) - 10;
