@@ -3,11 +3,8 @@
 
 <head>
 
-	<!-- Basic Page Needs
-	================================================== -->
 	<meta charset="utf-8">
 	<title><?php echo e(__('Invoice')); ?></title>
-	<!-- Mobile Specific Metas ================================================== -->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -32,12 +29,6 @@
 	<link rel="stylesheet" href="<?php echo e(asset('web/css/owl.theme.default.min.css')); ?>">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="<?php echo e(asset('web/css/colorbox.css')); ?>">
-
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 	
@@ -76,7 +67,7 @@
 		<header id="header" class="header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-3 col-sm-2 col-xs-2">
+					<div class="col-lg-3 col-sm-3 col-xs-3">
 						<div class="logo">
 							<a href="<?php echo e(route('assamese.index')); ?>">
 								<img src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt="">
@@ -84,7 +75,7 @@
 						</div>
 					</div><!-- logo col end -->
 
-					<div class="col-lg-9 col-sm-10 col-xs-10 header-right">
+					<div class="col-lg-9 col-sm-9 col-xs-9 header-right">
 						<div class="ad-banner float-right">
 							<a href="#"><img src="<?php echo e(asset('web/images/banner-ads/ad-top-header.png')); ?>" class="img-fluid" alt=""></a>
 						</div>
@@ -105,46 +96,54 @@
 
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
+									<?php if(isset($header_data['assam']->as_category_name) && !empty($header_data['assam']->as_category_name)): ?>
 									<li>
-										<a href="<?php echo e(route('assamese.index')); ?>">হোম </a>
+										<a href="<?php echo e(route('ass.news', ['id'=> $header_data['assam']->id, 'slug' => $header_data['assam']->as_slug])); ?>"><?php echo e($header_data['assam']->as_category_name); ?></a>
 									</li>
-
-									<li>
-										<a href="<?php echo e(route('web.about.about')); ?>">বিষয়ে</a>
-									</li>
-
+									<?php endif; ?>
+									<?php if(isset($header_data['northeast']->as_category_name) && !empty($header_data['northeast']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->as_slug])); ?>"><?php echo e($header_data['northeast']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['national']->as_category_name) && !empty($header_data['national']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->as_slug])); ?>"><?php echo e($header_data['national']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['international']->as_category_name) && !empty($header_data['international']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->as_slug])); ?>"><?php echo e($header_data['international']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['politics']->as_category_name) && !empty($header_data['politics']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['politics']->id, 'slug' => $header_data['politics']->as_slug])); ?>"><?php echo e($header_data['politics']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['economy']->as_category_name) && !empty($header_data['economy']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['economy']->id, 'slug' => $header_data['economy']->as_slug])); ?>"><?php echo e($header_data['economy']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
+									<?php if(isset($header_data['crime']->as_category_name) && !empty($header_data['crime']->as_category_name)): ?>
+										<li>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])); ?>"><?php echo e($header_data['crime']->as_category_name); ?></a>
+										</li>
+									<?php endif; ?>
 									<li class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown">খবৰ <i class="fa fa-angle-down"></i></a>
+										<a class="dropdown-toggle" data-toggle="dropdown">আগল <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="<?php echo e(route('ass.news', ['id'=> encrypt(12)])); ?>">ভাৰতবৰ্ষ</a>
-											</li>
-											<li>
-												<a href="<?php echo e(route('ass.news', ['id'=> encrypt(13)])); ?>">বিশ্ব</a>
-											</li>
+											<?php if(isset($header_data['category']) && !empty($header_data['category'])): ?>
+												<?php $__currentLoopData = $header_data['category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+													<li>
+														<a href="<?php echo e(route('ass.news', ['id'=> $category->id, 'slug' => $category->as_slug])); ?>"><?php echo e($category->as_category_name); ?></a>
+													</li>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+											<?php endif; ?>
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
-
-									<li>
-										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(2)])); ?>">গুৱাহাটী</a>
-									</li>
-
-									<li>
-										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(1)])); ?>">অসম</a>
-									</li>
-
-									<li>
-										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(14)])); ?>">উত্তৰপূব</a>
-									</li>
-
-									<li>
-										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(15)])); ?>">মনোৰঞ্জণ</a>
-									</li>
-
-									<li>
-										<a href="<?php echo e(route('ass.news', ['id'=> encrypt(16)])); ?>">ক্ৰীড়া</a>
-									</li>
-
+									
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
 									</li><!-- Video menu end -->

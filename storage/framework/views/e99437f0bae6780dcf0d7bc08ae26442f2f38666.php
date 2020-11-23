@@ -33,12 +33,6 @@
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="<?php echo e(asset('web/css/colorbox.css')); ?>">
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 	
 <body>
@@ -150,12 +144,6 @@
 													</li>
 												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 											<?php endif; ?>
-											
-											<li>
-												<a target="_blank" href="https://www.youtube.com/">Video</a>
-											</li>
-		
-											
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
 

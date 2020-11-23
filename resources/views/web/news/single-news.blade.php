@@ -68,11 +68,11 @@
                                     </li>
                                     <li class="gplus">
                                         <a href="#">
-                                        <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a>
+                                        <i class="fa fa-whtasapp"></i> <span class="ts-social-title">Whtasapp</span></a>
                                     </li>
                                     <li class="pinterest">
                                         <a href="#">
-                                        <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a>
+                                        <i class="fa fa-instagram"></i> <span class="ts-social-title">Instagram</span></a>
                                     </li>
                                 </ul>
                             </div><!-- Share items end -->

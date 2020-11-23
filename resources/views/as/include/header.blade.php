@@ -66,7 +66,7 @@
 		<header id="header" class="header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-3 col-sm-2 col-xs-2">
+					<div class="col-lg-3 col-sm-3 col-xs-3">
 						<div class="logo">
 							<a href="{{route('assamese.index')}}">
 								<img src="{{asset('web/images/logos/logo.jpg')}}" alt="">
@@ -74,7 +74,7 @@
 						</div>
 					</div><!-- logo col end -->
 
-					<div class="col-lg-9 col-sm-10 col-xs-10 header-right">
+					<div class="col-lg-9 col-sm-9 col-xs-9 header-right">
 						<div class="ad-banner float-right">
 							<a href="#"><img src="{{asset('web/images/banner-ads/ad-top-header.png')}}" class="img-fluid" alt=""></a>
 						</div>

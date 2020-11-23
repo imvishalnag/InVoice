@@ -1,16 +1,14 @@
 
 
-
 <?php $__env->startSection('meta'); ?>
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" <?php echo e($single_post->title); ?>" />
-    <meta property="og:description"        content="<?php echo $single_post->body; ?>" />
+    <meta property="og:description"        content="<?php echo e($single_post->body); ?>" />
     <meta property="og:image"              content="<?php echo e(asset('post/'.$single_post->image)); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
@@ -19,7 +17,7 @@
                     <div class="single-post">
                         
                         <div class="post-title-area">
-                            <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> encrypt($single_post->cat_id)])); ?>"><?php echo e($single_post->category_name); ?></a>
+                            <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> $single_post->cat_id, 'slug' =>urlencode($single_post->slug)])); ?>"><?php echo e($single_post->category_name); ?></a>
                             <h2 class="post-title">
                                 <?php echo e($single_post->title); ?>
 
@@ -55,12 +53,8 @@
                                         <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a>
                                     </li>
                                     <li class="gplus">
-                                        <a href="http://www.google.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a>
-                                    </li>
-                                    <li class="pinterest">
-                                        <a href="http://www.pinterest.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a>
+                                        <a href="https://api.whatsapp.com/send?text=<?php echo e(url()->current()); ?>" target="_blank">
+                                        <i class="fa fa-whatsapp"></i> <span class="ts-social-title">Whtasapp</span></a>
                                     </li>
                                 </ul>
                             </div><!-- Share items end -->
@@ -74,9 +68,6 @@
                         <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
                             <?php if(isset($related_post) && !empty($related_post)): ?>
                             <?php $__currentLoopData = $related_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php
-                                // dd($re_post->slug);
-                            ?>
                             <div class="item">
                                 <div class="post-block-style clearfix">
                                     <div class="post-thumb">

@@ -152,8 +152,7 @@ ul.navbar-nav>li:hover>a.dropdown-toggle:before, ul.navbar-nav>li.active>a.dropd
 	.prev, .next,.text {font-size: 11px}
   }
 .mega-menu-content-inner .owl-carousel .owl-item {
-	padding: 6px 0;
-	margin: 0 5px!important;
+	padding: 10px;
 }
 
 #more-news-slide.owl-carousel .owl-stage-outer {

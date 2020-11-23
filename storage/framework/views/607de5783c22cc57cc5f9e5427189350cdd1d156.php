@@ -26,12 +26,15 @@
                 </div><!-- Col 6 end -->
 
                 <div class="col-lg-4 col-md-12">
-                    <div class="featured-tab">
+                    <div class="featured-tab not-feat-xs">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
-                            <?php $__empty_1 = true; $__currentLoopData = $breaking_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <?php
+                                $count = 1;
+                            ?>
+                            <?php $__empty_1 = true; $__currentLoopData = $breaking_news ?:[]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
+                                <div class="numbertext"><?php echo e($count++); ?> / <?php echo e(count($breaking_news)); ?></div>
                                 <img src="<?php echo e(asset('/post/'.$bn->image)); ?>" width="420" height="279">
                                 <div class="text">
                                     <div class="post-content">
