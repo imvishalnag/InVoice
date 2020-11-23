@@ -3,11 +3,8 @@
 
 <head>
 
-	<!-- Basic Page Needs
-	================================================== -->
 	<meta charset="utf-8">
 	<title>{{__('Invoice')}}</title>
-	<!-- Mobile Specific Metas ================================================== -->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -32,12 +29,6 @@
 	<link rel="stylesheet" href="{{asset('web/css/owl.theme.default.min.css')}}">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="{{asset('web/css/colorbox.css')}}">
-
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 	
@@ -104,46 +95,54 @@
 
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
+									@if(isset($header_data['assam']->as_category_name) && !empty($header_data['assam']->as_category_name))
 									<li>
-										<a href="{{route('assamese.index')}}">হোম </a>
+										<a href="{{route('ass.news', ['id'=> $header_data['assam']->id, 'slug' => $header_data['assam']->as_slug])}}">{{ $header_data['assam']->as_category_name}}</a>
 									</li>
-
-									<li>
-										<a href="{{route('web.about.about')}}">বিষয়ে</a>
-									</li>
-
+									@endif
+									@if(isset($header_data['northeast']->as_category_name) && !empty($header_data['northeast']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['northeast']->id, 'slug' => $header_data['northeast']->as_slug])}}">{{ $header_data['northeast']->as_category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['national']->as_category_name) && !empty($header_data['national']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['national']->id, 'slug' => $header_data['national']->as_slug])}}">{{ $header_data['national']->as_category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['international']->as_category_name) && !empty($header_data['international']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['international']->id, 'slug' => $header_data['international']->as_slug])}}">{{ $header_data['international']->as_category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['politics']->as_category_name) && !empty($header_data['politics']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['politics']->id, 'slug' => $header_data['politics']->as_slug])}}">{{ $header_data['politics']->as_category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['economy']->as_category_name) && !empty($header_data['economy']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['economy']->id, 'slug' => $header_data['economy']->as_slug])}}">{{ $header_data['economy']->as_category_name}}</a>
+										</li>
+									@endif
+									@if(isset($header_data['crime']->as_category_name) && !empty($header_data['crime']->as_category_name))
+										<li>
+											<a href="{{route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])}}">{{ $header_data['crime']->as_category_name}}</a>
+										</li>
+									@endif
 									<li class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown">খবৰ <i class="fa fa-angle-down"></i></a>
+										<a class="dropdown-toggle" data-toggle="dropdown">আগল <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="{{route('ass.news', ['id'=> encrypt(12)])}}">ভাৰতবৰ্ষ</a>
-											</li>
-											<li>
-												<a href="{{route('ass.news', ['id'=> encrypt(13)])}}">বিশ্ব</a>
-											</li>
+											@if(isset($header_data['category']) && !empty($header_data['category']))
+												@foreach ($header_data['category'] as $category)
+													<li>
+														<a href="{{route('ass.news', ['id'=> $category->id, 'slug' => $category->as_slug])}}">{{ $category->as_category_name}}</a>
+													</li>
+												@endforeach
+											@endif
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
-
-									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(2)])}}">গুৱাহাটী</a>
-									</li>
-
-									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(1)])}}">অসম</a>
-									</li>
-
-									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(14)])}}">উত্তৰপূব</a>
-									</li>
-
-									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(15)])}}">মনোৰঞ্জণ</a>
-									</li>
-
-									<li>
-										<a href="{{route('ass.news', ['id'=> encrypt(16)])}}">ক্ৰীড়া</a>
-									</li>
-
+									
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
 									</li><!-- Video menu end -->

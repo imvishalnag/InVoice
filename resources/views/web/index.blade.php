@@ -29,9 +29,12 @@
                     <div class="featured-tab">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
-                            @forelse ($breaking_news as $bn)
+                            @php
+                                $count = 1;
+                            @endphp
+                            @forelse ($breaking_news ?:[]  as $bn)
                             <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
+                                <div class="numbertext">{{ $count++ }} / {{ count($breaking_news) }}</div>
                                 <img src="{{asset('/post/'.$bn->image)}}" width="420" height="279">
                                 <div class="text">
                                     <div class="post-content">

@@ -33,12 +33,6 @@
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="{{asset('web/css/colorbox.css')}}">
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 	
 <body>
@@ -149,40 +143,6 @@
 													</li>
 												@endforeach
 											@endif
-											{{-- <li>
-												<a href="{{route('web.news', ['id'=> encrypt(12)])}}">Science & Technology</a>
-											</li>
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(13)])}}">Art/Culture</a>
-											</li>
-
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(15)])}}">Editor's Desk</a>
-											</li>
-		
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Public Opinion</a>
-											</li>
-		
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Sports</a>
-											</li>
-		
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Enviroment/Nature</a>
-											</li>
-		
-											<li>
-												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Tourism</a>
-											</li>
-		 --}}
-											<li>
-												<a target="_blank" href="https://www.youtube.com/">Video</a>
-											</li>
-		
-											{{-- <li>
-												<a href="{{route('web.news', ['id'=> encrypt(16)])}}">Education</a>
-											</li> --}}
 										</ul><!-- End dropdown -->
 									</li><!-- Features menu end -->
 

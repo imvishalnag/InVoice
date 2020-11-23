@@ -8,9 +8,9 @@ use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use App\Post;
 use DataTables;
-use File;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class PostPagesController extends Controller
@@ -20,7 +20,8 @@ class PostPagesController extends Controller
         $categorys = DB::table('category')->get();
         return view('admin.create_post', compact('categorys'));
     }
-    public function createVideo(){
+    public function createVideo()
+    {
         $categorys = DB::table('category')->get();
         return view('admin.create_video', compact('categorys'));
     }
@@ -75,7 +76,8 @@ class PostPagesController extends Controller
             return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
         }
     }
-    public function addVideo(Request $request){
+    public function addVideo(Request $request)
+    {
         $this->validate($request, [
             'title' => 'required',
             'author' => 'required',
@@ -87,18 +89,17 @@ class PostPagesController extends Controller
         $author = $request->input('author');
         $v_id = $request->input('v_id');
         $type = $request->input('type');
-        if($request->hasfile('thumb'))
-        {
+        if ($request->hasfile('thumb')) {
             $image = $request->file('thumb');
-            $destination = base_path().'/public/youtube/';
+            $destination = base_path() . '/public/youtube/';
             $image_extension = $image->getClientOriginalExtension();
-            $image_name = md5(date('now').time()).".".$image_extension;
-            $original_path = $destination.$image_name;
+            $image_name = md5(date('now') . time()) . "." . $image_extension;
+            $original_path = $destination . $image_name;
             Image::make($image)->save($original_path);
-            $thumb_path = base_path().'/public/youtube/thumb/'.$image_name;
+            $thumb_path = base_path() . '/public/youtube/thumb/' . $image_name;
             Image::make($image)
-            ->resize(565, 850)
-            ->save($thumb_path);
+                ->resize(565, 850)
+                ->save($thumb_path);
         }
 
         $video_insert = DB::table('video')
@@ -111,21 +112,22 @@ class PostPagesController extends Controller
                 'created_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString(),
             ]);
 
-        if($video_insert){
-            return redirect()->back()->with('message','Video Added Successfully');
-        }else{
-             return redirect()->back()->with('error','Something Went Wrong Please Try Again');
-        } 
-
+        if ($video_insert) {
+            return redirect()->back()->with('message', 'Video Added Successfully');
+        } else {
+            return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
+        }
     }
     public function listPost()
     {
         return view('admin.list_post');
     }
-    public function listVideo(){
+    public function listVideo()
+    {
         return view('admin.list_video');
     }
-    public function assListVideo(){
+    public function assListVideo()
+    {
         return view('admin.ass_list_video');
     }
     public function assListPost()
@@ -176,15 +178,15 @@ class PostPagesController extends Controller
                     $btn = '<a href="' . route('admin.post_four', ['id' => encrypt($row->id), 'four' => encrypt(3)]) . '" class="btn btn-danger">UnFour</a>';
                 } else if ($row->popular_post == 1) {
                     $btn = '<a href="' . route('admin.popular_post', ['id' => encrypt($row->id), 'popular' => encrypt(2)]) . '" class="btn btn-danger">Unpopular</a>';
-                }else {
+                } else {
                     $btn = '<a href="' . route('admin.post_slide', ['id' => encrypt($row->id), 'slide' => encrypt(1)]) . '" class="btn btn-info">Slide</a>
                         <a href="' . route('admin.post_four', ['id' => encrypt($row->id), 'four' => encrypt(2)]) . '" class="btn btn-info">Four</a>
                         <a href="' . route('admin.popular_post', ['id' => encrypt($row->id), 'popular' => encrypt(1)]) . '" class="btn btn-info">Popular</a>
                         ';
                 }
-                if($row->breaking == 2){
+                if ($row->breaking == 2) {
                     $btn .= ' <a href="' . route('admin.breaking_news', ['id' => encrypt($row->id), 'status' => 1]) . '" class="btn btn-info">Make Breaking News</a>';
-                }elseif ($row->breaking == 1) {
+                } elseif ($row->breaking == 1) {
                     $btn = ' <a href="' . route('admin.breaking_news', ['id' => encrypt($row->id), 'status' => 2]) . '" class="btn btn-danger">Remove Breaking News</a>';
                 }
                 return $btn;
@@ -192,33 +194,34 @@ class PostPagesController extends Controller
             ->rawColumns(['category', 'action', 'section'])
             ->make(true);
     }
-    public function ajaxGetVideoList(){
+    public function ajaxGetVideoList()
+    {
         $query = DB::table('video')
             ->where('type', 1)
-            ->orderBy('id','desc');
+            ->orderBy('id', 'desc');
 
         return datatables()->of($query->get())
-        ->addIndexColumn()
-        ->addColumn('thumbnail', function($row){
-            $thumb = '<img src="'.asset('youtube/thumb/'.$row->thumbnail).'" height="60" width="60">';
-            return $thumb;
-        })
-        ->addColumn('action', function($row){
-               $btn = '
-               <a href="https://www.youtube.com/watch?v='.$row->v_id.'" class="btn btn-info btn-sm" target="_blank">View</a>
+            ->addIndexColumn()
+            ->addColumn('thumbnail', function ($row) {
+                $thumb = '<img src="' . asset('youtube/thumb/' . $row->thumbnail) . '" height="60" width="60">';
+                return $thumb;
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '
+               <a href="https://www.youtube.com/watch?v=' . $row->v_id . '" class="btn btn-info btn-sm" target="_blank">View</a>
                <a href="#" class="btn btn-warning btn-sm">Edit</a>              
                ';
-               if ($row->status == '1') {
-                   $btn .= '<a href="'.route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]).'" class="btn btn-danger btn-sm">Unpublish</a>';
+                if ($row->status == '1') {
+                    $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]) . '" class="btn btn-danger btn-sm">Unpublish</a>';
                     return $btn;
-                }else{
-                   $btn .= '<a href="'.route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(1)]).'" class="btn btn-success btn-sm">Publish</a>';
+                } else {
+                    $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(1)]) . '" class="btn btn-success btn-sm">Publish</a>';
                     return $btn;
                 }
                 return $btn;
-        })
-        ->rawColumns(['thumbnail', 'action'])
-        ->make(true);
+            })
+            ->rawColumns(['thumbnail', 'action'])
+            ->make(true);
     }
     public function ajaxGetAssPostList()
     {
@@ -249,7 +252,6 @@ class PostPagesController extends Controller
                     $btn .= '<a href="' . route('admin.post_status', ['id' => encrypt($row->id), 'status' => encrypt(1)]) . '" class="btn btn-success btn-sm">Publish</a>';
                     return $btn;
                 }
-                return $btn;
             })
             ->addColumn('section', function ($row) {
                 if ($row->hp_section1 == 1) {
@@ -263,38 +265,45 @@ class PostPagesController extends Controller
                         <a href="' . route('admin.post_four', ['id' => encrypt($row->id), 'four' => encrypt(2)]) . '" class="btn btn-info">Four</a>
                         <a href="' . route('admin.popular_post', ['id' => encrypt($row->id), 'popular' => encrypt(1)]) . '" class="btn btn-info">Popular</a>';
                 }
+                if ($row->breaking == 2) {
+                    $btn .= ' <a href="' . route('admin.breaking_news', ['id' => encrypt($row->id), 'status' => 1]) . '" class="btn btn-info">Make Breaking News</a>';
+                } elseif ($row->breaking == 1) {
+                    $btn .= ' <a href="' . route('admin.breaking_news', ['id' => encrypt($row->id), 'status' => 2]) . '" class="btn btn-danger">Remove Breaking News</a>';
+                }
+                return $btn;
                 return $btn;
             })
             ->rawColumns(['title', 'category', 'action', 'section'])
             ->make(true);
     }
-    public function ajaxGetAssVideoList(){
+    public function ajaxGetAssVideoList()
+    {
         $query = DB::table('video')
             ->where('type', 2)
-            ->orderBy('id','desc');
+            ->orderBy('id', 'desc');
 
         return datatables()->of($query->get())
-        ->addIndexColumn()
-        ->addColumn('thumbnail', function($row){
-            $thumb = '<img src="'.asset('youtube/thumb/'.$row->thumbnail).'" height="60" width="60">';
-            return $thumb;
-        })
-        ->addColumn('action', function($row){
-               $btn = '
-               <a href="https://www.youtube.com/watch?v='.$row->v_id.'" class="btn btn-info btn-sm" target="_blank">View</a>
+            ->addIndexColumn()
+            ->addColumn('thumbnail', function ($row) {
+                $thumb = '<img src="' . asset('youtube/thumb/' . $row->thumbnail) . '" height="60" width="60">';
+                return $thumb;
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '
+               <a href="https://www.youtube.com/watch?v=' . $row->v_id . '" class="btn btn-info btn-sm" target="_blank">View</a>
                <a href="#" class="btn btn-warning btn-sm">Edit</a>              
                ';
-               if ($row->status == '1') {
-                   $btn .= '<a href="'.route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]).'" class="btn btn-danger btn-sm">Unpublish</a>';
+                if ($row->status == '1') {
+                    $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]) . '" class="btn btn-danger btn-sm">Unpublish</a>';
                     return $btn;
-                }else{
-                   $btn .= '<a href="'.route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(1)]).'" class="btn btn-success btn-sm">Publish</a>';
+                } else {
+                    $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(1)]) . '" class="btn btn-success btn-sm">Publish</a>';
                     return $btn;
                 }
                 return $btn;
-        })
-        ->rawColumns(['thumbnail', 'action'])
-        ->make(true);
+            })
+            ->rawColumns(['thumbnail', 'action'])
+            ->make(true);
     }
     public function GetPostSinglePost($post_id)
     {
@@ -376,11 +385,12 @@ class PostPagesController extends Controller
         $categorys = DB::table('category')->get();
         return view('admin.edit_post', compact('posts', 'categorys'));
     }
-    public function statusVideo( $videoId, $statusId){
+    public function statusVideo($videoId, $statusId)
+    {
         try {
             $id = decrypt($videoId);
             $sId = decrypt($statusId);
-        }catch(DecryptException $e) {
+        } catch (DecryptException $e) {
             return redirect()->back();
         }
         $video_update = DB::table('video')
@@ -390,12 +400,11 @@ class PostPagesController extends Controller
                 'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()
             ]);
 
-            if($video_update){
-                return redirect()->back()->with('message','Video Updated Successfully');
-            }else{
-                 return redirect()->back()->with('error','Something Went Wrong Please Try Again');
-            } 
-    
+        if ($video_update) {
+            return redirect()->back()->with('message', 'Video Updated Successfully');
+        } else {
+            return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
+        }
     }
     public function updatePost(Request $request)
     {
@@ -688,7 +697,7 @@ class PostPagesController extends Controller
         }
         $post = Post::find($id);
         $post->breaking = $status;
-        if($post->save()){
+        if ($post->save()) {
             return redirect()->back()->with('message', 'Post Updated Successfully!');
         }
     }

@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['namespace' => 'Api'], function () {
+    Route::get('home/data/{type}', 'PostController@homePage');
     Route::get('category/list', 'PostController@categoryList');
     Route::get('post/{type}/{category}/{page}', 'PostController@postListWithCategory');
     Route::get('post/details/{id}', 'PostController@postList');

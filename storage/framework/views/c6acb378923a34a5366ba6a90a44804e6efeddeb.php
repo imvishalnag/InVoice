@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-xs-6">
                                     <div class="post-thumb thumb-float-style">
-                                        <a href="<?php echo e(route('web.viewPost',['slug'=>$post->slug,'id'=>$post->id])); ?>">
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
                                             <img class="img-fluid" src="<?php echo e(asset('/post/thumb/'.$post->image)); ?>" alt="" />
                                         </a>
                                     </div>
@@ -25,7 +25,7 @@
                                 <div class="col-lg-8 col-md-6 col-xs-6">
                                     <div class="post-content">
                                         <h2 class="post-title">
-                                            <a href="<?php echo e(route('web.viewPost',['slug'=>$post->slug,'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
                                         <div class="post-meta">
                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
@@ -33,8 +33,7 @@
                                             <span class="post-comment pull-right"><i class="fa fa-eye"></i>
                                             <a href="#" class="comments-link"><span>03</span></a></span>
                                         </div>
-                                        <?php echo Str::words($post->body, 20, ' ...'); ?>
-
+                                        <p><?php echo Str::words($post->body, 20, ' ...'); ?></p>
                                     </div><!-- Post content end -->
                                 </div><!-- Post col end -->
                             </div><!-- 1st row end -->
@@ -44,11 +43,14 @@
                     </div><!-- Block Technology end -->
 
                     <div class="paging">
-                        <ul class="pagination">
-                            <li class="active"><a href="#"><div class="loader"></div>Load More</a></li>
-                        </ul>
-                    </div>
+                    <ul class="pagination">
+                      <li class="active"><a href="#"><div class="loader"></div>Load More</a></li>
+                    </ul>
                 </div>
+
+
+                </div><!-- Content Col end -->
+
                 <div class="col-lg-4 col-md-12">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
@@ -85,27 +87,4 @@
     </section><!-- First block end -->
 
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('script'); ?>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            // function load_data(){
-            //   $.ajax({
-            
-            //    method:"POST",
-            //    data:{id:id, _token:_token},
-            //    success:function(data)
-            //    {
-            //     $('#load_more_button').remove();
-            //     $('#post_data').append(data);
-            //    }
-            //   })
-            // }
-            var scroll_position_for_post_load = $(window).height() + $(window).scrollTop() + 100;
-            if(scroll_position_for_post_load >= $(document).height()){
-                console.log('I am coming');
-            }
-        });
-    </script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('web.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\invoice\resources\views/web/news/news-list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('as.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\invoice\resources\views/as/news/news-list.blade.php ENDPATH**/ ?>

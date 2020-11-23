@@ -77,4 +77,6 @@ class PostController extends Controller
               return new PostResource($post);
           }
     }
+
+    // Breaking News
 }

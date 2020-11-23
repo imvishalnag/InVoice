@@ -1,23 +1,23 @@
 
 
+
 <?php $__env->startSection('meta'); ?>
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" <?php echo e($single_post->title); ?>" />
-    <meta property="og:description"        content="<?php echo e($single_post->body); ?>" />
+    <meta property="og:description"        content="<?php echo $single_post->body; ?>" />
     <meta property="og:image"              content="<?php echo e(asset('post/'.$single_post->image)); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                    
                     <div class="single-post">
-                        
                         <div class="post-title-area">
-                            <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> $single_post->cat_id, 'slug' =>urlencode($single_post->slug)])); ?>"><?php echo e($single_post->category_name); ?></a>
+                            <a class="post-cat" href="<?php echo e(route('ass.news', ['id'=> $single_post->cat_id, 'slug' => urlencode($single_post->slug)])); ?>"><?php echo e($single_post->category_name); ?></a>
                             <h2 class="post-title">
                                 <?php echo e($single_post->title); ?>
 
@@ -72,17 +72,20 @@
                         <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
                             <?php if(isset($related_post) && !empty($related_post)): ?>
                             <?php $__currentLoopData = $related_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php
+                                // dd($re_post->slug);
+                            ?>
                             <div class="item">
                                 <div class="post-block-style clearfix">
                                     <div class="post-thumb">
-                                        <a href="<?php echo e(route('web.viewPost',['slug'=>$post->slug, 'id' => $post->id])); ?>">
-                                            <img class="img-fluid single-news" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
+                                        <a href="<?php echo e(route('assamese.viewPost',['slug'=>$post->slug, 'id' => $post->id])); ?>">
+                                            <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                         </a>
                                     </div>
                                     
                                     <div class="post-content">
                                         <h2 class="post-title title-medium">
-                                            <a href="<?php echo e(route('web.viewPost',['slug'=>$post->slug,'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>$post->slug,'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
                                         <div class="post-meta">
                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
@@ -119,6 +122,7 @@
 
                         <div class="widget color-default">
                             <h3 class="block-title"><span>Popular News</span></h3>
+
                             <?php if(isset($popular_post) && !empty($popular_post)): ?>
                             <?php $__currentLoopData = $popular_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if($key == 0): ?>
@@ -131,7 +135,7 @@
                                     
                                     <div class="post-content">
                                          <h2 class="post-title">
-                                             <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
+                                             <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                          </h2>
                                          <div class="post-meta">
                                              <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
@@ -144,14 +148,14 @@
                                         <li class="clearfix">
                                             <div class="post-block-style post-float clearfix">
                                                 <div class="post-thumb">
-                                                    <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
-                                                        <img class="img-fluid " src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
+                                                    <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                        <img class="img-fluid" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
                                                     </a>
                                                 </div><!-- Post thumb end -->
 
                                                 <div class="post-content">
                                                      <h2 class="post-title title-small">
-                                                         <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
+                                                         <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
                                                      </h2>
                                                      <div class="post-meta">
                                                          <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
@@ -162,9 +166,10 @@
                                     </ul><!-- List post end -->
                                 </div><!-- List post block end -->
                             <?php endif; ?>
+                            <div class="gap-40"></div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
-                            <div class="gap-40"></div>
+
                         </div><!-- Popular news widget end -->                          
 
                         <div class="widget text-center">
@@ -179,4 +184,4 @@
     </section><!-- First block end -->
     
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('web.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\invoice\resources\views/web/show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('as.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\invoice\resources\views/as/show.blade.php ENDPATH**/ ?>

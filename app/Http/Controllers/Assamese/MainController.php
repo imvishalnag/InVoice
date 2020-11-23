@@ -192,6 +192,14 @@ class MainController extends Controller
             ->orderBy('posts.id', 'asc')
             ->take(5)
             ->get();
+        $youtube_post = DB::table('video')
+            ->where('type', 2)
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->take(4)
+            ->get();
+        $breaking_news = Post::orderBy('created_at', 'DESC')->wherePost_type(2)->whereStatus(1)->whereBreaking(1)->get();
+        
         return view('as.index', compact(
             'slider_post',
             'fourth_post',
@@ -212,7 +220,9 @@ class MainController extends Controller
             'travel_cat_name',
             'business_posts_1',
             'business_posts_2',
-            'popular_post'
+            'popular_post',
+            'breaking_news',
+            'youtube_post'
         ));
     }
 
@@ -244,13 +254,8 @@ class MainController extends Controller
     }
 
     //Header Navigation
-    public function headerNav($id)
+    public function headerNav($id, $slug)
     {
-        try {
-            $id = decrypt($id);
-        } catch (DecryptException $e) {
-            return redirect()->back();
-        }
         $news = DB::table('posts')->where('cat_id', $id)->where('post_type', 2)->get();
 
         $cat_name = DB::table('category')->where('id', $id)->first();

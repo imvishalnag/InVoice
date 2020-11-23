@@ -1,4 +1,3 @@
-
 @extends('as.template.web_master')
 
 @section('meta')
@@ -15,11 +14,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                    
                     <div class="single-post">
-                        
                         <div class="post-title-area">
-                            <a class="post-cat" href="{{route('ass.news', ['id'=> encrypt($single_post->cat_id)])}}">{{$single_post->category_name}}</a>
+                            <a class="post-cat" href="{{route('ass.news', ['id'=> $single_post->cat_id, 'slug' => urlencode($single_post->slug)])}}">{{$single_post->category_name}}</a>
                             <h2 class="post-title">
                                 {{$single_post->title}}
                             </h2>
@@ -136,7 +133,7 @@
                                     
                                     <div class="post-content">
                                          <h2 class="post-title">
-                                             <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                             <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
                                          </h2>
                                          <div class="post-meta">
                                              <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
@@ -149,14 +146,14 @@
                                         <li class="clearfix">
                                             <div class="post-block-style post-float clearfix">
                                                 <div class="post-thumb">
-                                                    <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
+                                                    <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
                                                         <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
                                                     </a>
                                                 </div><!-- Post thumb end -->
 
                                                 <div class="post-content">
                                                      <h2 class="post-title title-small">
-                                                         <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                                         <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 10, ' ...') !!}</a>
                                                      </h2>
                                                      <div class="post-meta">
                                                          <span class="post-date">{{ date('M d, Y', strtotime($post->created_at))}}</span>
