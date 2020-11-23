@@ -41,38 +41,39 @@
                     <div class="col-lg-4 col-sm-12 footer-widget widget-categories">
                         <h3 class="widget-title">Hot Categories</h3>
                         <ul>
+                            <?php if(isset($footer_data['assam']->category_name) && !empty($footer_data['assam']->category_name)): ?>
                             <li>
-                                <a href="#"><span class="catTitle">ABOUT</span></a>
+                                <a href="<?php echo e(route('web.news', ['id'=> $footer_data['assam']->id, 'slug' => $footer_data['assam']->en_slug])); ?>"><?php echo e($footer_data['assam']->category_name); ?></a>
                             </li>
+                            <?php endif; ?>
+                            <?php if(isset($footer_data['northeast']->category_name) && !empty($footer_data['northeast']->category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['northeast']->id, 'slug' => $footer_data['northeast']->en_slug])); ?>"><?php echo e($footer_data['northeast']->category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if(isset($footer_data['international']->category_name) && !empty($footer_data['international']->category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['international']->id, 'slug' => $footer_data['international']->en_slug])); ?>"><?php echo e($footer_data['international']->category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if(isset($footer_data['politics']->category_name) && !empty($footer_data['politics']->category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['politics']->id, 'slug' => $footer_data['politics']->en_slug])); ?>"><?php echo e($footer_data['politics']->category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if(isset($footer_data['economy']->category_name) && !empty($footer_data['economy']->category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['economy']->id, 'slug' => $footer_data['economy']->en_slug])); ?>"><?php echo e($footer_data['economy']->category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if(isset($footer_data['crime']->category_name) && !empty($footer_data['crime']->category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->en_slug])); ?>"><?php echo e($footer_data['crime']->category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
+
                             <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(12)])); ?>"><span class="catTitle">NATIONAL</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(13)])); ?>"><span class="catTitle">INTERNATIONAL</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(2)])); ?>"><span class="catTitle">NORTHEAST</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(1)])); ?>"><span class="catTitle">ASSAM</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(14)])); ?>"><span class="catTitle">POLITICS</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(16)])); ?>"><span class="catTitle">ECONOMY</span></a>
-                            </li>
-                            <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> encrypt(15)])); ?>"><span class="catTitle">CRIME</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">ABOUT</span></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="<?php echo e(route('web.livetv.livetv')); ?>"><span class="catTitle">Sports</span></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="<?php echo e(route('web.livetv.livetv')); ?>"><span class="catTitle">Editor's Desk</span></a>
+                                <a href="<?php echo e(route('web.about.about')); ?>">About</a>
                             </li>
                         </ul>   
                     </div><!-- Col end -->
@@ -94,21 +95,9 @@
     <div class="copyright">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 text-center">
                     <div class="copyright-info">
-                    <span>Copyright © 2019 Invoice All Rights Reserved. Designed By <a href="" style="color:#ffe609">Webinfotech</a></span>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-md-6">
-                    <div class="footer-menu">
-                    <ul class="nav unstyled">
-                        <li><a href="#">Site Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Advertisement</a></li>
-                        <li><a href="#">Cookies Policy</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
+                    <span>Copyright © 2020 Invoice All Rights Reserved. Designed By <a href="" style="color:#ffe609">Webinfotech</a></span>
                     </div>
                 </div>
             </div><!-- Row end -->

@@ -1,6 +1,5 @@
 
 
-
 <?php $__env->startSection('content'); ?>
     <section class="featured-post-area no-padding" style="padding-top: 13px">
         <div class="container-fluid">
@@ -12,14 +11,13 @@
                             <div class="item" style="background-image:url(<?php echo e(asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
                                 <div class="featured-post">
                                     <div class="post-content">
-                                    <a class="post-cat" href="<?php echo e(route('web.news', ['id'=> encrypt($post->cat_id)])); ?>"><?php echo e($post->category_name); ?></a>
+                                    <a class="post-cat" href="<?php echo e(route('ass.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])); ?>"><?php echo e($post->category_name); ?></a>
                                         <h2 class="post-title title-extra-large">
-                                            <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
+                                            <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 6, ' ...'); ?></a>
                                         </h2>
                                         <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
                                     </div>
                                 </div><!--/ Featured post end -->
-                                
                             </div><!-- Item 1 end -->
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
@@ -27,85 +25,34 @@
                 </div><!-- Col 6 end -->
 
                 <div class="col-lg-4 col-md-12">
-                    <div class="featured-tab">
+                    <div class="featured-tab not-feat-xs">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/a87d6a4d09c2a045b283c5b0cb4182c2.jpg" width="420" height="279">
+                            <?php
+                                $count = 1;
+                            ?>
+                            <?php $__empty_1 = true; $__currentLoopData = $breaking_news ?:[]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <div class="mySlides fade">
+                                <div class="numbertext"><?php echo e($count++); ?> / <?php echo e(count($breaking_news)); ?></div>
+                                <img src="<?php echo e(asset('/post/'.$bn->image)); ?>" width="420" height="279">
                                 <div class="text">
                                     <div class="post-content">
                                        <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/vitae-ad-autem-odio/7">Vitae ad autem odio.</a>
+                                           <a href="<?php echo e(route('assamese.viewPost',['slug'=>urlencode($bn->slug),'id'=>$bn->id])); ?>"><?php echo Str::words($bn->title, 10, ' ...'); ?></a>
                                        </h2>
                                        <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
+                                           <span class="post-author"><a href="#"><?php echo e($bn->author); ?></a></span>
+                                           <span class="post-date"><?php echo e(date('M d, Y', strtotime($bn->created_at))); ?></span>
                                        </div>
                                    </div>
                                 </div>
                               </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/88e323d08906fbd1c2548bd13fb0427b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/dolores-quae-officia-eius-vero-rerum-est-et/10">Dolores quae officia eius vero rerum est et.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <div class="mySlides fade">
+                                    No Post Found!
                                 </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/6a6f3190a894b450a92b96658d5aeb10.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolores-ut-vel-eos-culpa-ut/3">Eaque dolores ut vel eos culpa ut.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/4e58e696de64882b70eb6fc6564b106c.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolorem-doloremque-quae-incidunt-eligendi/4">Eaque dolorem doloremque quae incidunt eligendi.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/748279d8c4a9e32b2b1b7c0da39ba03b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/assumenda-necessitatibus-animi-rerum-molestiae/1">Assumenda necessitatibus animi rerum molestiae.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <?php endif; ?>
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             
                         </div>
@@ -125,115 +72,35 @@
         <div class="container-fluid">
             <h3 class="block-title"><span>Latest Videos</span></h3>
             <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video4.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 1 end -->
-
-                </div><!-- Item 1 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video3.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 2 end -->
-                    
-                </div><!-- Item 2 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video2.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 3 end -->
-                    
-                </div><!-- Item 3 end -->
-
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                            <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="<?php echo e(asset('web/images/news/video/video1.jpg')); ?>" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div>
-                        </li><!-- Li end -->
-                    </ul><!-- List post 4 end -->
-                    
-                </div><!-- Item 4 end -->
+                <?php if(isset($youtube_post) && !empty($youtube_post)): ?>
+                    <?php $__currentLoopData = $youtube_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="item">
+                        <ul class="list-post">
+                            <li class="clearfix">
+                                <div class="post-block-style clearfix">
+                                    <div class="post-thumb">
+                                        <img class="img-fluid" src="<?php echo e(asset('youtube/thumb/'.$post->thumbnail)); ?>" alt="">
+                                        <a class="popup cboxElement" href="https://www.youtube.com/embed/<?php echo e($post->v_id); ?>?autoplay=1&amp;loop=1">
+                                        <div class="video-icon">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                    </a>
+                                </div><!-- Post thumb end -->
+                                    <div class="post-content">
+                                        <h2 class="post-title title-small">
+                                            <a href="#"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
+                                        </h2>
+                                        <div class="post-meta">
+                                            <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                            <span class="post-date"><?php echo e(date('F d, Y', strtotime($post->created_at))); ?></span>
+                                        </div>
+                                    </div><!-- Post content end -->
+                                </div><!-- Post Block style end -->
+                            </li><!-- Li end -->
+                        </ul><!-- List post 1 end -->
+                    </div><!-- Item 1 end -->
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>             
             </div><!-- Latest News owl carousel end-->
         </div>
     </section><!--- Latest Video end -->
@@ -662,7 +529,6 @@
                                     </ul><!-- List post end -->
                                 </div><!-- List post block end -->
                             <?php endif; ?>
-                            <div class="gap-40"></div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
 

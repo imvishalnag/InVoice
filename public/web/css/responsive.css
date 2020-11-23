@@ -296,12 +296,13 @@
       box-shadow: none;
    }
    .logo {
-      padding: 13px 0 25px;
+      padding: 10px 0 0px;
       text-align: center;
    }
    .logo img {
       top: -10px;
       left: 10px;
+      width: 50%;
    }
    /* Navigation breakpoint */
    .navbar-toggle {
@@ -358,7 +359,7 @@
       color: #333;
       border-top: 1px solid #f1f1f1 !important;
       border-bottom: 0;
-      padding: 10px 0;
+      padding: 5px 0;
       display: block;
    }
    ul.navbar-nav .dropdown-menu>li>a {
@@ -386,6 +387,8 @@
       border-top: 0;
       background: none;
       padding-left: 15px;
+      background: #eee;
+      width: 100%;
    }
    ul.navbar-nav li a i,
    .dropdown-submenu>a:after {
@@ -393,7 +396,7 @@
       color: #333;
       float: right;
       width: 36px;
-      height: 28px;
+      height: 29px;
       line-height: 28px;
       margin-top: -5px;
       text-align: center;
@@ -599,7 +602,7 @@
    .list-post-block .list-post>li:last-child {
       margin-bottom: 25px; 
    }
-   .post-block-style { 
+   .post-block-style {
       padding-bottom: 0;
       margin-bottom: 10px;
    }
@@ -641,7 +644,7 @@
 @media  (max-width: 375px) {
    .list-post-block .list-post>li {
       max-height: 90px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
    }
    .category-style2 .post-thumb {
       margin-bottom: 0px;
@@ -651,10 +654,19 @@
       padding: 5px 8px;
    }   
    .navbar {
-      margin-left: 75px;
+      margin-left: 0;
    }
    .post-meta span {
         margin-right: 4px;
         padding-right: 5px;
-   }    
+   }  
+   #header .ad-banner {
+      display: none;
+   }
+   .featured-tab:not(.not-feat-xs) {
+      margin: 0 -15px;
+   }
+   .featured-tab:not(.not-feat-xs) .block-title {
+      margin: 10px 15px 13px;
+  }
 }

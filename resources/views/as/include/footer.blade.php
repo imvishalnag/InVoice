@@ -79,12 +79,6 @@
                                     <a href="{{route('ass.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->as_slug])}}">{{ $footer_data['crime']->as_category_name}}</a>
                                 </li>
                             @endif
-                            <li>
-                                <a target="_blank" href="{{route('web.livetv.livetv')}}"><span class="catTitle">Sports</span></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="{{route('web.livetv.livetv')}}"><span class="catTitle">Editor's Desk</span></a>
-                            </li>
                         </ul>   
                     </div><!-- Col end -->
                 </div><!-- Row end -->
@@ -104,21 +98,9 @@
     <div class="copyright">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 text-center">
                     <div class="copyright-info">
-                    <span>Copyright © 2019 Invoice All Rights Reserved. Designed By <a href="" style="color:#ffe609">Webinfotech</a></span>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-md-6">
-                    <div class="footer-menu">
-                    <ul class="nav unstyled">
-                        <li><a href="#">Site Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Advertisement</a></li>
-                        <li><a href="#">Cookies Policy</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
+                    <span>Copyright © 2020 Invoice All Rights Reserved. Designed By <a href="" style="color:#ffe609">Webinfotech</a></span>
                     </div>
                 </div>
             </div><!-- Row end -->

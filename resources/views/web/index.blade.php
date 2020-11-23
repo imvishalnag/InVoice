@@ -26,7 +26,7 @@
                 </div><!-- Col 6 end -->
 
                 <div class="col-lg-4 col-md-12">
-                    <div class="featured-tab">
+                    <div class="featured-tab not-feat-xs">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
                             @php
