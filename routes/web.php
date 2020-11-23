@@ -12,10 +12,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('/dashboard', 'AdminDashboardController@index')->name('admin.dashboard');
 
-    /**
-     * Posts Controller
-     */
-    
     //Add Post
     Route::get('/create/post', 'PostPagesController@createPost')->name('admin.create_post');
     Route::post('/add/post', 'PostPagesController@addPost')->name('admin.add_post');
@@ -59,9 +55,6 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     /** Category CK Editor Image Upload **/
     Route::post('ck-editor-image-upload','PostPagesController@ckEditorImageUpload')->name('admin.ck_editor_image_upload');
 
-    /**
-     * Category Controller
-     */
     //Add Category
     Route::get('/create/category', 'CategoryPagesController@createCategory')->name('admin.create_catgeory');
     Route::post('/add/category', 'CategoryPagesController@addCategory')->name('admin.add_category');
