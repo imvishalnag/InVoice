@@ -15,9 +15,11 @@ class PostController extends Controller
     public function homePage($type){
         $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
         $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
+        $category = DB::table('category')->orderBy('category_name', 'asc')->get();
         $data = [
             'slider' => $slider,
-            'breaking' => $breaking
+            'breaking' => $breaking,
+            'category' => $category
         ];
         $response = [
             'status' => true,
@@ -26,16 +28,7 @@ class PostController extends Controller
         ];
         return response()->json($response, 200);
     }
-    public function categoryList()
-    {
-        $category = DB::table('category')->orderBy('category_name', 'asc')->get();
-        $response = [
-            'status' => true,
-            'message' => 'Category List',
-            'data' => $category,
-        ];
-        return response()->json($response, 200);
-    }
+
 
     public function postListWithCategory($type, $category, $page)
     {
