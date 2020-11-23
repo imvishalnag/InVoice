@@ -44,30 +44,41 @@
                             <li>
                                 <a href="#"><span class="catTitle">ABOUT</span></a>
                             </li>
+                            @if(isset($footer_data['assam']->as_category_name) && !empty($footer_data['assam']->as_category_name))
                             <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(12)])}}"><span class="catTitle">NATIONAL</span></a>
+                                <a href="{{route('ass.news', ['id'=> $footer_data['assam']->id, 'slug' => $footer_data['assam']->as_slug])}}">{{ $footer_data['assam']->as_category_name}}</a>
                             </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(13)])}}"><span class="catTitle">INTERNATIONAL</span></a>
-                            </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(2)])}}"><span class="catTitle">NORTHEAST</span></a>
-                            </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(1)])}}"><span class="catTitle">ASSAM</span></a>
-                            </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(14)])}}"><span class="catTitle">POLITICS</span></a>
-                            </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(16)])}}"><span class="catTitle">ECONOMY</span></a>
-                            </li>
-                            <li>
-                                <a href="{{route('web.news', ['id'=> encrypt(15)])}}"><span class="catTitle">CRIME</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">ABOUT</span></a>
-                            </li>
+                            @endif
+                            @if(isset($footer_data['northeast']->as_category_name) && !empty($footer_data['northeast']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['northeast']->id, 'slug' => $footer_data['northeast']->as_slug])}}">{{ $footer_data['northeast']->as_category_name}}</a>
+                                </li>
+                            @endif
+                            @if(isset($footer_data['national']->as_category_name) && !empty($footer_data['national']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['national']->id, 'slug' => $footer_data['national']->as_slug])}}">{{ $footer_data['national']->as_category_name}}</a>
+                                </li>
+                            @endif
+                            @if(isset($footer_data['international']->as_category_name) && !empty($footer_data['international']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['international']->id, 'slug' => $footer_data['international']->as_slug])}}">{{ $footer_data['international']->as_category_name}}</a>
+                                </li>
+                            @endif
+                            @if(isset($footer_data['politics']->as_category_name) && !empty($footer_data['politics']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['politics']->id, 'slug' => $footer_data['politics']->as_slug])}}">{{ $footer_data['politics']->as_category_name}}</a>
+                                </li>
+                            @endif
+                            @if(isset($footer_data['economy']->as_category_name) && !empty($footer_data['economy']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['economy']->id, 'slug' => $footer_data['economy']->as_slug])}}">{{ $footer_data['economy']->as_category_name}}</a>
+                                </li>
+                            @endif
+                            @if(isset($footer_data['crime']->as_category_name) && !empty($footer_data['crime']->as_category_name))
+                                <li>
+                                    <a href="{{route('ass.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->as_slug])}}">{{ $footer_data['crime']->as_category_name}}</a>
+                                </li>
+                            @endif
                             <li>
                                 <a target="_blank" href="{{route('web.livetv.livetv')}}"><span class="catTitle">Sports</span></a>
                             </li>
@@ -76,7 +87,6 @@
                             </li>
                         </ul>   
                     </div><!-- Col end -->
-
                 </div><!-- Row end -->
             </div><!-- Container end -->
         </div><!-- Footer main end -->

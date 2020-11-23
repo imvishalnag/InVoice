@@ -4,12 +4,11 @@
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" {{$single_post->title}}" />
-    <meta property="og:description"        content="{!! $single_post->body !!}" />
+    <meta property="og:description"        content="{{ $single_post->body }}" />
     <meta property="og:image"              content="{{asset('post/'.$single_post->image)}}" />
 @endsection
 
 @section('content')
-
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
@@ -72,9 +71,6 @@
                         <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
                             @if(isset($related_post) && !empty($related_post))
                             @foreach($related_post as $post)
-                            @php
-                                // dd($re_post->slug);
-                            @endphp
                             <div class="item">
                                 <div class="post-block-style clearfix">
                                     <div class="post-thumb">

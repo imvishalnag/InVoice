@@ -44,39 +44,41 @@
                             <li>
                                 <a href="#"><span class="catTitle">ABOUT</span></a>
                             </li>
-                            <?php if(isset($footer_data['assam']->category_name) && !empty($footer_data['assam']->category_name)): ?>
+                            <?php if(isset($footer_data['assam']->as_category_name) && !empty($footer_data['assam']->as_category_name)): ?>
                             <li>
-                                <a href="<?php echo e(route('web.news', ['id'=> $footer_data['assam']->id, 'slug' => $footer_data['assam']->en_slug])); ?>"><?php echo e($footer_data['assam']->category_name); ?></a>
+                                <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['assam']->id, 'slug' => $footer_data['assam']->as_slug])); ?>"><?php echo e($footer_data['assam']->as_category_name); ?></a>
                             </li>
                             <?php endif; ?>
-                            <?php if(isset($footer_data['northeast']->category_name) && !empty($footer_data['northeast']->category_name)): ?>
+                            <?php if(isset($footer_data['northeast']->as_category_name) && !empty($footer_data['northeast']->as_category_name)): ?>
                                 <li>
-                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['northeast']->id, 'slug' => $footer_data['northeast']->en_slug])); ?>"><?php echo e($footer_data['northeast']->category_name); ?></a>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['northeast']->id, 'slug' => $footer_data['northeast']->as_slug])); ?>"><?php echo e($footer_data['northeast']->as_category_name); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if(isset($footer_data['international']->category_name) && !empty($footer_data['international']->category_name)): ?>
+                            <?php if(isset($footer_data['national']->as_category_name) && !empty($footer_data['national']->as_category_name)): ?>
                                 <li>
-                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['international']->id, 'slug' => $footer_data['international']->en_slug])); ?>"><?php echo e($footer_data['international']->category_name); ?></a>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['national']->id, 'slug' => $footer_data['national']->as_slug])); ?>"><?php echo e($footer_data['national']->as_category_name); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if(isset($footer_data['politics']->category_name) && !empty($footer_data['politics']->category_name)): ?>
+                            <?php if(isset($footer_data['international']->as_category_name) && !empty($footer_data['international']->as_category_name)): ?>
                                 <li>
-                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['politics']->id, 'slug' => $footer_data['politics']->en_slug])); ?>"><?php echo e($footer_data['politics']->category_name); ?></a>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['international']->id, 'slug' => $footer_data['international']->as_slug])); ?>"><?php echo e($footer_data['international']->as_category_name); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if(isset($footer_data['economy']->category_name) && !empty($footer_data['economy']->category_name)): ?>
+                            <?php if(isset($footer_data['politics']->as_category_name) && !empty($footer_data['politics']->as_category_name)): ?>
                                 <li>
-                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['economy']->id, 'slug' => $footer_data['economy']->en_slug])); ?>"><?php echo e($footer_data['economy']->category_name); ?></a>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['politics']->id, 'slug' => $footer_data['politics']->as_slug])); ?>"><?php echo e($footer_data['politics']->as_category_name); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if(isset($footer_data['crime']->category_name) && !empty($footer_data['crime']->category_name)): ?>
+                            <?php if(isset($footer_data['economy']->as_category_name) && !empty($footer_data['economy']->as_category_name)): ?>
                                 <li>
-                                    <a href="<?php echo e(route('web.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->en_slug])); ?>"><?php echo e($footer_data['crime']->category_name); ?></a>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['economy']->id, 'slug' => $footer_data['economy']->as_slug])); ?>"><?php echo e($footer_data['economy']->as_category_name); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <li>
-                                <a href="#"><span class="catTitle">ABOUT</span></a>
-                            </li>
+                            <?php if(isset($footer_data['crime']->as_category_name) && !empty($footer_data['crime']->as_category_name)): ?>
+                                <li>
+                                    <a href="<?php echo e(route('ass.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->as_slug])); ?>"><?php echo e($footer_data['crime']->as_category_name); ?></a>
+                                </li>
+                            <?php endif; ?>
                             <li>
                                 <a target="_blank" href="<?php echo e(route('web.livetv.livetv')); ?>"><span class="catTitle">Sports</span></a>
                             </li>
@@ -85,7 +87,6 @@
                             </li>
                         </ul>   
                     </div><!-- Col end -->
-
                 </div><!-- Row end -->
             </div><!-- Container end -->
         </div><!-- Footer main end -->
@@ -147,6 +148,7 @@
     <script type="text/javascript" src="<?php echo e(asset('web/js/jquery.colorbox.js')); ?>"></script>
     <!-- Template custom -->
     <script type="text/javascript" src="<?php echo e(asset('web/js/custom.js')); ?>"></script>
+    
     <script>
         var slideIndex = 0;
             showSlides();
@@ -171,5 +173,4 @@
 </div><!-- Body inner end -->
 </body> 
 
-
-</html><?php /**PATH C:\xampp\htdocs\invoice\resources\views/web/include/footer.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\invoice\resources\views/as/include/footer.blade.php ENDPATH**/ ?>

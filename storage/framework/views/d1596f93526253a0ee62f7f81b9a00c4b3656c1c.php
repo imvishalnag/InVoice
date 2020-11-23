@@ -29,9 +29,12 @@
                     <div class="featured-tab">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
-                            <?php $__empty_1 = true; $__currentLoopData = $breaking_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <?php
+                                $count = 1;
+                            ?>
+                            <?php $__empty_1 = true; $__currentLoopData = $breaking_news ?:[]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
+                                <div class="numbertext"><?php echo e($count++); ?> / <?php echo e(count($breaking_news)); ?></div>
                                 <img src="<?php echo e(asset('/post/'.$bn->image)); ?>" width="420" height="279">
                                 <div class="text">
                                     <div class="post-content">
@@ -40,7 +43,6 @@
                                        </h2>
                                        <div class="post-meta">
                                            <span class="post-author"><a href="#"><?php echo e($bn->author); ?></a></span>
-                                           Feb 24, 2017
                                            <span class="post-date"><?php echo e(date('M d, Y', strtotime($bn->created_at))); ?></span>
                                        </div>
                                    </div>
@@ -63,8 +65,11 @@
         </div><!-- Container end -->
     </section><!-- Trending post end -->
 
+    <div style="padding-bottom: 0;padding-top: 30px;">
+        <a class="weatherwidget-io" href="https://forecast7.com/en/26d1491d74/guwahati/" data-label_1="GUWAHATI" data-label_2="WEATHER" data-theme="original" data-basecolor="#090d3d" >GUWAHATI WEATHER</a>
+    </div>
 
-    <section class="latest-news block mega-menu-content-inner">
+    <section class="latest-news block mega-menu-content-inner" style="padding-bottom: 0;padding-top: 10px;">
         <div class="container-fluid">
             <h3 class="block-title"><span>Latest Videos</span></h3>
             <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
@@ -464,7 +469,13 @@
                                 <li><a href="#" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             </ul>
-                        </div><!-- Widget Social end -->							
+                        </div><!-- Widget Social end -->
+                        <div>
+                            <div class="widget" style="font-size: 17px;;width: 70%;line-height: 24px;border: 1px solid #2D6AB4;background-color: #FFFFFF;">
+                                <div style="background-color: #090d3d;font-weight:bold;text-align:left;padding: 10px 0;width:100%;">
+                                    <span style="background-image:url(https://www.fxexchangerate.com/static/flag.webp); background-position: 0 -2064px;float:left; margin:4px 0 0 20px; width:20px;height:15px; background-repeat:no-repeat;"></span>
+                                    <a rel="nofollow" style="color:#FFFFFF;padding-left:5px;text-decoration:none;" href="https://usd.fxexchangerate.com">Dollar To INR</a></div><script type="text/javascript" src="https://w.fxexchangerate.com/converter.php?fm=USD&ft=INR,&lg=en&am=1&ty=2"></script></div><!--  End of Currency Converter Script -  FxExchangeRate.com -->
+                        </div>							
 
                         <div class="widget text-center">
                             <img class="banner img-fluid" src="<?php echo e(asset('web/images/banner-ads/ad-sidebar.png')); ?>" alt="" />
@@ -541,7 +552,7 @@
         </div><!-- Container end -->
     </section><!-- Ad content top end -->
 
-    <section class="block-wrapper homecol3">
+    <section class="block-wrapper homecol3 p-bottom-0">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4 col-md-12">
@@ -713,25 +724,24 @@
                             <div class="item">
                                 <?php if(isset($business_posts_1) && !empty($business_posts_1)): ?>
                                 <?php $__currentLoopData = $business_posts_1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="post-block-style post-float-half clearfix">
-                                    <div class="post-thumb">
-                                        <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
-                                            <img class="img-fluid single-news" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="post-content">
-                                         <h2 class="post-title">
-                                             <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
-                                         </h2>
-                                         <div class="post-meta">
-                                             <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
-                                             <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
-                                         </div>
-                                         <p><?php echo Str::words($post->body, 20, ' ...'); ?></p>
-                                     </div><!-- Post content end -->
-                                </div><!-- Post Block style 1 end -->
+                                    <div class="post-block-style post-float-half clearfix">
+                                        <div class="post-thumb">
+                                            <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>">
+                                                <img class="img-fluid single-news" src="<?php echo e(asset('post/thumb/'.$post->image)); ?>" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h2 class="post-title">
+                                                <a href="<?php echo e(route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])); ?>"><?php echo Str::words($post->title, 10, ' ...'); ?></a>
+                                            </h2>
+                                            <div class="post-meta">
+                                                <span class="post-author"><a href="#"><?php echo e($post->author); ?></a></span>
+                                                <span class="post-date"><?php echo e(date('M d, Y', strtotime($post->created_at))); ?></span>
+                                            </div>
+                                            <p><?php echo Str::words($post->body, 20, ' ...'); ?></p>
+                                        </div><!-- Post content end -->
+                                    </div><!-- Post Block style 1 end -->
 
-                                <div class="gap-30"></div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endif; ?>
                             </div><!-- Item 1 end -->

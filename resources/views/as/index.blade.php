@@ -1,4 +1,3 @@
-
 @extends('as.template.web_master')
 
 @section('content')
@@ -12,14 +11,13 @@
                             <div class="item" style="background-image:url({{asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')}})">
                                 <div class="featured-post">
                                     <div class="post-content">
-                                    <a class="post-cat" href="{{route('web.news', ['id'=> encrypt($post->cat_id)])}}">{{$post->category_name}}</a>
+                                    <a class="post-cat" href="{{route('ass.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])}}">{{$post->category_name}}</a>
                                         <h2 class="post-title title-extra-large">
-                                            <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 6, ' ...') !!}</a>
+                                            <a href="{{route('assamese.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 6, ' ...') !!}</a>
                                         </h2>
                                         <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
                                     </div>
                                 </div><!--/ Featured post end -->
-                                
                             </div><!-- Item 1 end -->
                             @endforeach
                         @endif
@@ -30,87 +28,54 @@
                     <div class="featured-tab">
                         <h3 class="block-title"><span>Breaking<span></span></span></h3>
                         <div class="slideshow-container">
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/a87d6a4d09c2a045b283c5b0cb4182c2.jpg" width="420" height="279">
+                            @php
+                                $count = 1;
+                            @endphp
+                            @forelse ($breaking_news ?:[]  as $bn)
+                            <div class="mySlides fade">
+                                <div class="numbertext">{{ $count++ }} / {{ count($breaking_news) }}</div>
+                                <img src="{{asset('/post/'.$bn->image)}}" width="420" height="279">
                                 <div class="text">
                                     <div class="post-content">
                                        <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/vitae-ad-autem-odio/7">Vitae ad autem odio.</a>
+                                           <a href="{{route('assamese.viewPost',['slug'=>urlencode($bn->slug),'id'=>$bn->id])}}">{!! Str::words($bn->title, 10, ' ...') !!}</a>
                                        </h2>
                                        <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
+                                           <span class="post-author"><a href="#">{{ $bn->author }}</a></span>
+                                           <span class="post-date">{{ date('M d, Y', strtotime($bn->created_at)) }}</span>
                                        </div>
                                    </div>
                                 </div>
                               </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/88e323d08906fbd1c2548bd13fb0427b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/dolores-quae-officia-eius-vero-rerum-est-et/10">Dolores quae officia eius vero rerum est et.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">Saddam Hussain</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
+                            @empty
+                                <div class="mySlides fade">
+                                    No Post Found!
                                 </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/6a6f3190a894b450a92b96658d5aeb10.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolores-ut-vel-eos-culpa-ut/3">Eaque dolores ut vel eos culpa ut.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/4e58e696de64882b70eb6fc6564b106c.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/eaque-dolorem-doloremque-quae-incidunt-eligendi/4">Eaque dolorem doloremque quae incidunt eligendi.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="http://localhost/invoice/public/post/748279d8c4a9e32b2b1b7c0da39ba03b.jpg" width="420" height="279">
-                                <div class="text">
-                                    <div class="post-content">
-                                       <h2 class="post-title title-small">
-                                           <a href="http://localhost/invoice/public/english/posts/assumenda-necessitatibus-animi-rerum-molestiae/1">Assumenda necessitatibus animi rerum molestiae.</a>
-                                       </h2>
-                                       <div class="post-meta">
-                                           <span class="post-author"><a href="#">News Desk</a></span>
-                                           <span class="post-date">Mar 23, 2020</span>
-                                       </div>
-                                   </div>
-                                </div>
-                              </div>
-                                                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            @endforelse
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             
                         </div>
                     </div>
-                    
+                    {{-- <div class="row">
+                        @if(count($fourth_post) && !empty($fourth_post))
+                            @foreach($fourth_post as $post)
+                                <div class="col-md-6 pad-r-small">
+                                    <div class="post-overaly-style contentTop fourNewsboxTop clearfix">
+                                        <div class="post-thumb">
+                                            <a href="#"><img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt=""/></a>
+                                        </div>
+                                        <div class="post-content">
+                                            <a class="post-cat" href="{{route('web.news', ['id'=> encrypt($post->cat_id)])}}">{{$post->category_name}}</a>
+                                            <h2 class="post-title title-medium">
+                                                <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">{!! Str::words($post->title, 6, ' ...') !!}</a>
+                                            </h2>
+                                        </div><!-- Post content end -->
+                                    </div><!-- Post Overaly end -->
+                                </div><!-- Col end -->
+                            @endforeach
+                        @endif
+                    </div><!-- Row end --> --}}
                 </div><!-- Col 6 end -->
 
             </div><!-- Row end -->
@@ -125,115 +90,35 @@
         <div class="container-fluid">
             <h3 class="block-title"><span>Latest Videos</span></h3>
             <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video4.jpg')}}" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 1 end -->
-
-                </div><!-- Item 1 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video3.jpg')}}" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 2 end -->
-                    
-                </div><!-- Item 2 end -->
-
-                <div class="item">
-
-                    <ul class="list-post">
-                        <li class="clearfix">
-                              <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video2.jpg')}}" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div><!-- Post Block style end -->
-                        </li><!-- Li end -->
-                    </ul><!-- List post 3 end -->
-                    
-                </div><!-- Item 3 end -->
-
-                <div class="item">
-                    <ul class="list-post">
-                        <li class="clearfix">
-                            <div class="post-block-style clearfix">
-                                <div class="post-thumb">
-                                    <img class="img-fluid" src="{{asset('web/images/news/video/video1.jpg')}}" alt="">
-                                    <a class="popup cboxElement" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                  <div class="video-icon">
-                                      <i class="fa fa-play"></i>
-                                   </div>
-                                </a>
-                               </div><!-- Post thumb end -->
-                                <div class="post-content">
-                                     <h2 class="post-title title-small">
-                                         <a href="#">Netcix cuts out the chill with an integrated...</a>
-                                     </h2>
-                                     <div class="post-meta">
-                                         <span class="post-author"><a href="#">John Doe</a></span>
-                                         <span class="post-date">Feb 24, 2017</span>
-                                     </div>
-                                 </div><!-- Post content end -->
-                            </div>
-                        </li><!-- Li end -->
-                    </ul><!-- List post 4 end -->
-                    
-                </div><!-- Item 4 end -->
+                @if(isset($youtube_post) && !empty($youtube_post))
+                    @foreach($youtube_post as $post)
+                    <div class="item">
+                        <ul class="list-post">
+                            <li class="clearfix">
+                                <div class="post-block-style clearfix">
+                                    <div class="post-thumb">
+                                        <img class="img-fluid" src="{{asset('youtube/thumb/'.$post->thumbnail)}}" alt="">
+                                        <a class="popup cboxElement" href="https://www.youtube.com/embed/{{$post->v_id}}?autoplay=1&amp;loop=1">
+                                        <div class="video-icon">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                    </a>
+                                </div><!-- Post thumb end -->
+                                    <div class="post-content">
+                                        <h2 class="post-title title-small">
+                                            <a href="#">{!! Str::words($post->title, 10, ' ...') !!}</a>
+                                        </h2>
+                                        <div class="post-meta">
+                                            <span class="post-author"><a href="#">{{$post->author}}</a></span>
+                                            <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
+                                        </div>
+                                    </div><!-- Post content end -->
+                                </div><!-- Post Block style end -->
+                            </li><!-- Li end -->
+                        </ul><!-- List post 1 end -->
+                    </div><!-- Item 1 end -->
+                    @endforeach
+                @endif             
             </div><!-- Latest News owl carousel end-->
         </div>
     </section><!--- Latest Video end -->
