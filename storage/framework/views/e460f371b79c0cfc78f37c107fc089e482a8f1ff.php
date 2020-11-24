@@ -53,12 +53,8 @@
                                         <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a>
                                     </li>
                                     <li class="gplus">
-                                        <a href="http://www.google.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a>
-                                    </li>
-                                    <li class="pinterest">
-                                        <a href="http://www.pinterest.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a>
+                                        <a href="https://api.whatsapp.com/send?text=<?php echo e(url()->current()); ?>" target="_blank">
+                                        <i class="fa fa-whatsapp"></i> <span class="ts-social-title">Whtasapp</span></a>
                                     </li>
                                 </ul>
                             </div><!-- Share items end -->

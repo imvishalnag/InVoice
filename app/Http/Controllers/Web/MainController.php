@@ -72,24 +72,24 @@ class MainController extends Controller
             ->select('posts.*', 'category.category_name as category_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
-            ->where('posts.cat_id', 2)
+            ->where('posts.cat_id', 14)
             ->orderBy('posts.id', 'desc')
             ->take(5)
             ->get();
 
-        $guwahati_cat_name = DB::table('category')->where('id', 2)->first();
+        $guwahati_cat_name = DB::table('category')->where('id', 14)->first();
         $guwahati_cat_name = $guwahati_cat_name->category_name;
 
         $technology_post = DB::table('posts')
             ->select('posts.*', 'category.category_name as category_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
-            ->where('posts.cat_id', 5)
+            ->where('posts.cat_id', 12)
             ->orderBy('posts.id', 'desc')
             ->take(5)
             ->get();
 
-        $technology_cat_name = DB::table('category')->where('id', 5)->first();
+        $technology_cat_name = DB::table('category')->where('id', 12)->first();
         $technology_cat_name = $technology_cat_name->category_name;
 
         //Business Section
@@ -138,18 +138,18 @@ class MainController extends Controller
             ->select('posts.*', 'category.category_name as category_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
-            ->where('posts.cat_id', 10)
+            ->where('posts.cat_id', 11)
             ->orderBy('posts.id', 'asc')
             ->take(4)
             ->get();
-        $travel_cat_name = DB::table('category')->where('id', 10)->first();
+        $travel_cat_name = DB::table('category')->where('id', 11)->first();
         $travel_cat_name = $travel_cat_name->category_name;
 
         $lifestyle_1 = DB::table('posts')
             ->select('posts.*', 'category.category_name as category_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
-            ->where('posts.cat_id', 7)
+            ->where('posts.cat_id', 2)
             ->orderBy('posts.id', 'desc')
             ->take(5)
             ->get();
@@ -158,12 +158,12 @@ class MainController extends Controller
             ->select('posts.*', 'category.category_name as category_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
-            ->where('posts.cat_id', 7)
+            ->where('posts.cat_id', 2)
             ->orderBy('posts.id', 'asc')
             ->take(5)
             ->get();
 
-        $lifestyle_cat_name = DB::table('category')->where('id', 7)->first();
+        $lifestyle_cat_name = DB::table('category')->where('id', 2)->first();
         $lifestyle_cat_name = $lifestyle_cat_name->category_name;
 
         //Popular Post
