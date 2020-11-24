@@ -1,11 +1,10 @@
 
 
-
 <?php $__env->startSection('meta'); ?>
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" <?php echo e($single_post->title); ?>" />
-    <meta property="og:description"        content="<?php echo $single_post->body; ?>" />
+    <meta property="og:description"        content="<?php echo e($single_post->body); ?>" />
     <meta property="og:image"              content="<?php echo e(asset('post/'.$single_post->image)); ?>" />
 <?php $__env->stopSection(); ?>
 
@@ -53,12 +52,8 @@
                                         <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a>
                                     </li>
                                     <li class="gplus">
-                                        <a href="http://www.google.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-google-plus"></i> <span class="ts-social-title">Google +</span></a>
-                                    </li>
-                                    <li class="pinterest">
-                                        <a href="http://www.pinterest.com/sharer.php?u=<?php echo e(url()->current()); ?>" target="_blank">
-                                        <i class="fa fa-pinterest"></i> <span class="ts-social-title">Pinterest</span></a>
+                                        <a href="https://api.whatsapp.com/send?text=<?php echo e(url()->current()); ?>" target="_blank">
+                                        <i class="fa fa-whatsapp"></i> <span class="ts-social-title">Whtasapp</span></a>
                                     </li>
                                 </ul>
                             </div><!-- Share items end -->

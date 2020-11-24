@@ -4,7 +4,7 @@
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" {{$single_post->title}}" />
-    <meta property="og:description"        content="{!! $single_post->body !!}" />
+    <meta property="og:description"        content="{{ $single_post->body }}" />
     <meta property="og:image"              content="{{asset('post/'.$single_post->image)}}" />
 @endsection
 

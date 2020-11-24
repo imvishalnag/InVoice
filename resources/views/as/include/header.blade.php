@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="{{asset('web/css/owl.theme.default.min.css')}}">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="{{asset('web/css/colorbox.css')}}">
-
+	
 </head>
 	
 <body>
@@ -145,10 +145,6 @@
 									
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
-									</li><!-- Video menu end -->
-
-									<li>
-										<a href="{{route('web.livetv.livetv')}}">Live Tv</a>
 									</li><!-- Video menu end -->
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->
