@@ -700,6 +700,9 @@
    .top-nav {
       margin-top: 0;
   }
+  .navbar-collapse {
+     margin-top: 7px;
+  }
 }
 
 /* Custom, iPhone Retina */
