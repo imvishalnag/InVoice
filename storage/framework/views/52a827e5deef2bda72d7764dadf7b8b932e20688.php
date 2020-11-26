@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="<?php echo e(asset('web/css/owl.theme.default.min.css')); ?>">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="<?php echo e(asset('web/css/colorbox.css')); ?>">
-
+	
 </head>
 	
 <body>
@@ -53,10 +53,10 @@
 
 		            <div class="col-md-4 top-social text-lg-right text-md-center">
 		                <ul class="social-icon">
-							<li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+							<li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="https://www.youtube.com/channel/UCYpRDBixW0TboCUkx1C6ahQ/" target="_blank"><i class="fa fa-youtube"></i></a></li>
 						</ul>
 		            </div><!--/ Top social col end -->
 		        </div><!--/ Content row end -->
@@ -146,10 +146,6 @@
 									
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
-									</li><!-- Video menu end -->
-
-									<li>
-										<a href="<?php echo e(route('web.livetv.livetv')); ?>">Live Tv</a>
 									</li><!-- Video menu end -->
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->

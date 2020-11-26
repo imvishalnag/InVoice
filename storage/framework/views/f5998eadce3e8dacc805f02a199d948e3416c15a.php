@@ -4,7 +4,7 @@
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />
     <meta property="og:title"              content=" <?php echo e($single_post->title); ?>" />
-    <meta property="og:description"        content="<?php echo $single_post->body; ?>" />
+    <meta property="og:description"        content="<?php echo e($single_post->body); ?>" />
     <meta property="og:image"              content="<?php echo e(asset('post/'.$single_post->image)); ?>" />
 <?php $__env->stopSection(); ?>
 

@@ -7,7 +7,7 @@
                         <h3 class="widget-title">About Us</h3>
                         <ul>
                             <li>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                <p>A digital journalism platform of   people of North East India. Invoice NE will highlight the daily doses of news with views, reviews and opinions of  Seven sisters and it's people. Let's explore world, nation, region in both Assamese and English language.</p>
                             </li>                        
                         </ul>
                     </div><!-- Col end -->
@@ -17,21 +17,21 @@
                             <div class="footer-logo">
                                 <img class="img-fluid" src="{{asset('web/images/logos/logo.jpg')}}" alt="" />
                             </div>
-                            <p class="footer-info-phone"><i class="fa fa-phone"></i> +(785) 238-4131</p>
-                            <p class="footer-info-email"><i class="fa fa-envelope-o"></i> editor@news247.com</p>
+                            <p class="footer-info-phone"><i class="fa fa-map-marker"></i> Near DPI Bus Stand,  Kahilipara, Guwahati-19</p>
+                            <p class="footer-info-email"><i class="fa fa-envelope-o"></i> invoicene365@gmail.com</p>
                             <ul class="unstyled footer-social">
                                 <li>
-                                    <a title="Facebook" href="#">
-                                    <span class="social-icon"><i class="fa fa-facebook"></i></span>
+                                    <a title="Facebook" target="_blank" href="https://www.facebook.com/invoicene">
+                                        <span class="social-icon"><i class="fa fa-facebook"></i></span>
                                     </a>
-                                    <a title="Twitter" href="#">
-                                    <span class="social-icon"><i class="fa fa-twitter"></i></span>
+                                    <a title="Twitter" target="_blank" href="https://twitter.com/InvoiceNe">
+                                        <span class="social-icon"><i class="fa fa-twitter"></i></span>
                                     </a>
-                                    <a title="Skype" href="#">
-                                    <span class="social-icon"><i class="fa fa-instagram"></i></span>
+                                    <a title="Skype" target="_blank" href="https://www.instagram.com/invoice.ne/">
+                                        <span class="social-icon"><i class="fa fa-instagram"></i></span>
                                     </a>
-                                    <a title="Youtube" href="#">
-                                    <span class="social-icon"><i class="fa fa-youtube"></i></span>
+                                    <a title="Youtube" target="_blank" href="https://www.youtube.com/channel/UCYpRDBixW0TboCUkx1C6ahQ">
+                                        <span class="social-icon"><i class="fa fa-youtube"></i></span>
                                     </a>
                                 </li>
                             </ul>
@@ -100,7 +100,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="copyright-info">
-                    <span>Copyright © 2020 Invoice All Rights Reserved. Designed By <a href="" style="color:#ffe609">Webinfotech</a></span>
+                    <span>Copyright © 2020 Invoice All Rights Reserved. Designed By <a href="https://webinfotech.net.in/" target="_blank" style="color:#ffe609">Webinfotech</a></span>
                     </div>
                 </div>
             </div><!-- Row end -->
