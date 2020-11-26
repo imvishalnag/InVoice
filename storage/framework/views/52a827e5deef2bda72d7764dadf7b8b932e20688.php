@@ -67,13 +67,27 @@
 		<header id="header" class="header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-3 col-sm-3 col-xs-3">
+					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
+						<div class="support hidden-lg"><a href=""><span>SUPPORT</span></a></div>
 						<div class="logo">
-							<a href="<?php echo e(route('assamese.index')); ?>">
-								<img src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt="">
-							 </a>
+							<a href="<?php echo e(route('web.index')); ?>"><img src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt=""></a>
+						</div>						
+						<div>
+							<button class="navbar-toggler hidden-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+								<span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span> &nbsp;MENU
+							</button>
 						</div>
 					</div><!-- logo col end -->
+					<div class="srch hidden-lg">						
+						<?php echo e(Form::open(['method' => 'post','route'=>'web.search'])); ?>
+
+							<div class="srch-xs hidden-lg">
+								<input type="text" class="form-control" name="query" placeholder="Type what you want and enter">
+								<button type="submit"><i class="fa fa-search"></i></button>
+							</div>
+						<?php echo e(Form::close()); ?>
+
+					</div>
 
 					<div class="col-lg-9 col-sm-9 col-xs-9 header-right">
 						<div class="ad-banner float-right">
@@ -147,6 +161,10 @@
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
 									</li><!-- Video menu end -->
+
+									<li>
+										<a href="<?php echo e(route('web.about.about')); ?>">সমৰ্থন</a>
+									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->
 
