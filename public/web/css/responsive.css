@@ -637,6 +637,62 @@
    .featured-slider .item {
         min-height: 320px;
    }
+   #header .ad-banner {
+      display: none;
+   }
+   .hidden-xs {
+      display: none;
+   }
+   .mbl-logo-block div:nth-child(1) {
+      width:20%;
+      float:left;
+   }
+   .mbl-logo-block div:nth-child(2) {
+      width:60%;
+      float:left;
+   }
+   .mbl-logo-block div:nth-child(3) {
+      width:20%;
+      float:left;
+   }
+   .mbl-logo-block button {
+      outline: none;
+      display: flex;
+      transform: translateX(-40px);
+      color: #fff;
+      font-size: 17px;
+      margin-top: 20px;
+   }
+   .header {
+      padding-bottom: 0;
+   }
+   .main-nav {
+      border: 0;
+   }
+   .logo img {
+      width: 70%;
+   }
+   .support {
+      margin-top: 19px;
+   }
+   .support a span{
+      color: #fff;
+      font-size: 17px;
+   }
+   .srch {
+      width: 100%;
+      background: #fff;
+      padding: 10px;
+      position: relative;
+      transform: translateY(10px);
+   }
+   element.style {
+      position: absolute;
+      bottom: 11px;
+      right: 11px;
+      border: 0;
+      padding: 9px 20px;
+  }
 }
 
 /* Custom, iPhone Retina */
@@ -660,13 +716,16 @@
         margin-right: 4px;
         padding-right: 5px;
    }  
-   #header .ad-banner {
-      display: none;
-   }
    .featured-tab:not(.not-feat-xs) {
       margin: 0 -15px;
    }
    .featured-tab:not(.not-feat-xs) .block-title {
       margin: 10px 15px 13px;
   }
+}
+
+@media  (min-width: 450px) {
+   .mbl-logo-block .hidden-lg, .srch.hidden-lg{
+      display:none
+   }
 }

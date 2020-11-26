@@ -73,6 +73,10 @@
                             @endif
 
                             <li>
+                                <a href="{{route('web.about.about')}}">Support</a>
+                            </li>
+
+                            <li>
                                 <a href="{{route('web.about.about')}}">About</a>
                             </li>
                         </ul>   

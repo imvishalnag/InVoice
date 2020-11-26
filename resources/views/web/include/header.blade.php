@@ -69,13 +69,25 @@
 		<header id="header" class="header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-3 col-sm-3 col-xs-3">
+					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
+						<div class="support hidden-lg"><a href=""><span>SUPPORT</span></a></div>
 						<div class="logo">
-							<a href="{{route('web.index')}}">
-								<img src="{{asset('web/images/logos/logo.jpg')}}" alt="">
-							 </a>
+							<a href="{{route('web.index')}}"><img src="{{asset('web/images/logos/logo.jpg')}}" alt=""></a>
+						</div>						
+						<div>
+							<button class="navbar-toggler hidden-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+								<span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span> &nbsp;MENU
+							</button>
 						</div>
 					</div><!-- logo col end -->
+					<div class="srch hidden-lg">						
+						{{ Form::open(['method' => 'post','route'=>'web.search']) }}
+							<div class="srch-xs hidden-lg">
+								<input type="text" class="form-control" name="query" placeholder="Type what you want and enter">
+								<button type="submit"><i class="fa fa-search"></i></button>
+							</div>
+						{{ Form::close() }}
+					</div>
 
 					<div class="col-lg-9 col-sm-9 col-xs-9 header-right">
 						<div class="ad-banner float-right">
@@ -91,10 +103,11 @@
 				<div class="row">
 					<nav class="navbar navbar-expand-lg col">
 						<div class="site-nav-inner float-left">
-			               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
-			                  <span class="navbar-toggler-icon"><i class="fa fa-ellipsis-v"></i></span>
-			               </button>
 			               <!-- End of Navbar toggler -->
+						
+						<button class="navbar-toggler hidden-lg hidden-xs" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+							<span class="navbar-toggler-icon"><i class="fa fa-ellipsis-v"></i></span>
+						 </button>
 
 							<div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
 								<ul class="nav navbar-nav">
@@ -149,6 +162,10 @@
 									<li>
 										<a href="{{route('web.about.about')}}">About</a>
 									</li>
+
+									<li>
+										<a href="{{route('web.about.about')}}">Support</a>
+									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->
 
@@ -156,7 +173,7 @@
 					</nav><!--/ Navigation end -->
 
 					{{ Form::open(['method' => 'post','route'=>'web.search']) }}
-						<div class="nav-search">
+						<div class="nav-search hidden-xs">
 							<span id="search"><i class="fa fa-search"></i></span>
 						</div><!-- Search end -->
 						<div class="search-block" style="display: none;">

@@ -41,9 +41,6 @@
                     <div class="col-lg-4 col-sm-12 footer-widget widget-categories">
                         <h3 class="widget-title">Hot Categories</h3>
                         <ul>
-                            <li>
-                                <a href="#"><span class="catTitle">ABOUT</span></a>
-                            </li>
                             @if(isset($footer_data['assam']->as_category_name) && !empty($footer_data['assam']->as_category_name))
                             <li>
                                 <a href="{{route('ass.news', ['id'=> $footer_data['assam']->id, 'slug' => $footer_data['assam']->as_slug])}}">{{ $footer_data['assam']->as_category_name}}</a>
@@ -79,6 +76,14 @@
                                     <a href="{{route('ass.news', ['id'=> $footer_data['crime']->id, 'slug' => $footer_data['crime']->as_slug])}}">{{ $footer_data['crime']->as_category_name}}</a>
                                 </li>
                             @endif
+
+                            <li>
+                                <a href="{{route('web.about.about')}}">Support</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('web.about.about')}}">Support</a>
+                            </li>
                         </ul>   
                     </div><!-- Col end -->
                 </div><!-- Row end -->

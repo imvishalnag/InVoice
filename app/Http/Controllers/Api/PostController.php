@@ -13,8 +13,8 @@ use Validator;
 class PostController extends Controller
 {
     public function homePage($type){
-        $slider = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
-        $breaking = Post::orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
+        $slider = DB::table('posts')->orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereHp_section1('1')->limit(8)->get();
+        $breaking = DB::table('posts')->orderBy('created_at', 'DESC')->select('id', 'title', 'body', 'image', 'author', 'slug', 'created_at')->wherePost_type($type)->whereBreaking('1')->limit(8)->get();
         $category = DB::table('category')->orderBy('category_name', 'asc')->get();
         $data = [
             'slider' => $slider,

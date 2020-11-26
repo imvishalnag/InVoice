@@ -73,6 +73,10 @@
                             <?php endif; ?>
 
                             <li>
+                                <a href="<?php echo e(route('web.about.about')); ?>">Support</a>
+                            </li>
+
+                            <li>
                                 <a href="<?php echo e(route('web.about.about')); ?>">About</a>
                             </li>
                         </ul>   

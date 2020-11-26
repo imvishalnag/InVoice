@@ -146,6 +146,10 @@
 									<li>
 										<a target="_blank" href="https://www.youtube.com/">ভিডিও</a>
 									</li><!-- Video menu end -->
+
+									<li>
+										<a href="{{route('web.about.about')}}">সমৰ্থন</a>
+									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->
 

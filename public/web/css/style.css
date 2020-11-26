@@ -1305,7 +1305,7 @@ ul.top-info-box>li.nav-search i {
    border: 0;
    margin-bottom: 0;
    padding: 0px;
-   margin-left: 80px;
+   margin-left: 50px;
 }
 
 .navbar-toggler {
@@ -1601,7 +1601,7 @@ ul.navbar-nav>li.mega-dropdown {
    display: inline-block;
    position: relative;
    cursor: pointer;
-   top: 15px;
+   top: 8px;
    right: 10px;
 }
 
@@ -1630,7 +1630,7 @@ ul.navbar-nav>li.mega-dropdown {
 .search-block .search-close {
    color: #525252;
    position: absolute;
-   top: -43px;
+   top: -36px;
    right: 4px;
    font-size: 32px;
    cursor: pointer;
