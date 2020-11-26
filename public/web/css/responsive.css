@@ -685,13 +685,20 @@
       padding: 10px;
       position: relative;
       transform: translateY(10px);
+      margin-top: -7px;
    }
-   element.style {
+   .srch button {
       position: absolute;
       bottom: 11px;
       right: 11px;
       border: 0;
       padding: 9px 20px;
+  }
+  .top-bar {
+      padding-bottom: 0;
+   }
+   .top-nav {
+      margin-top: 0;
   }
 }
 
