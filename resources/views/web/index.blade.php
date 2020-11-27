@@ -145,7 +145,7 @@
                                             <div class="col-md-6">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                    <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
+                                                        <a href="{{route('web.viewPost',['slug'=>urlencode($post->slug),'id'=>$post->id])}}">
                                                             <img class="img-fluid" src="{{asset('post/thumb/'.$post->image)}}" alt="" />
                                                         </a>
                                                     </div>

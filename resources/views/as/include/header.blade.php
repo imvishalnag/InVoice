@@ -67,7 +67,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
-						<div class="support hidden-lg"><a href=""><span>SUPPORT</span></a></div>
+						<div class="support hidden-lg"><a href="{{route('web.about.support')}}"><span>SUPPORT</span></a></div>
 						<div class="logo">
 							<a href="{{route('web.index')}}"><img src="{{asset('web/images/logos/logo.jpg')}}" alt=""></a>
 						</div>						
@@ -160,7 +160,7 @@
 									</li><!-- Video menu end -->
 
 									<li>
-										<a href="{{route('web.about.about')}}">সমৰ্থন</a>
+										<a href="{{route('web.about.support')}}">সমৰ্থন</a>
 									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->

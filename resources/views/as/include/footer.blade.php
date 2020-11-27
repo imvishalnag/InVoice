@@ -78,11 +78,11 @@
                             @endif
 
                             <li>
-                                <a href="{{route('web.about.about')}}">Support</a>
+                                <a href="{{route('web.about.about')}}">About</a>
                             </li>
 
                             <li>
-                                <a href="{{route('web.about.about')}}">Support</a>
+                                <a href="{{route('web.about.support')}}">সমৰ্থন</a>
                             </li>
                         </ul>   
                     </div><!-- Col end -->

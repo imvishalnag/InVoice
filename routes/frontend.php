@@ -28,6 +28,12 @@ Route::get('/about', function () {
     return view('web.about.about');
 })->name('web.about.about');
 
+//========= support =========//
+
+Route::get('/support', function () {
+    return view('web.about.support');
+})->name('web.about.support');
+
 //========= order =========//
 
 Route::get('/contact', function () {

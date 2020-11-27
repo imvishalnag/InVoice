@@ -30,8 +30,6 @@
                                         <div class="post-meta">
                                             <span class="post-author"><a href="#">{{$post->author}}</a></span>
                                             <span class="post-date">{{ date('F d, Y', strtotime($post->created_at))}}</span>
-                                            <span class="post-comment pull-right"><i class="fa fa-eye"></i>
-                                            <a href="#" class="comments-link"><span>03</span></a></span>
                                         </div>
                                         {!! Str::words($post->body, 20, ' ...') !!}
                                     </div><!-- Post content end -->
