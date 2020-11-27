@@ -87,4 +87,15 @@ class PostController extends Controller
         ];
         return response()->json($response, 200);
     }
+
+    public function search($searchKey)
+    {
+        $posts = DB::table('posts')->where('title', 'like', '%'.$searchKey.'%')->latest()->limit(10)->get();
+        $response = [
+            'status' => true,
+            'message' => 'Search Details',
+            'data' => $posts
+        ];
+        return response()->json($response, 200);
+    }
 }

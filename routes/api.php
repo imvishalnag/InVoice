@@ -23,5 +23,6 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('post/{type}/{category}/{page}', 'PostController@postListWithCategory');
     Route::get('post/details/{id}', 'PostController@postList');
     Route::get('video/list/{type}/{page}', 'PostController@videoList');
+    Route::get('video/list/{type}/{page}', 'PostController@videoList');
 });
 

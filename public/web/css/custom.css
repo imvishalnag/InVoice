@@ -158,3 +158,9 @@ ul.navbar-nav>li:hover>a.dropdown-toggle:before, ul.navbar-nav>li.active>a.dropd
 #more-news-slide.owl-carousel .owl-stage-outer {
     padding: 10px;
 }
+.post-title a {
+    display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
