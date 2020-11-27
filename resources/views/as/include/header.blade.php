@@ -139,11 +139,11 @@
 									@endif
 									@if(isset($header_data['crime']->as_category_name) && !empty($header_data['crime']->as_category_name))
 										<li>
-											<a href="{{route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])}}">{{ $header_data['crime']->as_category_name}}</a>
+											<a href="{{route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->as_slug])}}">{{ $header_data['crime']->as_category_name}}</a>
 										</li>
 									@endif
 									<li class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown">আগল <i class="fa fa-angle-down"></i></a>
+										<a class="dropdown-toggle" data-toggle="dropdown">আগলৈ <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
 											@if(isset($header_data['category']) && !empty($header_data['category']))
 												@foreach ($header_data['category'] as $category)

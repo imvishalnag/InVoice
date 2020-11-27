@@ -94,6 +94,7 @@ class PostController extends Controller
         $response = [
             'status' => true,
             'message' => 'Search Details',
+            'search_key' => $searchKey,
             'data' => $posts
         ];
         return response()->json($response, 200);
