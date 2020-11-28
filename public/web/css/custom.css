@@ -24,7 +24,7 @@
 	100% { transform: rotate(360deg); }
 }
 .top-social .social-icon li a i, .footer-social li a .social-icon i {
-    font-size: 12px;
+    font-size: 18px;
     width: 32px;
     height: 32px;
     line-height: 32px;
@@ -36,14 +36,12 @@
 	float: left;
 }
 .top-nav li a.showing {
-	background-color: #ffffff;
-	color: #cc0001;
+	color: #fbfbfb;
 	padding: 0 5px;
-	border: 1px solid #ffffff;
 	opacity: 1;
+	font-weight: 900;
 }
 .top-nav li a {
-    border: 1px solid #fff;
     padding: 0 5px;
 }
 .top-nav li b {
@@ -51,9 +49,9 @@
 	text-transform: uppercase;
 }
 .main-nav {
-	border: 3px solid #090d3d;
-    background: #dcdcdc;
-    border-top: 0;
+	border: 3px solid #fbfbfb;
+	background: #dcdcdc;
+	border-top: 0;
 }
 .navbar-nav .dropdown-menu {
     width: 190px;

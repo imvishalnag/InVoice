@@ -40,19 +40,19 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="col-md-8">
-		               	<div class="ts-date">
-		                  	<i class="fa fa-calendar-check-o"></i><?php echo e(date('M d, Y', strtotime(Carbon\Carbon::today()))); ?>
+						<div class="ts-date">
+						   <i class="fa fa-calendar-check-o"></i><?php echo e(strtoupper(substr(Carbon\Carbon::today()->format('l'), 0, 3))); ?> <?php echo e(date('d M, Y', strtotime(Carbon\Carbon::today()))); ?>
 
-		               	</div>
+						</div>
 		               <ul class="unstyled top-nav">
-		                  	<li><b>Showing in :</b></li>
-		                  	<li><a href="<?php echo e(route('web.index')); ?>">English</a></li>
-		                  	<li><a href="<?php echo e(route('assamese.index')); ?>" class="showing">অসমীয়া</a></li>
+		                  	<li><b>Show in :</b></li>
+		                  	<li><a href="<?php echo e(route('web.index')); ?>" class="showing">English</a></li>
 		               </ul>
 		            </div><!--/ Top bar left end -->
 
 		            <div class="col-md-4 top-social text-lg-right text-md-center">
 		                <ul class="social-icon">
+							<li><a href="https://api.whatsapp.com/send?phone=8099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 							<li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -68,9 +68,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
-						<div class="support hidden-lg"><a href="<?php echo e(route('web.about.support')); ?>"><span>SUPPORT</span></a></div>
+						<div class="support hidden-lg"><a href="<?php echo e(route('as.about.support')); ?>"><span>SUPPORT</span></a></div>
 						<div class="logo">
-							<a href="<?php echo e(route('web.index')); ?>"><img src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt=""></a>
+							<a href="<?php echo e(route('web.index')); ?>"><img src="<?php echo e(asset('web/images/logos/logo.gif')); ?>" alt=""></a>
 						</div>						
 						<div>
 							<button class="navbar-toggler hidden-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
@@ -103,7 +103,7 @@
 				<div class="row">
 					<nav class="navbar navbar-expand-lg col">
 						<div class="site-nav-inner float-left">
-			               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+			               <button class="navbar-toggler hidden-lg hidden-xs" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
 			                  <span class="navbar-toggler-icon"><i class="fa fa-ellipsis-v"></i></span>
 			               </button>
 			               <!-- End of Navbar toggler -->
@@ -142,11 +142,11 @@
 									<?php endif; ?>
 									<?php if(isset($header_data['crime']->as_category_name) && !empty($header_data['crime']->as_category_name)): ?>
 										<li>
-											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->en_slug])); ?>"><?php echo e($header_data['crime']->as_category_name); ?></a>
+											<a href="<?php echo e(route('ass.news', ['id'=> $header_data['crime']->id, 'slug' => $header_data['crime']->as_slug])); ?>"><?php echo e($header_data['crime']->as_category_name); ?></a>
 										</li>
 									<?php endif; ?>
 									<li class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown">আগল <i class="fa fa-angle-down"></i></a>
+										<a class="dropdown-toggle" data-toggle="dropdown">আগলৈ <i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown-menu" role="menu">
 											<?php if(isset($header_data['category']) && !empty($header_data['category'])): ?>
 												<?php $__currentLoopData = $header_data['category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -163,7 +163,7 @@
 									</li><!-- Video menu end -->
 
 									<li>
-										<a href="<?php echo e(route('web.about.support')); ?>">সমৰ্থন</a>
+										<a href="<?php echo e(route('as.about.support')); ?>">সমৰ্থন</a>
 									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->

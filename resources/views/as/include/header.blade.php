@@ -40,18 +40,18 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="col-md-8">
-		               	<div class="ts-date">
-		                  	<i class="fa fa-calendar-check-o"></i>{{ date('M d, Y', strtotime(Carbon\Carbon::today()))}}
-		               	</div>
+						<div class="ts-date">
+						   <i class="fa fa-calendar-check-o"></i>{{strtoupper(substr(Carbon\Carbon::today()->format('l'), 0, 3))}} {{ date('d M, Y', strtotime(Carbon\Carbon::today()))}}
+						</div>
 		               <ul class="unstyled top-nav">
-		                  	<li><b>Showing in :</b></li>
-		                  	<li><a href="{{route('web.index')}}">English</a></li>
-		                  	<li><a href="{{route('assamese.index')}}" class="showing">অসমীয়া</a></li>
+		                  	<li><b>Show in :</b></li>
+		                  	<li><a href="{{route('web.index')}}" class="showing">English</a></li>
 		               </ul>
 		            </div><!--/ Top bar left end -->
 
 		            <div class="col-md-4 top-social text-lg-right text-md-center">
 		                <ul class="social-icon">
+							<li><a href="https://api.whatsapp.com/send?phone=8099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 							<li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -67,9 +67,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
-						<div class="support hidden-lg"><a href="{{route('web.about.support')}}"><span>SUPPORT</span></a></div>
+						<div class="support hidden-lg"><a href="{{route('as.about.support')}}"><span>SUPPORT</span></a></div>
 						<div class="logo">
-							<a href="{{route('web.index')}}"><img src="{{asset('web/images/logos/logo.jpg')}}" alt=""></a>
+							<a href="{{route('web.index')}}"><img src="{{asset('web/images/logos/logo.gif')}}" alt=""></a>
 						</div>						
 						<div>
 							<button class="navbar-toggler hidden-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
@@ -100,7 +100,7 @@
 				<div class="row">
 					<nav class="navbar navbar-expand-lg col">
 						<div class="site-nav-inner float-left">
-			               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+			               <button class="navbar-toggler hidden-lg hidden-xs" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
 			                  <span class="navbar-toggler-icon"><i class="fa fa-ellipsis-v"></i></span>
 			               </button>
 			               <!-- End of Navbar toggler -->
@@ -160,7 +160,7 @@
 									</li><!-- Video menu end -->
 
 									<li>
-										<a href="{{route('web.about.support')}}">সমৰ্থন</a>
+										<a href="{{route('as.about.support')}}">সমৰ্থন</a>
 									</li>
 								</ul><!--/ Nav ul end -->
 							</div><!--/ Collapse end -->

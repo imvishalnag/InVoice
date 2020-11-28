@@ -43,19 +43,19 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="col-md-8">
-		               	<div class="ts-date">
-		                  	<i class="fa fa-calendar-check-o"></i><?php echo e(date('M d, Y', strtotime(Carbon\Carbon::today()))); ?>
+						<div class="ts-date">
+						   <i class="fa fa-calendar-check-o"></i><?php echo e(strtoupper(substr(Carbon\Carbon::today()->format('l'), 0, 3))); ?> <?php echo e(date('d M, Y', strtotime(Carbon\Carbon::today()))); ?>
 
-		               	</div>
+						</div>
 		               <ul class="unstyled top-nav">
-		                  	<li><b>Showing in :</b></li>
-		                  	<li><a href="<?php echo e(route('web.index')); ?>" class="showing">English</a></li>
-		                  	<li><a href="<?php echo e(route('assamese.index')); ?>">অসমীয়া</a></li>
+		                  	<li><b>Show in :</b></li>
+		                  	<li><a href="<?php echo e(route('assamese.index')); ?>" class="showing">অসমীয়া</a></li>
 		               </ul>
 		            </div><!--/ Top bar left end -->
 
 		            <div class="col-md-4 top-social text-lg-right text-md-center">
 		                <ul class="social-icon">
+							<li><a href="https://api.whatsapp.com/send?phone=+918099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 							<li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -73,7 +73,7 @@
 					<div class="col-lg-3 col-sm-3 col-xs-3 mbl-logo-block">
 						<div class="support hidden-lg"><a href="<?php echo e(route('web.about.support')); ?>"><span>SUPPORT</span></a></div>
 						<div class="logo">
-							<a href="<?php echo e(route('web.index')); ?>"><img src="<?php echo e(asset('web/images/logos/logo.jpg')); ?>" alt=""></a>
+							<a href="<?php echo e(route('web.index')); ?>"><img src="<?php echo e(asset('web/images/logos/logo.gif')); ?>" alt=""></a>
 						</div>						
 						<div>
 							<button class="navbar-toggler hidden-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">

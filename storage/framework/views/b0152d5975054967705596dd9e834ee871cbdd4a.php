@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title><?php echo e(__('NEWS TIME NORTHEAST')); ?></title>
+    <title>INVOICE NE</title>
 
     <!-- Bootstrap -->
     <link href="<?php echo e(asset('vendors/bootstrap/dist/css/bootstrap.min.css')); ?>" rel="stylesheet">

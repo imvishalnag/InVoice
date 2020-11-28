@@ -22,6 +22,7 @@
                                     The team Invoice NE is formed with aim to mobilize and present voices of People of North East across Tribes, Language and Identity.Citizen's Journalism only possible by being both editorially and financially neutral and independent .To remain People's voice  we are relying principally on contributions from readers and concerned citizens/ organisation who support quality journalism without own vested interest.</p>
                                     
                                 <p>Check out our Join and Support Plan FAQ. If you have any specific query then please write to us at</p>
+                                <p> <a style="font-size: 16px;background: green;color: #fff;padding: 2px 15px;border-radius: 12px;" href="https://api.whatsapp.com/send?phone=+918099134064" target="_blank"><i class="fa fa-whatsapp"></i> +91 8099134064</a>  <a style="font-size: 16px;background: #353535;color: #fff;padding: 2px 15px;border-radius: 12px;" href="mailto:invoicene365@gmail.com" target="_blank"><i class="fa fa-envelope"></i>  invoicene365@gmail.com</a> </p>
 
                             </div><!-- Entery content end -->
 

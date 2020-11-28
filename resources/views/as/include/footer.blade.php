@@ -21,6 +21,9 @@
                             <p class="footer-info-email"><i class="fa fa-envelope-o"></i> invoicene365@gmail.com</p>
                             <ul class="unstyled footer-social">
                                 <li>
+                                    <a title="Whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=+918099134064">
+                                        <span class="social-icon"><i class="fa fa-whatsapp"></i></span>
+                                    </a>
                                     <a title="Facebook" target="_blank" href="https://www.facebook.com/invoicene">
                                         <span class="social-icon"><i class="fa fa-facebook"></i></span>
                                     </a>
@@ -82,7 +85,7 @@
                             </li>
 
                             <li>
-                                <a href="{{route('web.about.support')}}">সমৰ্থন</a>
+                                <a href="{{route('as.about.support')}}">সমৰ্থন</a>
                             </li>
                         </ul>   
                     </div><!-- Col end -->

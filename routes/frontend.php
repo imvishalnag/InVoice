@@ -34,6 +34,12 @@ Route::get('/support', function () {
     return view('web.about.support');
 })->name('web.about.support');
 
+//========= support =========//
+
+Route::get('assamese/support', function () {
+    return view('as.about.support');
+})->name('as.about.support');
+
 //========= order =========//
 
 Route::get('/contact', function () {

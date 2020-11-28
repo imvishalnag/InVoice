@@ -1,5 +1,5 @@
 
-@extends('web.template.web_master')
+@extends('as.template.web_master')
 
 @section('content')
 
