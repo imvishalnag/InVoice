@@ -99,7 +99,6 @@
                     <div class="sidebar sidebar-right">
                         <div class="widget">
                             <h3 class="block-title"><span>Follow Us</span></h3>
-
                             <ul class="social-icon">
                                 <li><a href="https://api.whatsapp.com/send?phone=8099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
                                 <li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>

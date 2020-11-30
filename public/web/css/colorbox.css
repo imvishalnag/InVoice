@@ -43,3 +43,9 @@
         #cboxNext:hover{background-position:bottom right;}
         #cboxClose{position:absolute; top:5px; right:5px; display:block; background:url(../images/controls.png) no-repeat top center; width:38px; height:19px; text-indent:-9999px;}
         #cboxClose:hover{background-position:bottom center;}
+@media (max-width: 425px) {    
+    #colorbox, #cboxWrapper, #cboxContent, #cboxLoadedContent {
+        width: 99vw!important;
+        height: 300px!important;
+    }
+}

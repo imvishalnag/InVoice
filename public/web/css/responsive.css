@@ -544,6 +544,36 @@
       min-height: 150px;
       max-height: 150px;
    }
+   
+   .social-icon li a i.fa-whatsapp {
+      color: #fff;
+      transition: .5s ease-in-out;
+      background: #4ced69;
+   } 
+
+   .social-icon li a i.fa-facebook {
+      color: #fff;
+      transition: .5s ease-in-out;
+      background: #3B5998;
+   }
+
+   .social-icon li a i.fa-twitter {
+      color: #fff;
+      transition: .5s ease-in-out;
+      background: #00aced;
+   }
+
+   .social-icon li a i.fa-instagram {
+      color: #fff;
+      transition: .5s ease-in-out;
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+   }
+
+   .social-icon li a i.fa-youtube {
+      color: #fff;
+      transition: .5s ease-in-out;
+      background: #bb0000;
+   }
 }
 
 /* Extra Small Devices, Phones */
