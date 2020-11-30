@@ -792,7 +792,7 @@
                 </div><!-- Content Col end -->
 
                 <div class="col-lg-4 col-md-12">
-                    <div class="sidebar sidebar-right">
+                    <div class="sidebar sidebar-right hidden-xs-fb">
                         <h3 class="block-title"><span>Facebook</span></h3>
 
                         <div class="widget text-center">

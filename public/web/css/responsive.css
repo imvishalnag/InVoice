@@ -750,6 +750,9 @@
    .top-nav li {
       padding-left: 3px;
    }
+   .hidden-xs-fb {
+      display: none;
+   }
 }
 
 /* Custom, iPhone Retina */
