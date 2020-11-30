@@ -1159,7 +1159,10 @@ span.post-comment span {
 .top-nav li a {
    color: #ffffff;
    line-height: 100%;
-   opacity: .6;
+   opacity: 1;
+   background: #070c3c;
+   padding: 3px 10px 2.7px;
+   border-radius: 2px;
 }
 
 /* Top social */
@@ -1987,6 +1990,40 @@ ul.navbar-nav>li.mega-dropdown {
 }
 
 .social-icon li a i.fa-youtube:hover, .footer-social li a i.fa-youtube {
+   background: #bb0000;
+}
+
+.widget .social-icon li a i.fa:hover {
+   transform: translateY(5px);
+}
+
+.widget .social-icon li a i.fa-whatsapp {
+   color: #fff;
+   transition: .5s ease-in-out;
+   background: #4ced69;
+} 
+
+.widget .social-icon li a i.fa-facebook {
+   color: #fff;
+   transition: .5s ease-in-out;
+   background: #3B5998;
+}
+
+.widget .social-icon li a i.fa-twitter {
+   color: #fff;
+   transition: .5s ease-in-out;
+   background: #00aced;
+}
+
+.widget .social-icon li a i.fa-instagram {
+   color: #fff;
+   transition: .5s ease-in-out;
+   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.widget .social-icon li a i.fa-youtube {
+   color: #fff;
+   transition: .5s ease-in-out;
    background: #bb0000;
 }
 

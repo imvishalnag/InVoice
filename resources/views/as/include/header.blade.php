@@ -44,8 +44,9 @@
 						   <i class="fa fa-calendar-check-o"></i>{{strtoupper(substr(Carbon\Carbon::today()->format('l'), 0, 3))}} {{ date('d M, Y', strtotime(Carbon\Carbon::today()))}}
 						</div>
 		               <ul class="unstyled top-nav">
-		                  	<li><b>Show in :</b></li>
-		                  	<li><a href="{{route('web.index')}}" class="showing">English</a></li>
+		                  	<li><b>LANG :</b></li>
+		                  	<li><a href="{{route('assamese.index')}}" class="showing"><i class="fa fa-check"></i> অসমীয়া</a></li>
+		                  	<li><a href="{{route('web.index')}}" class=""> ENGLISH</a></li>
 		               </ul>
 		            </div><!--/ Top bar left end -->
 
@@ -87,7 +88,7 @@
 					</div>
 
 					<div class="col-lg-9 col-sm-9 col-xs-9 header-right">
-						<div class="ad-banner float-right">
+						<div class="ad-banner float-right" style="padding: 6px 0">
 							<a href="#"><img src="{{asset('web/images/banner-ads/ad-top-header.png')}}" class="img-fluid" alt=""></a>
 						</div>
 					</div><!-- header right end -->

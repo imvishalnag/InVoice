@@ -480,12 +480,11 @@
                             <h3 class="block-title"><span>Follow Us</span></h3>
 
                             <ul class="social-icon">
-                                <li><a href="#" target="_blank"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?phone=8099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCYpRDBixW0TboCUkx1C6ahQ/" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             </ul>
                         </div><!-- Widget Social end -->
                         <div>

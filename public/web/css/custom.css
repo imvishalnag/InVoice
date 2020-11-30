@@ -36,10 +36,11 @@
 	float: left;
 }
 .top-nav li a.showing {
-	color: #fbfbfb;
-	padding: 0 5px;
+	color: #cc0001;
+	padding: 3px 5px 1px;
 	opacity: 1;
 	font-weight: 900;
+	background: #fff;
 }
 .top-nav li a {
     padding: 0 5px;
