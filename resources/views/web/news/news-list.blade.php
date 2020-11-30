@@ -64,7 +64,7 @@
                             <img class="banner img-fluid" src="{{asset('web/images/banner-ads/ad-sidebar2.png')}}" alt="" />
                         </div><!-- Sidebar Ad end -->
 
-                        <div class="widget color-default">
+                        <div class="widget color-default hidden-xs-fb">
                             <h3 class="block-title"><span>Facebook</span></h3>
                             
                             <div class="widget text-center">
