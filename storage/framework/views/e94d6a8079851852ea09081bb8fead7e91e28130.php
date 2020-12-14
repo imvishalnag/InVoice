@@ -465,12 +465,11 @@
                             <h3 class="block-title"><span>Follow Us</span></h3>
 
                             <ul class="social-icon">
-                                <li><a href="#" target="_blank"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?phone=8099134064" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                <li><a href="https://www.facebook.com/invoicene/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/InvoiceNe/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/invoice.ne/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCYpRDBixW0TboCUkx1C6ahQ/" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             </ul>
                         </div><!-- Widget Social end -->	
                         <div>
@@ -776,11 +775,11 @@
                 </div><!-- Content Col end -->
 
                 <div class="col-lg-4 col-md-12">
-                    <div class="sidebar sidebar-right">
+                    <div class="sidebar sidebar-right hidden-xs-fb">
                         <h3 class="block-title"><span>Facebook</span></h3>
 
                         <div class="widget text-center">
-                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=600&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Finvoicene&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=318843728990066" width="340" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                         </div><!-- Sidebar Ad end -->
                     </div><!--Sidebar right end -->
                 </div><!-- Sidebar col end -->

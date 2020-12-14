@@ -2356,9 +2356,8 @@ ul.navbar-nav>li.mega-dropdown {
 .footer-logo img {
    display: inline-block;
    margin-bottom: 10px;
-   max-width: 50%;
-   padding: 10px 0;
-   background: #080e42;
+   max-width: 60%;
+   padding: 0;
 }
 
 .footer-info-phone,
