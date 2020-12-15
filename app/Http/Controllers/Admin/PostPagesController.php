@@ -138,10 +138,10 @@ class PostPagesController extends Controller
     public function ajaxGetPostList()
     {
         $query = DB::table('posts')
+            ->latest()
             ->select('posts.*', 'category.category_name as c_name')
             ->join('category', 'posts.cat_id', '=', 'category.id')
-            ->where('posts.post_type', 1)
-            ->orderBy('posts.id', 'desc');
+            ->where('posts.post_type', 1);
 
         $slide_post = DB::table('posts')
             ->select('posts.*', 'category.category_name as category_name')

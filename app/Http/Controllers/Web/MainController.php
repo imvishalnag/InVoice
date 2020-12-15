@@ -21,6 +21,7 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.hp_section1', 1)
             ->where('posts.post_type', 1)
+            ->latest()
             ->get();
         $four_post = DB::table('posts')
             ->select('posts.*', 'category.category_name as category_name')
@@ -28,6 +29,7 @@ class MainController extends Controller
             ->where('posts.hp_section1', 2)
             ->where('posts.post_type', 1)
             ->take(4)
+            ->latest()
             ->get();
 
         $slider_post = NULL;
@@ -40,6 +42,7 @@ class MainController extends Controller
                 ->where('posts.post_type', 1)
                 ->where('posts.hp_section1', '!=', 2)
                 ->take(5)
+                ->latest()
                 ->get();
         }
 
@@ -53,6 +56,7 @@ class MainController extends Controller
                 ->where('posts.post_type', 1)
                 ->where('posts.hp_section1', '!=', 1)
                 ->take(4)
+                ->latest()
                 ->get();
         }
 
@@ -61,8 +65,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 1)
-            ->orderBy('posts.id', 'desc')
             ->take(5)
+            ->latest()
             ->get();
 
         $assam_cat_name = DB::table('category')->where('id', 1)->first();
@@ -73,8 +77,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 14)
-            ->orderBy('posts.id', 'desc')
             ->take(5)
+            ->latest()
             ->get();
 
         $guwahati_cat_name = DB::table('category')->where('id', 14)->first();
@@ -85,8 +89,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 12)
-            ->orderBy('posts.id', 'desc')
             ->take(5)
+            ->latest()
             ->get();
 
         $technology_cat_name = DB::table('category')->where('id', 12)->first();
@@ -98,8 +102,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 6)
-            ->orderBy('posts.id', 'desc')
             ->take(4)
+            ->latest()
             ->get();
 
         $business_posts_2 = DB::table('posts')
@@ -107,8 +111,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 6)
-            ->orderBy('posts.id', 'asc')
             ->take(4)
+            ->latest()
             ->get();
 
         $health = DB::table('posts')
@@ -116,8 +120,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 8)
-            ->orderBy('posts.id', 'asc')
             ->take(4)
+            ->latest()
             ->get();
 
         $health_cat_name = DB::table('category')->where('id', 8)->first();
@@ -128,8 +132,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 9)
-            ->orderBy('posts.id', 'asc')
             ->take(4)
+            ->latest()
             ->get();
         $gadget_cat_name = DB::table('category')->where('id', 9)->first();
         $gadget_cat_name = $gadget_cat_name->category_name;
@@ -139,8 +143,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 11)
-            ->orderBy('posts.id', 'asc')
             ->take(4)
+            ->latest()
             ->get();
         $travel_cat_name = DB::table('category')->where('id', 11)->first();
         $travel_cat_name = $travel_cat_name->category_name;
@@ -150,8 +154,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 2)
-            ->orderBy('posts.id', 'desc')
             ->take(5)
+            ->latest()
             ->get();
 
         $lifestyle_2 = DB::table('posts')
@@ -159,8 +163,8 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('posts.post_type', 1)
             ->where('posts.cat_id', 2)
-            ->orderBy('posts.id', 'asc')
             ->take(5)
+            ->latest()
             ->get();
 
         $lifestyle_cat_name = DB::table('category')->where('id', 2)->first();
@@ -172,17 +176,17 @@ class MainController extends Controller
             ->join('category', 'posts.cat_id', '=', 'category.id')
             ->where('popular_post', 1)
             ->where('posts.post_type', 1)
-            ->orderBy('posts.id', 'asc')
             ->take(5)
+            ->latest()
             ->get();
 
         $youtube_post = DB::table('video')
             ->where('type', 1)
             ->where('status', 1)
-            ->orderBy('id', 'desc')
             ->take(4)
+            ->latest()
             ->get();
-        $breaking_news = Post::orderBy('created_at', 'DESC')->wherePost_type(1)->whereStatus(1)->whereBreaking(1)->get();
+        $breaking_news = Post::latest()->wherePost_type(1)->whereStatus(1)->whereBreaking(1)->limit(5)->get();
         return view('web.index', compact(
             'slider_post',
             'fourth_post',
@@ -239,7 +243,7 @@ class MainController extends Controller
     //Header Navigation
     public function headerNav($id, $slug)
     {
-        $news = DB::table('posts')->where('cat_id', $id)->where('post_type', 1)->get();
+        $news = DB::table('posts')->latest()->where('cat_id', $id)->where('post_type', 1)->get();
         $cat_name = DB::table('category')->where('id', $id)->first();
         $cat_name = $cat_name->category_name;
         return view('web.news.news-list', compact('news', 'cat_name'));

@@ -55,11 +55,11 @@
                 serverSide: true,
                 ajax: "{{ route('admin.ajax.get_eng_post_list') }}",
                 columns: [
-                    {data: 'id', name: 'id',searchable: true},
+                    {data: 'id', name: 'id',searchable: true, orderable:false},
                     {data: 'title', name: 'title',searchable: true},      
                     {data: 'category', name: 'category',searchable: true},      
                     {data: 'author', name: 'author',searchable: true},      
-                    {data: 'created_at', name: 'created_at',searchable: true},      
+                    {data: 'created_at', name: 'created_at',searchable: true}, 
                     {data: 'action', name: 'action',searchable: true},      
                     {data: 'section', name: 'section',searchable: true},      
                 ]

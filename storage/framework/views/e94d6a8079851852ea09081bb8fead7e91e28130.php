@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
     <section class="featured-post-area no-padding" style="padding-top: 13px">
         <div class="container-fluid">
@@ -8,7 +6,7 @@
                     <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
                         <?php if(isset($slider_post) && !empty($slider_post)): ?>
                             <?php $__currentLoopData = $slider_post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="item" style="background-image:url(<?php echo e(asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
+                            <div class="item" style="background-image:url(<?php echo e(asset('post/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')); ?>)">
                                 <div class="featured-post">
                                     <div class="post-content">
                                     <a class="post-cat" href="<?php echo e(route('ass.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])); ?>"><?php echo e($post->category_name); ?></a>

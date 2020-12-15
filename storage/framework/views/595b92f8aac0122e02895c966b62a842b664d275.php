@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('meta'); ?>
     <meta property="og:url"                content="http://webinfotechghy.xyz" />
     <meta property="og:type"               content="news" />

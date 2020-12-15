@@ -8,7 +8,7 @@
                     <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
                         @if(isset($slider_post) && !empty($slider_post))
                             @foreach($slider_post as $post)
-                            <div class="item" style="background-image:url({{asset('post/thumb/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')}})">
+                            <div class="item" style="background-image:url({{asset('post/'.$post->image ?? 'web/images/news/tech/gadget2.jpg')}})">
                                 <div class="featured-post">
                                     <div class="post-content">
                                     <a class="post-cat" href="{{route('ass.news', ['id'=> $post->cat_id, 'slug' => urlencode($post->slug)])}}">{{$post->category_name}}</a>
