@@ -81,6 +81,7 @@
                                             <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                                                 <label for="image">Image Upload</label>
                                                 <input type="file" class="form-control" name="image" accept="/*">
+                                                <img src="{{ asset('post/thumb/'.$posts->image) }}" alt="{{ $posts->image }}" width="100" height="100">
                                                 @if($errors->has('image'))
                                                 <span class="invalid-feedback" role="alert" style="color:red">
                                                     <strong>{{ $errors->first('image') }}</strong>

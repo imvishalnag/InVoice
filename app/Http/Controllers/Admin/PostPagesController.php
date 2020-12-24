@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use App\Post;
+use App\Video;
 use DataTables;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\DB;
@@ -118,6 +119,100 @@ class PostPagesController extends Controller
             return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
         }
     }
+    public function editEnglVideo($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+        $video = DB::table('video')
+        ->where('type', 1)
+        ->where('id', $id)
+        ->orderBy('id', 'desc')
+        ->first();
+
+        $categorys = DB::table('category')->get();
+        return view('admin.create_video', compact('categorys', 'video'));
+    }
+
+    public function updateEnglVideo(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'author' => 'required',
+            'v_id' => 'required|size:11',
+            'type' => 'required'
+        ]);
+        $id = $request->input('id');
+        $image_name = null;
+        if($request->hasfile('thumb'))
+        {
+            $this->validate($request, [
+                    'thumb' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=850,min_height=565',
+            ]);
+
+            $image = $request->file('thumb');
+            $destination = base_path() . '/public/youtube/';
+            $image_extension = $image->getClientOriginalExtension();
+            $image_name = md5(date('now') . time()) . "." . $image_extension;
+            $original_path = $destination . $image_name;
+            Image::make($image)->save($original_path);
+            $thumb_path = base_path() . '/public/youtube/thumb/' . $image_name;
+            Image::make($image)
+                ->resize(565, 850)
+                ->save($thumb_path);
+
+            // Check wheather image is in DB
+            $checkImage = DB::table('video')->where('id', $id)->first();
+            if($checkImage->thumbnail){
+                //Delete
+                $image_path_thumb = "/public/youtube/thumb/".$checkImage->thumbnail;  
+                $image_path_original = "/public/youtube/".$checkImage->thumbnail;  
+                if(File::exists($image_path_thumb)) {
+                    File::delete($image_path_thumb);
+                }
+                if(File::exists($image_path_original)){
+                    File::delete($image_path_original);
+                }
+
+                //Update
+                $image_update = DB::table('video')
+                ->where('id', $id)
+                ->update([
+                    'thumbnail' => $image_name,
+                    'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()
+                ]);   
+
+                if($image_update){
+                        return redirect()->back()->with('message','Updated Successfully!');
+                    }
+            }else{
+                 //Update
+                 $image_update = DB::table('video')
+                 ->where('id', $id)
+                 ->update([
+                     'thumbnail' => $image_name,
+                     'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString()
+                 ]);   
+                if($image_update){
+                        return redirect()->back()->with('message','Updated Successfully!');
+                }
+            }
+        }
+        $title = $request->input('title');
+        $author = $request->input('author');
+        $v_id = $request->input('v_id');
+        $type = $request->input('type');
+        $video = Video::find($id);
+        $video->title = $title;
+        $video->author = $author;
+        $video->v_id = $v_id;
+        $video->type = $type;
+        if ($video->save()) {
+            return redirect()->back()->with('message', 'Video Added Successfully');
+        } else {
+            return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
+        }
+    }
     public function listPost()
     {
         return view('admin.list_post');
@@ -209,7 +304,7 @@ class PostPagesController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                <a href="https://www.youtube.com/watch?v=' . $row->v_id . '" class="btn btn-info btn-sm" target="_blank">View</a>
-               <a href="#" class="btn btn-warning btn-sm">Edit</a>              
+               <a href="'.route('admin.engl.video.edit', ['id' => encrypt($row->id),]).'" class="btn btn-warning btn-sm">Edit</a>              
                ';
                 if ($row->status == '1') {
                     $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]) . '" class="btn btn-danger btn-sm">Unpublish</a>';
@@ -291,7 +386,7 @@ class PostPagesController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                <a href="https://www.youtube.com/watch?v=' . $row->v_id . '" class="btn btn-info btn-sm" target="_blank">View</a>
-               <a href="#" class="btn btn-warning btn-sm">Edit</a>              
+               <a href="'.route('admin.ass.video.edit', ['id' => encrypt($row->id)]).'" class="btn btn-warning btn-sm">Edit</a>              
                ';
                 if ($row->status == '1') {
                     $btn .= '<a href="' . route('admin.video_status', ['id' => encrypt($row->id), 'status' => encrypt(2)]) . '" class="btn btn-danger btn-sm">Unpublish</a>';
@@ -304,6 +399,20 @@ class PostPagesController extends Controller
             })
             ->rawColumns(['thumbnail', 'action'])
             ->make(true);
+    }
+    public function assVideoEdit($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+        $categorys = DB::table('category')->get();
+        $video = DB::table('video')
+        ->where('type', 2)
+        ->where('id', $id)
+        ->orderBy('id', 'desc')
+        ->first();
+        return view('admin.create_video', compact('categorys', 'video'));
     }
     public function GetPostSinglePost($post_id)
     {

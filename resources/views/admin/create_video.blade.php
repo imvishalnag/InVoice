@@ -22,12 +22,17 @@
                 </div>
                     <div>
                         <div class="x_content">
-                        {{ Form::open(['method' => 'post','route'=>'admin.add_video', 'enctype'=>'multipart/form-data']) }}
+                        @if (isset($video))
+                            {{ Form::open(['method' => 'POST','route'=>'admin.update_video', 'enctype'=>'multipart/form-data']) }}
+                            <input type="hidden" name="id" value="{{ $video->id }}">
+                        @else
+                            {{ Form::open(['method' => 'post','route'=>'admin.add_video', 'enctype'=>'multipart/form-data']) }}
+                        @endif
                             <div class="well" style="overflow: auto">
                                 <div class="form-row mb-10">
                                     <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <label for="title">Title</label>
-                                        <input type="text" class="form-control" name="title" placeholder="Enter Title" value="{{old('title')}}">
+                                        <input type="text" class="form-control" name="title" placeholder="Enter Title" value="{{ isset($video) ? $video->title : old('title')}}">
                                         @if($errors->has('title'))
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $errors->first('title') }}</strong>
@@ -36,20 +41,28 @@
                                     </div>
                                     <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
                                         <label for="type">Type</label>
-                                        <select class="form-control" name="type" id="type">
-                                            <option selected="" disabled="" value="">Select Type</option>
-                                            <option value="1" >English</option>
-                                            <option value="2" >Assamese</option>
-                                        </select>
+                                        @if (isset($video))
+                                            <select class="form-control" name="type" id="type">
+                                                <option selected="" disabled="" value="">Select Type</option>
+                                                <option value="1" {{ $video->type == '1' ? 'selected' : '' }}>English</option>
+                                                <option value="2" {{ $video->type == '2' ? 'selected' : '' }}>Assamese</option>
+                                            </select>
+                                        @else
+                                            <select class="form-control" name="type" id="type">
+                                                <option selected="" disabled="" value="">Select Type</option>
+                                                <option value="1" >English</option>
+                                                <option value="2" >Assamese</option>
+                                            </select>
+                                        @endif
                                         @if($errors->has('type'))
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $errors->first('type') }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert" style="color:red">
+                                                <strong>{{ $errors->first('type') }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-12 mb-3">
                                         <label for="author">Author</label>
-                                        <input type="text" class="form-control" value="{{old('author')}}" name="author" placeholder="Author">
+                                        <input type="text" class="form-control" value="{{ isset($video) ? $video->author : old('author')}}" name="author" placeholder="Author">
                                         @if($errors->has('author'))
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $errors->first('author') }}</strong>
@@ -60,7 +73,7 @@
                                 <div class="form-row mb-10">
                                     <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <label for="v_id">Video ID</label>
-                                        <input type="text" class="form-control" name="v_id" placeholder="Enter Video ID" value="{{old('v_id')}}">
+                                        <input type="text" class="form-control" name="v_id" placeholder="Enter Video ID" value="{{ isset($video) ? $video->v_id : old('v_id')}}">
                                         @if($errors->has('v_id'))
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $errors->first('v_id') }}</strong>
@@ -70,6 +83,9 @@
                                     <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <label for="thumb">Thumbnail* (850 X 565 )</label>
                                         <input type="file" class="form-control" name="thumb" accept="/*">
+                                        @if (isset($video))
+                                            <img src="{{ asset('/youtube/thumb/'.$video->thumbnail) }}" alt="{{ $video->thumbnail }}" width="200">
+                                        @endif
                                         @if($errors->has('thumb'))
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $errors->first('thumb') }}</strong>
@@ -79,8 +95,12 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="form-group">    	            	
-                                {{ Form::submit('Post', array('class'=>'btn btn-success pull-right')) }}  
+                            <div class="form-group">  
+                                @if (isset($video))
+                                    {{ Form::submit('Update', array('class'=>'btn btn-success pull-right')) }}  
+                                @else
+                                    {{ Form::submit('Post', array('class'=>'btn btn-success pull-right')) }}  
+                                @endif
                             </div>
                         {{ Form::close() }}
                         </div>

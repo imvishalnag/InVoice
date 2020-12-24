@@ -19,6 +19,8 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     //Add Youtube Video
     Route::get('/create/video', 'PostPagesController@createVideo')->name('admin.create_video');
     Route::post('/add/video', 'PostPagesController@addVideo')->name('admin.add_video');
+    Route::get('/edit/engl/video/{id}', 'PostPagesController@editEnglVideo')->name('admin.engl.video.edit');
+    Route::post('/update/engl/video', 'PostPagesController@updateEnglVideo')->name('admin.update_video');
     
     //List Posts
     Route::get('/list/eng/post', 'PostPagesController@listPost')->name('admin.eng_list_post');
@@ -26,10 +28,12 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     Route::get('/list/ass/post', 'PostPagesController@assListPost')->name('admin.ass_list_post');
     Route::get('/list/ass/video', 'PostPagesController@assListVideo')->name('admin.ass_video_list');
 
+
     Route::get('/ajax/get/eng/post/','PostPagesController@ajaxGetPostList')->name('admin.ajax.get_eng_post_list');
     Route::get('/ajax/get/eng/video/','PostPagesController@ajaxGetVideoList')->name('admin.ajax.get_eng_video_list');
     Route::get('/ajax/get/ass/post/','PostPagesController@ajaxGetAssPostList')->name('admin.ajax.get_ass_post_list');
     Route::get('/ajax/get/ass/video/','PostPagesController@ajaxGetAssVideoList')->name('admin.ajax.get_ass_video_list');
+    Route::get('/ass/video/{id}','PostPagesController@assVideoEdit')->name('admin.ass.video.edit');
 
     Route::get('/ajax/get/popular/post/','PostPagesController@ajaxGetPopularPostList')->name('admin.ajax.get_eng_popular_post_list');
 
