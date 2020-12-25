@@ -39,8 +39,8 @@
                                         <label for="type">Type</label>
                                         <select class="form-control" name="type" id="type">
                                             <option selected="" disabled="" value="">Select Type</option>
-                                            <option value="1" >English</option>
-                                            <option value="2" >Assamese</option>
+                                            <option value="1" {{ old('type') == 1 ? 'selected' : '' }}>English</option>
+                                            <option value="2" {{ old('type') == 2 ? 'selected' : '' }}>Assamese</option>
                                         </select>
                                         @if($errors->has('type'))
                                         <span class="invalid-feedback" role="alert" style="color:red">
@@ -65,7 +65,7 @@
                                             <option selected="" disabled="" value="">Select Category</option>
                                             @if(isset($categorys) && !empty($categorys) && count($categorys) > 0)
                                                 @foreach($categorys as $category)
-                                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                                    <option value="{{$category->id}}" {{ old('category') == $category->id ? 'selected' : '' }}>{{$category->category_name}}</option>
                                                 @endforeach
                                             @endif
                                         </select>

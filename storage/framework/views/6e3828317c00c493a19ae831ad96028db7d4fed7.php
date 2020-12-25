@@ -43,8 +43,8 @@ unset($__errorArgs, $__bag); ?>
                                         <label for="type">Type</label>
                                         <select class="form-control" name="type" id="type">
                                             <option selected="" disabled="" value="">Select Type</option>
-                                            <option value="1" >English</option>
-                                            <option value="2" >Assamese</option>
+                                            <option value="1" <?php echo e(old('type') == 1 ? 'selected' : ''); ?>>English</option>
+                                            <option value="2" <?php echo e(old('type') == 2 ? 'selected' : ''); ?>>Assamese</option>
                                         </select>
                                         <?php if($errors->has('type')): ?>
                                         <span class="invalid-feedback" role="alert" style="color:red">
@@ -75,7 +75,7 @@ unset($__errorArgs, $__bag); ?>
                                             <option selected="" disabled="" value="">Select Category</option>
                                             <?php if(isset($categorys) && !empty($categorys) && count($categorys) > 0): ?>
                                                 <?php $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->category_name); ?></option>
+                                                    <option value="<?php echo e($category->id); ?>" <?php echo e(old('category') == $category->id ? 'selected' : ''); ?>><?php echo e($category->category_name); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <?php endif; ?>
                                         </select>

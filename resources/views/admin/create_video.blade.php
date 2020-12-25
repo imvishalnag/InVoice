@@ -50,8 +50,8 @@
                                         @else
                                             <select class="form-control" name="type" id="type">
                                                 <option selected="" disabled="" value="">Select Type</option>
-                                                <option value="1" >English</option>
-                                                <option value="2" >Assamese</option>
+                                                <option value="1" {{ old('type') == 1 ? 'selected' : '' }}>English</option>
+                                                <option value="2" {{ old('type') == 2 ? 'selected' : '' }}>Assamese</option>
                                             </select>
                                         @endif
                                         @if($errors->has('type'))

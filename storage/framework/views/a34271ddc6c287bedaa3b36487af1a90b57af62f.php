@@ -55,8 +55,8 @@ unset($__errorArgs, $__bag); ?>
                                         <?php else: ?>
                                             <select class="form-control" name="type" id="type">
                                                 <option selected="" disabled="" value="">Select Type</option>
-                                                <option value="1" >English</option>
-                                                <option value="2" >Assamese</option>
+                                                <option value="1" <?php echo e(old('type') == 1 ? 'selected' : ''); ?>>English</option>
+                                                <option value="2" <?php echo e(old('type') == 2 ? 'selected' : ''); ?>>Assamese</option>
                                             </select>
                                         <?php endif; ?>
                                         <?php if($errors->has('type')): ?>
