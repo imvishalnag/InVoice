@@ -48,7 +48,7 @@
                                         <i class="fa fa-facebook"></i> <span class="ts-social-title">Facebook</span></a>
                                     </li>
                                     <li class="twitter">
-                                        <a href="http://www.twitter.com/sharer.php?u={{url()->current()}}" target="_blank">
+                                        <a href="http://www.twitter.com/share?url={{url()->current()}}" target="_blank">
                                         <i class="fa fa-twitter"></i> <span class="ts-social-title">Twitter</span></a>
                                     </li>
                                     <li class="gplus">
