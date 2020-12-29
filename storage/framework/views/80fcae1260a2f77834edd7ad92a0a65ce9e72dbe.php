@@ -51,6 +51,7 @@
                 <li><a href="<?php echo e(route('admin.popular_list')); ?>">Popular List</a></li>
               </ul>
             </li>
+            <li><a href="<?php echo e(route('admin.change-password')); ?>"><i class="fa fa-lock"></i> Change Password </a></li>
           </ul>
         </div>
       </div>

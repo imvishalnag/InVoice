@@ -11,7 +11,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('/dashboard', 'AdminDashboardController@index')->name('admin.dashboard');
-
+    Route::post('/change/password', 'AdminDashboardController@changePassword')->name('admin.change_password');
     //Add Post
     Route::get('/create/post', 'PostPagesController@createPost')->name('admin.create_post');
     Route::post('/add/post', 'PostPagesController@addPost')->name('admin.add_post');
@@ -69,7 +69,16 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','namespace'=>'Admin']
     Route::post('update_category', 'CategoryPagesController@updateCategory')->name('admin.update_category');
     Route::get('status_category/{id}/{status}', 'CategoryPagesController@statusCategory')->name('status_category');
     // Route::get('/ajax/get/category/','CategoryPagesController@ajaxGetCategoryList')->name('admin.ajax.get_category_list');
+
+    
+Route::get('/admin/change-password', function () {
+    return view('admin.change-password');
+})->name('admin.change-password');
 });
+
+
+//========= support =========//
+
 
 //\site Control
 
