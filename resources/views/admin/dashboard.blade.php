@@ -54,10 +54,11 @@
                                 <tr>
                                   <td>{{$count++}}</td>
                                   <td>{{Str::words($item->title, 10, ' ...')}}</td>
-                                  <td>{!!Str::words($item->body, 10, '...')!!}</td>
+                                  <td class="no-img">{!!Str::words($item->body, 10, '...')!!}</td>
                                 </tr>
                               @endforeach
-                          @endif
+                            @endif
+                            <style>.no-img img {display:none}</style>
                       </tbody>
                     </table>
                       {{ $all_post->links() }}
