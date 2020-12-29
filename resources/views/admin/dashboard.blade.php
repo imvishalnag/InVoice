@@ -54,7 +54,7 @@
                                 <tr>
                                   <td>{{$count++}}</td>
                                   <td>{{Str::words($item->title, 10, ' ...')}}</td>
-                                  <td>{{Str::words($item->body, 10, '...')}}</td>
+                                  <td>{!!Str::words($item->body, 10, '...')!!}</td>
                                 </tr>
                               @endforeach
                           @endif

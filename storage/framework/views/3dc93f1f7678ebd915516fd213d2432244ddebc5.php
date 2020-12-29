@@ -51,7 +51,7 @@
                                 <tr>
                                   <td><?php echo e($count++); ?></td>
                                   <td><?php echo e(Str::words($item->title, 10, ' ...')); ?></td>
-                                  <td><?php echo e(Str::words($item->body, 10, '...')); ?></td>
+                                  <td><?php echo Str::words($item->body, 10, '...'); ?></td>
                                 </tr>
                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                           <?php endif; ?>
