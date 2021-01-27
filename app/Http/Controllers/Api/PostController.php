@@ -115,8 +115,9 @@ class PostController extends Controller
             return response()->json($response, 200);
         }
 
-        $api_ids = new AppId();
-        $api_ids->app_id = $request->input('device_id');
+        $api_ids = AppId::firstOrCreate([
+            'app_id' => $request->input('device_id')
+        ]);
         if($api_ids->save()){
             $response = [
                 'status' => true,
