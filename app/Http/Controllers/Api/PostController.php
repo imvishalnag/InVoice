@@ -116,7 +116,7 @@ class PostController extends Controller
         }
 
         $api_ids = new AppId();
-        $api_ids->api_id = $request->input('device_id');
+        $api_ids->app_id = $request->input('device_id');
         if($api_ids->save()){
             $response = [
                 'status' => true,
