@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use App\Post;
+use App\SmsHelper\PushHelper;
 use App\Video;
 use DataTables;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -44,7 +45,7 @@ class PostPagesController extends Controller
 
         $slug = NULL;
         $type == 1 ? $slug = Str::slug($title) : $slug = $this->makeSlug($title);
-
+        $original_path = null;
         if ($request->hasfile('image')) {
             $image = $request->file('image');
             $destination = base_path() . '/public/post/';
@@ -57,7 +58,6 @@ class PostPagesController extends Controller
                 ->resize(300, 400)
                 ->save($thumb_path);
         }
-
         $post_insert = DB::table('posts')
             ->insertGetId([
                 'title' => $title,
@@ -71,7 +71,8 @@ class PostPagesController extends Controller
             ]);
 
         if ($post_insert) {
-
+            $path = '/public/post/'.$image_name;
+            PushHelper::notification($title, $path, $post_insert);
             return redirect()->back()->with('message', 'Post Added Successfully');
         } else {
             return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
