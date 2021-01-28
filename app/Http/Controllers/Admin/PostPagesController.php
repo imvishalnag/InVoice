@@ -71,8 +71,7 @@ class PostPagesController extends Controller
                 'slug' => $slug,
                 'created_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString(),
             ]);
-        $path = '/public/post/'.$image_name;
-        $notify = PushHelper::notification($title, $path, $post_insert);
+        $notify = PushHelper::notification($title, $body, $image_name, $post_insert);
         return $notify;
         if ($post_insert && $notify) {
             return redirect()->back()->with('message', 'Post Added Successfully');

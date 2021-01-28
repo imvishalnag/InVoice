@@ -4,7 +4,7 @@ namespace App\SmsHelper;
 use App\AppId;
 
 class PushHelper {
-    public static function notification($title,$image_url,$news_id)
+    public static function notification($title, $body, $image_url,$news_id)
     {
         // Fetch All App ids from db and make an array
         $app_ids = AppId::select('app_id')->get()->map(function ($data) {        
@@ -18,8 +18,9 @@ class PushHelper {
         ];
         
         $extraNotificationData = [
-            "message" => $title,
-            "image_url" =>$image_url,
+            "news_title" => $title,
+            'description' => $body,
+            "image_name" =>$image_url,
             "news_id" =>$news_id,
         ];
 
