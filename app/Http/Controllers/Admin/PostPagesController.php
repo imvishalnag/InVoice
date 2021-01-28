@@ -71,7 +71,7 @@ class PostPagesController extends Controller
             ]);
         $path = '/public/post/'.$image_name;
         $notify = PushHelper::notification($title, $path, $post_insert);
-
+        return $notify;
         if ($post_insert && $notify) {
             return redirect()->back()->with('message', 'Post Added Successfully');
         } else {
