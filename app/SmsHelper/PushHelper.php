@@ -7,7 +7,10 @@ class PushHelper {
     public static function notification($title,$image_url,$news_id)
     {
         // Fetch All App ids from db and make an array
-        $app_ids = AppId::latest()->get();
+        $app_ids = AppId::select('app_id')->get()->map(function ($data) {        
+            return $data->app_id;        
+        });
+
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $notification = [
             'title' => 'From Invoice NE',

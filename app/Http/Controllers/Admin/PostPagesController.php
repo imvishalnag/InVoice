@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\AppId;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -37,6 +38,7 @@ class PostPagesController extends Controller
             'body' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
         $title = $request->input('title');
         $type = $request->input('type');
         $body = $request->input('body');
