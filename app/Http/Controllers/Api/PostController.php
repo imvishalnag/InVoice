@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\AppId;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Video;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -97,5 +98,32 @@ class PostController extends Controller
             'data' => $posts
         ];
         return response()->json($response, 200);
+    }
+
+    public function deviceId(Request $request){
+        $validator =  Validator::make($request->all(),[
+            'device_id' =>'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response = [
+                'status' => false,
+                'message' => 'Required data Can not Be Empty',
+                'error_code' => true,
+                'error_message' => $validator->errors(),
+            ];
+            return response()->json($response, 200);
+        }
+
+        $api_ids = AppId::firstOrCreate([
+            'app_id' => $request->input('device_id')
+        ]);
+        if($api_ids->save()){
+            $response = [
+                'status' => true,
+                'message' => 'Device Id Inserted',
+            ];
+            return response()->json($response, 200);
+        }
     }
 }

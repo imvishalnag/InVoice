@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\AppId;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use App\Post;
+use App\SmsHelper\PushHelper;
 use App\Video;
 use DataTables;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -36,6 +38,7 @@ class PostPagesController extends Controller
             'body' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
         $title = $request->input('title');
         $type = $request->input('type');
         $body = $request->input('body');
@@ -44,7 +47,7 @@ class PostPagesController extends Controller
 
         $slug = NULL;
         $type == 1 ? $slug = Str::slug($title) : $slug = $this->makeSlug($title);
-
+        $original_path = null;
         if ($request->hasfile('image')) {
             $image = $request->file('image');
             $destination = base_path() . '/public/post/';
@@ -57,7 +60,6 @@ class PostPagesController extends Controller
                 ->resize(300, 400)
                 ->save($thumb_path);
         }
-
         $post_insert = DB::table('posts')
             ->insertGetId([
                 'title' => $title,
@@ -69,9 +71,8 @@ class PostPagesController extends Controller
                 'slug' => $slug,
                 'created_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString(),
             ]);
-
         if ($post_insert) {
-
+            $notify = PushHelper::notification($title, $body, $image_name, $post_insert);
             return redirect()->back()->with('message', 'Post Added Successfully');
         } else {
             return redirect()->back()->with('error', 'Something Went Wrong Please Try Again');
