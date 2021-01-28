@@ -13,8 +13,9 @@ class PushHelper {
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $notification = [
-            'body' => 'Hello World',
-            'title' => 'World Hello',
+            'body' => $body,
+            'title' => $title,
+            'news_id' => $news_id,
             'sound' => true,
         ];
 
