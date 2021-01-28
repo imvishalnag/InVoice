@@ -16,7 +16,7 @@ class PushHelper {
             'body' => 'Hello World',
             'title' => 'World Hello',
             'sound' => true,
-        ]
+        ];
 
         $fcmNotification = [
             'registration_ids' => $app_ids, //multple token array
