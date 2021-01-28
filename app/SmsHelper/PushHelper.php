@@ -13,23 +13,15 @@ class PushHelper {
 
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $notification = [
-            'title' => 'From Invoice NE',
+            'body' => 'Hello World',
+            'title' => 'World Hello',
             'sound' => true,
-            'content-available' => false
-        ];
-        
-        $extraNotificationData = [
-            "news_title" => $title,
-            'description' => $body,
-            "image_name" =>$image_url,
-            "news_id" =>$news_id,
-        ];
+        ]
 
         $fcmNotification = [
             'registration_ids' => $app_ids, //multple token array
             // 'to'        => $token, //single token
-            'notification' => $notification,
-            'data' => $extraNotificationData
+            'data' => $notification
         ];
         
         $headers = [
