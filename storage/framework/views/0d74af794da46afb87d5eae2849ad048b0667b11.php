@@ -1,7 +1,4 @@
-
-@extends('web.template.web_master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <section class="block-wrapper no-sidebar">
         <div class="container">
@@ -36,4 +33,5 @@
         </div><!-- Container end -->
     </section><!-- First block end -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web.template.web_master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\invoice\resources\views/web/about/about.blade.php ENDPATH**/ ?>
