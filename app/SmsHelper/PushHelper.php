@@ -15,6 +15,7 @@ class PushHelper {
         $notification = [
             'title' => 'From Invoice NE',
             'sound' => true,
+            'content-available' => false
         ];
         
         $extraNotificationData = [
