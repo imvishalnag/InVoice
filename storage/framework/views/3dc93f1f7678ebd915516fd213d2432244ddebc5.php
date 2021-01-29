@@ -51,10 +51,11 @@
                                 <tr>
                                   <td><?php echo e($count++); ?></td>
                                   <td><?php echo e(Str::words($item->title, 10, ' ...')); ?></td>
-                                  <td><?php echo Str::words($item->body, 10, '...'); ?></td>
+                                  <td class="no-img"><?php echo Str::words($item->body, 10, '...'); ?></td>
                                 </tr>
                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                          <?php endif; ?>
+                            <?php endif; ?>
+                            <style>.no-img img {display:none}</style>
                       </tbody>
                     </table>
                       <?php echo e($all_post->links()); ?>
