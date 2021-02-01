@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('post/details/{id}', 'PostController@postList');
     Route::get('video/list/{type}/{page}', 'PostController@videoList');
     Route::get('video/list/{type}/{page}', 'PostController@videoList');
-
+    Route::get('post/search/{searcKey}', 'PostController@search');
     // Push Api ID
     Route::post('device/id', 'PostController@deviceId');
 });

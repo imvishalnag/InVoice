@@ -93,6 +93,7 @@ class PostController extends Controller
     {
         $posts = DB::table('posts')->latest()->where('title', 'like', '%'.$searchKey.'%')->limit(10)->get();
         $response = [
+            'search_key' => $searchKey,
             'status' => true,
             'message' => 'Search Details',
             'data' => $posts
